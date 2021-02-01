@@ -1,0 +1,19 @@
+---
+title: "California Assembly Bill 617"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Background
+
+This document is a companion document for `CA_AB_617.md` and demonstrates how
+Mazama Science R packages can be used to work with "community-level air monitoring data".
+
+## _TODO:_
+
+This document is currently a placeholder for analysis and visualization examples
+working with data relevant to AB 617 communities.
+
