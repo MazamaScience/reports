@@ -30,8 +30,6 @@ _Last updated January 31, 2021_
 
 _TODO_
 
-----
-
 # Community monitoring component
 
 _TODO_
