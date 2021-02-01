@@ -1,19 +1,25 @@
 # Reports
 
-## _Data journalism and internal reports created by (and mostly for) Mazama Science._
-
 _Last updated January 31, 2021_
 
-----
+## Background
 
-[CA](./CA/README.md)
-
-----
-
-In 2021, Mazama Science is primarily focused on air quality time series data and maintains
+In 2021, Mazama Science is primarily focused on environmental time series data and maintains
 a suite of R packages focused on air quality data management, processing,
-analysis and visualization. Details of the Mazama approach are spelled out in
-[Air Quality Design Patterns](https://github.com/MazamaScience/deliverables/wiki/Air-Quality-Design-Patterns) (internal access only).
+analysis and visualization.
+
+## Individual reports
+
+Subdirectories in this repository will be broken up by US state with individual
+reports available as `.md` or `.Rmd` files. These reports are written for 
+internal use only, often by interns, and Mazama Science accepts no responsibility 
+for the accuracy of the content.
+
+Our decision to open this repository reflects our commitment to
+modeling the transparency we hope to inspire in others working with 
+publicly available environmental data.
+
+* [California](./CA/README.md)
 
 ## R packages
 
@@ -32,13 +38,3 @@ Our suite of existing and planned R packages includes:
 * **[AirSensor](https://mazamascience.github.io/AirSensor/)** -- data ingest, QC, analysis and diagnostic plotting for inexpensive sensor data (Purple Air)
 * **PurpleAirAPI** -- R wrapper functions for the new PurpleAir API
 
-## Individual reports
-
-Subdirectories in this repository will be broken up by US state with individual
-reports available as `.md` or `.Rmd` files.
-
-These reports are created for internal use only and Mazama Science accepts no 
-responsibility for the accuracy of the content.
-
-This repository is open to the public in order to model the openness and
-transparency we hope to inspire in others working with environmental data.
