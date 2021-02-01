@@ -66,7 +66,7 @@ _TODO_
 
 _IN-PROGRESS_
 To access the [Air Quality Data (PST) Query Tool](https://www.arb.ca.gov/aqmis2/aqdselect.php) Click “air quality” on left shoulder of web page. You can get weekly and yearly data of any county and in csv format as well. 
-<img src="https://github.com/MazamaScience/reports/tree/main/astrid_work_in_progress/images/open_source_data.png">
+![Query Tool](https://github.com/MazamaScience/reports/tree/main/astrid_work_in_progress/images/open_source_data.png")
 
 ## What types of sensors/monitors are being used to generate data?
 
