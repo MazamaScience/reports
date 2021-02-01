@@ -56,7 +56,11 @@ _TODO_
 
 _TODO_
 
-## Which of the AQMDs have made the most progress?
+## Which of the Air Quality Managment Districts (AQMDs) have made the most progress?
+
+_TODO_
+
+## What other organizations (federal agencies universities, NGOs, ...) have been working with community data.
 
 _TODO_
 
@@ -65,14 +69,6 @@ _TODO_
 _TODO_
 
 ## What types of sensors/monitors are being used to generate data?
-
-_TODO_
-
-## Which Air Quality Management Districts (AQMDs) have made the most progress so far.
-
-_TODO_
-
-## What other organizations (federal agencies universities, NGOs, ...) have been working with community data.
 
 _TODO_
 
