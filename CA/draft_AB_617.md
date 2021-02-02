@@ -42,15 +42,21 @@ The overarching goal of the “community-level air monitoring” is to identify 
 ## How much money is being spent (annualy?) and where does it come from?
 
 _INPROGRESS_
->To jump-start emissions reductions in disproportionately burdened communities, the fiscal year 2017-2018 State budget included $250 million to help clean up heavily polluting mobile sources, like diesel trucks and buses. Further, the fiscal year 2018-2019 State budget includes an additional $245 million in funding for continuing AB 617 emissions reduction effort ([Community Air Protection Blueprint](https://ww2.arb.ca.gov/sites/default/files/2020-03/final_community_air_protection_blueprint_october_2018_acc.pdf)).
+> To jump-start emissions reductions in disproportionately burdened communities, the fiscal year 2017-2018 State budget included $250 million to help clean up heavily polluting mobile sources, like diesel trucks and buses. Further, the fiscal year 2018-2019 State budget includes an additional $245 million in funding for continuing AB 617 emissions reduction effort ([Community Air Protection Blueprint](https://ww2.arb.ca.gov/sites/default/files/2020-03/final_community_air_protection_blueprint_october_2018_acc.pdf)).
+>	Since 2017 the California Legislature has [budgeted $704 million]( https://ww2.arb.ca.gov/our-work/programs/community-air-protection-incentives/about) to support Assembly Bill (AB) 617 (C. Garcia, Chapter 136, Statutes of 2017) with incentives directed by local air districts to put advanced technologies to work for cleaner air in the California communities that are most heavily impacted by disproportionate levels of air pollution.
+> The Legislature has appropriated money from the Greenhouse Gas
+Reduction Fund (GGRF) for incentives to support AB 617, as summarized in Table 1 in
+the Appendix of the [Biannual Report on AB 617 Community Air Protection Incentives](https://ww2.arb.ca.gov/sites/default/files/2020-06/cap_incentives_april_2020_board_update.pdf). According to this report, the deadline of the 2020-2021 budget of $200 million proposed by the Governor is yet to be defined. 
 
 ## Which state agencies are in charge?
 
 _TODO_
 
 ## Which communities are involved?
+
+_INPROGRESS_
 The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the following:
-Calexico, El Centro, Heber
+* Calexico, El Centro, Heber
 * East Los Angeles, Boyle Heights, West Commerce
 * Eastern Coachella Valley
 * Portside Environmental Justice Neighborhoods
@@ -67,11 +73,11 @@ Calexico, El Centro, Heber
 <img src="./images/Communities.png">
 
 
-_TODO_
-
 ## What progress has been made to date?
 
-_TODO_
+_INPROGRESS_
+Since 2018, more than 120 communities have been nominated for consideration for community actions defined as monitoring and/or emission reduction programs, but only 13 have been approved. 
+The [CARB website](https://ww2.arb.ca.gov/capp-selection) does not include a clear plan for 2021, but it mentions that "one of the main lessons learned is that building new community partnerships and developing and implementing effective community-focused programs takes time and resources" and that the 2020-2021 state budget is very limited, thus affecting the number of communities that were considered for addition to the Program in 2020 and those that could be added in 2021. 
 
 ## Which of the Air Quality Managment Districts (AQMDs) have made the most progress?
 
