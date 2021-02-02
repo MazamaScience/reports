@@ -49,6 +49,23 @@ _INPROGRESS_
 _TODO_
 
 ## Which communities are involved?
+The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the following:
+Calexico, El Centro, Heber
+* East Los Angeles, Boyle Heights, West Commerce
+* Eastern Coachella Valley
+* Portside Environmental Justice Neighborhoods
+* Richmond - San Pablo
+* San Bernardino, Muscoy
+* Shafter
+* South Central Fresno
+* South East Los Angeles
+* South Sacramento - Florin
+* Southwest Stockton
+* West Oakland
+* Wilmington, Carson, West Long Beach
+
+<img src="./images/Communities.png">
+
 
 _TODO_
 
