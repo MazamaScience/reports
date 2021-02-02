@@ -48,7 +48,8 @@ _INPROGRESS_
 
 > The Legislature has appropriated money from the Greenhouse Gas
 Reduction Fund (GGRF) for incentives to support AB 617, as summarized in Table 1 in
-the Appendix of the [Biannual Report on AB 617 Community Air Protection Incentives](https://ww2.arb.ca.gov/sites/default/files/2020-06/cap_incentives_april_2020_board_update.pdf). According to this report, the deadline of the 2020-2021 budget of $200 million proposed by the Governor is yet to be defined. 
+the Appendix of the [Biannual Report on AB 617 Community Air Protection Incentives](https://ww2.arb.ca.gov/sites/default/files/2020-06/cap_incentives_april_2020_board_update.pdf). 
+According to this report, the deadline of the 2020-2021 budget of $200 million proposed by the Governor is yet to be defined. 
 
 ## Which state agencies are in charge?
 
