@@ -37,6 +37,7 @@ _TODO_
 ## Summarise the goals of the "community-level air monitoring" component.
 
 _INPROGRESS_
+
 The overarching goal of the “community-level air monitoring” is to identify the communities with the highest air pollution burden, with a focus on criteria air pollutants and toxic air contaminants, to develop *new community-specific emissions reduction programs*. 
 
 ## How much money is being spent (annualy?) and where does it come from?
@@ -49,6 +50,7 @@ _INPROGRESS_
 > The Legislature has appropriated money from the Greenhouse Gas
 Reduction Fund (GGRF) for incentives to support AB 617, as summarized in Table 1 in
 the Appendix of the [Biannual Report on AB 617 Community Air Protection Incentives](https://ww2.arb.ca.gov/sites/default/files/2020-06/cap_incentives_april_2020_board_update.pdf). 
+
 According to this report, the deadline of the 2020-2021 budget of $200 million proposed by the Governor is yet to be defined. 
 
 ## Which state agencies are in charge?
