@@ -60,13 +60,40 @@ _TODO_
 
 ## What other organizations (federal agencies universities, NGOs, ...) have been working with community data.
 
-_TODO_
+_INPROGRESS_
+The Community Air Protection Program includes a [multi-stakeholder Consultation Group]( https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program-ab617/community-air-protection-program-consultation-group), whose members work for environmental justice organizations, air districts, industry, academia, public health organizations, and local government. Below is a comprehensive list of the organizations involved:
+
+* Central California Environmental Justice Network
+* Physicians for Social Responsibility - Los Angeles (PSR-LA)
+*	University of California
+*	American Lung Association
+*	Bay Area Air Quality Management District
+*	California Department of Public Health/California Environmental Health Tracking Program
+*	Environmental Health Coalition
+*	Blue Lake Rancheria Tribe
+*	West Oakland Environmental Indicators Project
+* Central California Asthma Collaborative
+*	California Cotton Ginners and Growers Association
+*	California Air Pollution Control Officers Association (CAPCOA)
+*	Institute for Local Government
+*	Los Angeles Community Environmental Enforcement Network/Coalition for a Safe Environment
+*	Local Government Commission
+*	South Coast Air Quality Management District
+*	Comité Cívico del Valle
+*	San Diego State University
+*	Western States Petroleum Association
+*	San Joaquin Valley Air Pollution Control District
+*	California Council for Environmental and Economic Balance (CCEEB)
+*	BlueGreen Alliance
+
 
 ## To what extent is community monitoring data open access?
+
+_INPROGRESS_
+The community monitoring data is open access. It is possible to have reports on many air pollutants, including PM 2.5. 
 To access the [Air Quality Data (PST) Query Tool](https://www.arb.ca.gov/aqmis2/aqdselect.php) Click “air quality” on left shoulder of web page. You can get weekly and yearly data of any county and in csv format as well. 
 <img src="./images/open_source_data.png">
 
-_TODO_
 
 ## What types of sensors/monitors are being used to generate data?
 
