@@ -37,11 +37,12 @@ _TODO_
 ## Summarise the goals of the "community-level air monitoring" component.
 
 _INPROGRESS_
-The overarching goal of the “community-level air monitoring” is to identify the communities with the highest air pollution burden, with a focus on criteria air pollutants and toxic air contaminants, to develop new community-specific emissions reduction programs. 
+The overarching goal of the “community-level air monitoring” is to identify the communities with the highest air pollution burden, with a focus on criteria air pollutants and toxic air contaminants, to develop *new community-specific emissions reduction programs*. 
 
 ## How much money is being spent (annualy?) and where does it come from?
 
-_TODO_
+_INPROGRESS_
+>To jump-start emissions reductions in disproportionately burdened communities, the fiscal year 2017-2018 State budget included $250 million to help clean up heavily polluting mobile sources, like diesel trucks and buses. Further, the fiscal year 2018-2019 State budget includes an additional $245 million in funding for continuing AB 617 emissions reduction effort ([Community Air Protection Blueprint(https://ww2.arb.ca.gov/sites/default/files/2020-03/final_community_air_protection_blueprint_october_2018_acc.pdf)).
 
 ## Which state agencies are in charge?
 
@@ -92,10 +93,10 @@ The Community Air Protection Program includes a [multi-stakeholder Consultation 
 
 _INPROGRESS_
 The community monitoring data is open access. It is possible to have reports on [criteria](https://www.epa.gov/criteria-air-pollutants), toxic, and GHG pollutant emissions, including PM2.5. 
-To access the [Air Quality Data (PST) Query Tool](https://www.arb.ca.gov/aqmis2/aqdselect.php) Click “air quality” on left shoulder of web page. You can get weekly and yearly data of any county and in csv format as well. 
+To access the [Air Quality Data (PST) Query Tool](https://www.arb.ca.gov/aqmis2/aqdselect.php) Click “air quality” on left shoulder of web page. You can get weekly and yearly data of any county and in csv format as well. Following, the 2020 PM2.5 emissions in Northern California. 
 <img src="./images/open_source_data.png">
 
-CARB has also released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/ei/tools/pollution_map/pollution_map.htm), which allows users to explore maps but also to visualize graphs and export data. However, the most recent year available is 2018. Moreover, there are [caveats about using data in the tool for Comparative analyses](https://ww3.arb.ca.gov/ei/tools/pollution_map/doc/caveats%20document10_19_2020.pdf) since the criteria, toxic and GHG pollutant emissions data presented in the tool are collected through different emissions reporting programs, each designed to meet specific goals. 
+CARB has also released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/ei/tools/pollution_map/pollution_map.htm), which allows users to explore maps but also to visualize graphs and export data about emissions from large facilities (stationary point sources). However, the most recent year available is 2018, and there are [caveats about using data in the tool for Comparative analyses](https://ww3.arb.ca.gov/ei/tools/pollution_map/doc/caveats%20document10_19_2020.pdf) since the criteria, toxic and GHG pollutant emissions data presented in the tool are collected through different emissions reporting programs, each designed to meet specific goals. 
 
 ## What types of sensors/monitors are being used to generate data?
 
