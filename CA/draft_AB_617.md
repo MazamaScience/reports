@@ -43,7 +43,9 @@ The overarching goal of the “community-level air monitoring” is to identify 
 
 _INPROGRESS_
 > To jump-start emissions reductions in disproportionately burdened communities, the fiscal year 2017-2018 State budget included $250 million to help clean up heavily polluting mobile sources, like diesel trucks and buses. Further, the fiscal year 2018-2019 State budget includes an additional $245 million in funding for continuing AB 617 emissions reduction effort ([Community Air Protection Blueprint](https://ww2.arb.ca.gov/sites/default/files/2020-03/final_community_air_protection_blueprint_october_2018_acc.pdf)).
+
 >	Since 2017 the California Legislature has [budgeted $704 million]( https://ww2.arb.ca.gov/our-work/programs/community-air-protection-incentives/about) to support Assembly Bill (AB) 617 (C. Garcia, Chapter 136, Statutes of 2017) with incentives directed by local air districts to put advanced technologies to work for cleaner air in the California communities that are most heavily impacted by disproportionate levels of air pollution.
+
 > The Legislature has appropriated money from the Greenhouse Gas
 Reduction Fund (GGRF) for incentives to support AB 617, as summarized in Table 1 in
 the Appendix of the [Biannual Report on AB 617 Community Air Protection Incentives](https://ww2.arb.ca.gov/sites/default/files/2020-06/cap_incentives_april_2020_board_update.pdf). According to this report, the deadline of the 2020-2021 budget of $200 million proposed by the Governor is yet to be defined. 
