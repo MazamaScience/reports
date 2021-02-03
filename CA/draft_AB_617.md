@@ -119,6 +119,7 @@ The Community Air Protection Program includes a [multi-stakeholder Consultation 
 ## To what extent is community monitoring data open access?
 
 _INPROGRESS_
+**needs review, the data is actually at the site level, not the community level. Currently exploring this webpage https://aqview.arb.ca.gov/data.html. The entire text below may be wrong**
 The community monitoring data is open access. It is possible to have reports on [criteria](https://www.epa.gov/criteria-air-pollutants), toxic, and GHG pollutant emissions, including PM2.5. 
 To access the [Air Quality Data (PST) Query Tool](https://www.arb.ca.gov/aqmis2/aqdselect.php) Click “air quality” on left shoulder of web page. You can get weekly and yearly data of any county and in csv format as well. *add higher level summary about what types of data are available*
 
