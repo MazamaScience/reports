@@ -119,13 +119,42 @@ The Community Air Protection Program includes a [multi-stakeholder Consultation 
 ## To what extent is community monitoring data open access?
 
 _INPROGRESS_
-**needs review, the data is actually at the site level, not the community level. Currently exploring this webpage https://aqview.arb.ca.gov/data.html. The entire text below may be wrong.**
+**needs review and further reasearch. To be continued next week**
 
+At a higher level (parts of State, air basins, counties) air quality data is easily accessible through the [Air Quality Data (PST) Query Tool](https://www.arb.ca.gov/aqmis2/aqdselect.php), which generates reports (csv format) on [criteria](https://www.epa.gov/criteria-air-pollutants), toxic, and GHG pollutant emissions, including PM2.5 in ppm or ppb.
 
-The community monitoring data is open access. It is possible to have reports on [criteria](https://www.epa.gov/criteria-air-pollutants), toxic, and GHG pollutant emissions, including PM2.5. 
-To access the [Air Quality Data (PST) Query Tool](https://www.arb.ca.gov/aqmis2/aqdselect.php) Click “air quality” on left shoulder of web page. You can get weekly and yearly data of any county and in csv format as well. *add higher level summary about what types of data are available*
+At the community level, data is temporally and geographically limited. Only 7 out of the 13 communities currently under monitoring provide reports, and the most recent reports are from May 2020 or earlier depending on the community. 
 
-CARB has also released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/ei/tools/pollution_map/pollution_map.htm), which allows users to explore maps but also to visualize graphs and export data about emissions from large facilities (stationary point sources). However, the most recent year available is 2018, and there are [caveats about using data in the tool for Comparative analyses](https://ww3.arb.ca.gov/ei/tools/pollution_map/doc/caveats%20document10_19_2020.pdf) since the criteria, toxic and GHG pollutant emissions data presented in the tool are collected through different emissions reporting programs, each designed to meet specific goals. 
+Following is a list of the communities providing [downloadable data](https://aqview.arb.ca.gov/data.html):
+* East Los Angeles, Boyle Heights, West Commerce
+* San Bernardino, Muscoy
+* Portside Environmental Justice Neighborhoods
+* Shafter
+* South Central Fresno
+* South Sacramento - Florin
+* Wilmington, Carson, West Long Beach
+
+Reports include: Community Name, Data Provider, Site Name, Latitude, Longitude, Elevation, Monitor ID, Parameter Code, Parameter Name, Measurement Start Time, Measured Value, Adjusted Value, Units, Adjustment Description, and Instrument. Some also include Measurement Technique Description and Code. The columns name in the reports could slightly vary depending on the community. For instance, South Sacramento – Florin has the column “Measurement Start Time” while San Bernardino, Muscoy has the column “StartDateTime”. Description of each column and details on the downloadable data can be found in the [Data Download Explainer](https://aqview.arb.ca.gov/Resources/Data-Download-Explainer.pdf). 
+
+In general, criteria and toxic pollutant emissions data are stored in the California Emissions Inventory Development and Reporting System ([CEIDARS]( https://ww3.arb.ca.gov/ei/drei/maintain/dbstruct.htm)), which serves as the main repository for emissions data used to develop air quality management plans to show attainment and maintenance of ambient air quality standards. While GHG emissions data are stored in CARB’s Mandatory Reporting Regulation ([MRR]( https://ww2.arb.ca.gov/our-work/programs/mandatory-greenhouse-gas-emissions-reporting)) database. Facility ID numbers are different from CEIDARS database IDs.
+
+CARB has also released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/ei/tools/pollution_map/pollution_map.htm), which allows users to explore maps but also to visualize graphs and export data about emissions from large facilities (stationary point sources). However, the most recent year available is 2018, and there are [caveats about using data in the tool for Comparative analyses](https://ww3.arb.ca.gov/ei/tools/pollution_map/doc/caveats%20document10_19_2020.pdf) since the criteria, toxic and GHG pollutant emissions data presented in the tool are collected through different emissions reporting programs, each designed to meet specific goals. The tool is slow and not very user friendly.
+
+**other links to explore further:**
+[Community Air Monitoring]( https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring): Community air monitoring technologies, activities, and resources.
+
+[AQview]( https://aqview.arb.ca.gov/about.html): CARB is launching a new air quality viewer.
+
+[Air Quality and Emissions Data]( https://ww2.arb.ca.gov/CAPP-air-quality): see AQview and data analysis.
+
+[Visualization & Data Analysis](https://ww2.arb.ca.gov/capp-resource-center/data-portal/visualization-and-data-analysis-tools): resources to assist with data visualization and data analysis. 
+
+[Community Air Quality Portal](https://ww2.arb.ca.gov/community-air-quality-portal).
+
+[Access data](https://aqview.arb.ca.gov/data.html): reports available for some communities.
+
+[Explainer](https://aqview.arb.ca.gov/Resources/Data-Download-Explainer.pdf): guide to understand the reports. 
+
 
 
 ## What types of sensors/monitors are being used to generate data?
