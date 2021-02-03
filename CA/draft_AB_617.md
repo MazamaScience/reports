@@ -74,6 +74,7 @@ The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the fol
 * Southwest Stockton
 * West Oakland
 * Wilmington, Carson, West Long Beach
+<img src="./images/Communities.png">
 
 
 ## What progress has been made to date?
@@ -93,36 +94,36 @@ The Community Air Protection Program includes a [multi-stakeholder Consultation 
 
 * [Central California Environmental Justice Network](https://ccejn.org/)
 * [Physicians for Social Responsibility - Los Angeles (PSR-LA)](https://www.psr-la.org/)
-*	University of California
-*	American Lung Association
-*	Bay Area Air Quality Management District
-*	California Department of Public Health/California Environmental Health Tracking Program
-*	Environmental Health Coalition
-*	Blue Lake Rancheria Tribe
-*	West Oakland Environmental Indicators Project
-* Central California Asthma Collaborative
-*	California Cotton Ginners and Growers Association
-*	California Air Pollution Control Officers Association (CAPCOA)
-*	Institute for Local Government
-*	Los Angeles Community Environmental Enforcement Network/Coalition for a Safe Environment
-*	Local Government Commission
-*	South Coast Air Quality Management District
-*	Comité Cívico del Valle
-*	San Diego State University
-*	Western States Petroleum Association
-*	San Joaquin Valley Air Pollution Control District
-*	California Council for Environmental and Economic Balance (CCEEB)
-*	BlueGreen Alliance
+*	[University of California](https://www.universityofcalifornia.edu/)
+*	[American Lung Association](https://www.lung.org/)
+*	[Bay Area Air Quality Management District](https://www.baaqmd.gov/)
+*	[California Department of Public Health/California Environmental Health Tracking Program](https://www.phi.org/our-work/programs/tracking-california/)
+*	[Environmental Health Coalition](https://www.environmentalhealth.org/index.php/en/)
+*	[Blue Lake Rancheria Tribe](https://bluelakerancheria-nsn.gov/)
+*	[West Oakland Environmental Indicators Project](https://woeip.org/)
+* [Central California Asthma Collaborative](http://cencalasthma.org/)
+*	[California Cotton Ginners and Growers Association](https://ccgga.org/)
+*	[California Air Pollution Control Officers Association (CAPCOA)](http://www.capcoa.org/)
+*	[Institute for Local Government](https://www.ca-ilg.org/)
+*	[Los Angeles Community Environmental Enforcement Network/Coalition for a Safe Environment](http://www.coalitionfase.org/)
+*	[Local Government Commission](https://www.lgc.org/)
+*	[South Coast Air Quality Management District](http://www.aqmd.gov/)
+*	[Comité Cívico del Valle](https://www.ccvhealth.org/)
+*	[San Diego State University](https://www.sdsu.edu/)
+*	[Western States Petroleum Association](https://www.wspa.org/)
+*	[San Joaquin Valley Air Pollution Control District](https://www.valleyair.org/Home.htm)
+*	[California Council for Environmental and Economic Balance (CCEEB)](https://cceeb.org/)
+*	[BlueGreen Alliance](https://www.bluegreenalliance.org/)
 
 
 ## To what extent is community monitoring data open access?
 
 _INPROGRESS_
 The community monitoring data is open access. It is possible to have reports on [criteria](https://www.epa.gov/criteria-air-pollutants), toxic, and GHG pollutant emissions, including PM2.5. 
-To access the [Air Quality Data (PST) Query Tool](https://www.arb.ca.gov/aqmis2/aqdselect.php) Click “air quality” on left shoulder of web page. You can get weekly and yearly data of any county and in csv format as well. Following, the 2020 PM2.5 emissions in Northern California. 
-<img src="./images/open_source_data.png">
+To access the [Air Quality Data (PST) Query Tool](https://www.arb.ca.gov/aqmis2/aqdselect.php) Click “air quality” on left shoulder of web page. You can get weekly and yearly data of any county and in csv format as well. *add higher level summary about what types of data are available*
 
 CARB has also released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/ei/tools/pollution_map/pollution_map.htm), which allows users to explore maps but also to visualize graphs and export data about emissions from large facilities (stationary point sources). However, the most recent year available is 2018, and there are [caveats about using data in the tool for Comparative analyses](https://ww3.arb.ca.gov/ei/tools/pollution_map/doc/caveats%20document10_19_2020.pdf) since the criteria, toxic and GHG pollutant emissions data presented in the tool are collected through different emissions reporting programs, each designed to meet specific goals. 
+
 
 ## What types of sensors/monitors are being used to generate data?
 
