@@ -75,8 +75,6 @@ The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the fol
 * West Oakland
 * Wilmington, Carson, West Long Beach
 
-<img src="./images/Communities.png">
-
 
 ## What progress has been made to date?
 
@@ -93,8 +91,8 @@ _TODO_
 _INPROGRESS_
 The Community Air Protection Program includes a [multi-stakeholder Consultation Group]( https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program-ab617/community-air-protection-program-consultation-group), whose members work for environmental justice organizations, air districts, industry, academia, public health organizations, and local government. Below is a comprehensive list of the organizations involved:
 
-* Central California Environmental Justice Network
-* Physicians for Social Responsibility - Los Angeles (PSR-LA)
+* [Central California Environmental Justice Network](https://ccejn.org/)
+* [Physicians for Social Responsibility - Los Angeles (PSR-LA)](https://www.psr-la.org/)
 *	University of California
 *	American Lung Association
 *	Bay Area Air Quality Management District
