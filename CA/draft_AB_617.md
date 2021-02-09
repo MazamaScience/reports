@@ -373,11 +373,9 @@ Moreover, CARB has released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/e
     <td>
       <ul>
         <li>
-          ::marker
           <a href="https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#toxic">Air Toxics</a>
         </li>
         <li>
-          ::marker
         <a href="https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#femfrm">Federal Reference or Equivalent Method (FRM/FEM)</a>
         </li>
       </ul>
