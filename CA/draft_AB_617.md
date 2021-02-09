@@ -347,7 +347,7 @@ A summary of monitoring technologies employed by communities and the science beh
 
 Following, a closer look to the monitoring methods and equipment employed by each community:
 
-*[Richmond-San Pablo community]( https://www.baaqmd.gov/community-health/community-health-protection-program/richmond-area-community-health-protection-program): [Monitoring Methods and Equipment (p. 46, C-4](https://www.baaqmd.gov/~/media/files/ab617-community-health/richmond/richmondsanpabloairmonitoringplanjuly2020-pdf.pdf?la=en): Custom-designed Aclima mobile sensor nodes, measuring measure carbon dioxide (CO2), carbon monoxide
+* [Richmond-San Pablo community]( https://www.baaqmd.gov/community-health/community-health-protection-program/richmond-area-community-health-protection-program): [Monitoring Methods and Equipment (p. 46, C-4)](https://www.baaqmd.gov/~/media/files/ab617-community-health/richmond/richmondsanpabloairmonitoringplanjuly2020-pdf.pdf?la=en): Custom-designed Aclima mobile sensor nodes, measuring measure carbon dioxide (CO2), carbon monoxide
 (CO), nitric oxide (NO), nitrogen dioxide (NO2), ozone (O3), and particulate matter (PM2.5). 
 
 
