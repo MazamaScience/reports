@@ -343,6 +343,7 @@ Moreover, CARB has released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/e
 
 ## What types of sensors/monitors are being used to generate data? 
 (Astrid: testing if I can add a table)
+Refer to the [Air Monitoring Technologies](https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#techtbl) below. 
 
   <table>
   
