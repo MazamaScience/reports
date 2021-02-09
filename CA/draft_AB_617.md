@@ -24,12 +24,6 @@ _Last updated January 31, 2021_
 
 # _TODO:_
 
-# Overall
-
-## How much money is being spent (annualy?) and where does it come from?
-
-_TODO_
-
 # Community monitoring component
 
 _TODO_
@@ -74,6 +68,206 @@ The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the fol
 * Southwest Stockton
 * West Oakland
 * Wilmington, Carson, West Long Beach
+
+<table>
+
+<thead>
+  <tr>
+    <th>Community</th>
+    <th>Air District</th>
+    <th>Emissions Reduction</th>
+    <th>Air Monitoring</th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/richmond-san-pablo">Richmond - San Pablo</a>
+    </td>
+    <td>
+<a href="https://www.baAQMD.gov/community-health/community-health-protection-program">Bay Area AQMD</a>
+    </td>
+    <td>
+    &nbsp;
+    </td>
+    <td>
+<a href="https://www.baAQMD.gov/community-health/community-health-protection-program/richmond-area-community-health-protection-program">2018</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/west-oakland">West Oakland</a>
+    </td>
+    <td>
+<a href="https://www.baAQMD.gov/community-health/community-health-protection-program">Bay Area AQMD</a>
+    </td>
+    <td>
+<a href="https://www.baAQMD.gov/community-health/community-health-protection-program/west-oakland-community-action-plan">2018</a>
+    </td>
+    <td>
+    &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/calexico-el-centro-heber">El Centro, Heber,&nbsp;Calexico</a>
+    </td>
+    <td>
+<a href="https://www.icab617community.org/">Imperial County APCD</a>
+    </td>
+    <td>
+<a href="https://c1b3e492-1448-4e62-b7f8-7aaf61550a90.filesusr.com/ugd/99eb03_080a305618f5453cb0c69272eb622946.pdf" aria-describedby="audioeye_pdf_message">2018</a>
+    </td>
+    <td>
+<a href="https://c1b3e492-1448-4e62-b7f8-7aaf61550a90.filesusr.com/ugd/99eb03_4aacc3a0f9b34bbbbc9c908b8ba628bc.pdf" aria-describedby="audioeye_pdf_message">2018</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/south-sacramento-florin">South Sacramento - Florin</a>
+    </td>
+    <td>
+<a href="http://www.airquality.org/Air-Quality-Health/Community-Air-Protection">Sacramento Metropolitan Air Quality Management District</a>
+    </td>
+    <td>
+    &nbsp;
+    </td>
+    <td>
+<a href="http://www.airquality.org/Air-Quality-Health/Community-Air-Protection/Community-Air-Monitoring">2018</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/portside-environmental-justice">Portside Environmental Justice Neighborhoods</a>
+    </td>
+    <td>
+<a href="https://www.sandiegocounty.gov/content/sdc/apcd/en/community-air-protection-program--ab-617-.html">San Diego County APCD</a>
+    </td>
+    <td>
+    2019
+    </td>
+    <td>
+<a href="https://www.sandiegocounty.gov/content/dam/sdc/apcd/PDF/AB_617/AB-617%20Elements%20and%20Required%20Criteria_San%20Diego_June%202019.pdf" aria-describedby="audioeye_pdf_message">2018</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/shafter">Shafter</a>
+    </td>
+    <td>
+<a href="http://community.valleyair.org/">San Joaquin Valley APCD</a>
+    </td>
+    <td>
+<a href="http://community.valleyair.org/media/1515/01-finalshaftercerp-9-19-19.pdf" aria-describedby="audioeye_pdf_message">2018</a>
+    </td>
+    <td>
+<a href="http://community.valleyair.org/selected-communities/shafter/air-monitoring/">2018</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/south-central-fresno">South Central Fresno</a>
+    </td>
+    <td>
+<a href="http://community.valleyair.org/">San Joaquin Valley APCD</a>
+    </td>
+    <td>
+<a href="http://community.valleyair.org/media/1516/01finalscfresnocerp-9-19-19.pdf" aria-describedby="audioeye_pdf_message">2018</a>
+    </td>
+    <td>
+<a href="http://community.valleyair.org/selected-communities/south-central-fresno/air-monitoring/">2018</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/southwest-stockton">Southwest Stockton</a>
+    </td>
+    <td>
+<a href="http://community.valleyair.org/">San Joaquin Valley APCD</a>
+    </td>
+    <td>
+    2019
+    </td>
+    <td>
+    2019
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/east-los-angeles-boyle-heights-west">East Los Angeles, Boyle Heights, West Commerce</a>
+    </td>
+    <td>
+<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">ScAQMD</a>
+    </td>
+    <td>
+<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134/east-la/cerp-documents">2018</a>
+    </td>
+    <td>
+<a href="http://www.AQMD.gov/docs/default-source/ab-617-ab-134/camps/elabhwc-camp.pdf?sfvrsn=4">2018</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/eastern-coachella-valley">Eastern Coachella Valley</a>
+    </td>
+    <td>
+<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">ScAQMD</a>
+    </td>
+    <td>
+    2019
+    </td>
+    <td>
+    2019
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/san-bernardino-muscoy">San Bernardino, Muscoy</a>
+    </td>
+    <td>
+<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">ScAQMD</a>
+    </td>
+    <td>
+<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134/san-b/cerp-docs">2018</a>
+    </td>
+    <td>
+<a href="http://www.AQMD.gov/docs/default-source/ab-617-ab-134/camps/sbm_camp.pdf?sfvrsn=6">2018</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/south-east-los-angeles">South East Los Angeles</a>
+    </td>
+    <td>
+<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">ScAQMD</a>
+    </td>
+    <td>
+    2019
+    </td>
+    <td>
+    2019
+    </td>
+  </tr>
+  <tr>
+    <td>
+<a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/wilmington-carson-west-long-beach">Wilmington, Carson, West Long Beach</a>
+    </td>
+    <td>
+    <a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">ScAQMD</a>
+    </td>
+    <td>
+    <a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134/wilm/cerp-docs">2018</a>
+    </td>
+    <td>
+    <a href="http://www.AQMD.gov/docs/default-source/ab-617-ab-134/camps/wcwlb_camp.pdf?sfvrsn=6">2018</a>
+    </td>
+  </tr>
+
+</tbody>
+</table>
+
+
 <img src="./images/Communities.png">
 
 
