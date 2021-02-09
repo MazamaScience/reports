@@ -344,7 +344,7 @@ Moreover, CARB has released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/e
 ## What types of sensors/monitors are being used to generate data? 
 (Astrid: testing if I can add a table)
 
-  table>
+  <table>
   
   <thead>
   <tr>
@@ -374,6 +374,8 @@ Moreover, CARB has released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/e
     *<a href="https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#femfrm">Federal Reference or Equivalent Method (FRM/FEM)</a>
       </td>
         </tr>
+</tbody>
+</table>
 
 _TODO_
 
