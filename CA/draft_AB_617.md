@@ -51,23 +51,13 @@ According to this report, the deadline of the 2020-2021 budget of $200 million p
 
 _TODO_
 
+_Jon Comment: I think this is all CARB and its regional AQMDs and APCDs. A brief
+summary of CARB and their mission would be appropriate here._
+
 ## Which communities are involved?
 
 _INPROGRESS_
 The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the following:
-* Calexico, El Centro, Heber
-* East Los Angeles, Boyle Heights, West Commerce
-* Eastern Coachella Valley
-* Portside Environmental Justice Neighborhoods
-* Richmond - San Pablo
-* San Bernardino, Muscoy
-* Shafter
-* South Central Fresno
-* South East Los Angeles
-* South Sacramento - Florin
-* Southwest Stockton
-* West Oakland
-* Wilmington, Carson, West Long Beach
 
 <table>
 
@@ -198,7 +188,7 @@ The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the fol
 <a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/east-los-angeles-boyle-heights-west">East Los Angeles, Boyle Heights, West Commerce</a>
     </td>
     <td>
-<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">ScAQMD</a>
+<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">South Coast AQMD</a>
     </td>
     <td>
 <a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134/east-la/cerp-documents">2018</a>
@@ -212,7 +202,7 @@ The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the fol
 <a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/eastern-coachella-valley">Eastern Coachella Valley</a>
     </td>
     <td>
-<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">ScAQMD</a>
+<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">South Coast AQMD</a>
     </td>
     <td>
     2019
@@ -226,7 +216,7 @@ The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the fol
 <a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/san-bernardino-muscoy">San Bernardino, Muscoy</a>
     </td>
     <td>
-<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">ScAQMD</a>
+<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">South Coast AQMD</a>
     </td>
     <td>
 <a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134/san-b/cerp-docs">2018</a>
@@ -240,7 +230,7 @@ The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the fol
 <a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/south-east-los-angeles">South East Los Angeles</a>
     </td>
     <td>
-<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">ScAQMD</a>
+<a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">South Coast AQMD</a>
     </td>
     <td>
     2019
@@ -254,7 +244,7 @@ The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the fol
 <a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/wilmington-carson-west-long-beach">Wilmington, Carson, West Long Beach</a>
     </td>
     <td>
-    <a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">ScAQMD</a>
+    <a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134?page=2">South Coast AQMD</a>
     </td>
     <td>
     <a href="http://www.AQMD.gov/nav/about/initiatives/community-efforts/environmental-justice/ab617-134/wilm/cerp-docs">2018</a>
@@ -359,9 +349,18 @@ _TODO_
 
 _TODO_
 
+_Jon Comment: The AQview data viewer is what CARB thinks is important. You might
+look at other viewers or reports and just summarize the different types of graphics
+or analyses they are using to communicate information._ Is it current only? Archival?
+Time series analysis? Maps?
+
 ## What software tools are being used to analyze this data?
 
 _TODO_
+
+_Jon Comment: This may be hard to figure out unless pages specifically mention
+software. But it might be interesting to look at the different types of data downlaod
+they provide._
 
 ## _Other interesting questions that come up_
 
