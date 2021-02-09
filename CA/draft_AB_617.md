@@ -352,6 +352,7 @@ Moreover, CARB has released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/e
   <th>Cost*</th>
   <th>Range of Manufacturers**</th>
   <th>Expertise Level***</th>
+  <th>Air Monitoring Approach</th>
   </tr>
   </thead>
   
@@ -370,10 +371,18 @@ Moreover, CARB has released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/e
     2 - 3
         </td>
     <td>
-    *<a href="https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#toxic">Air Toxics</a>
-    *<a href="https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#femfrm">Federal Reference or Equivalent Method (FRM/FEM)</a>
-      </td>
-        </tr>
+      <ul>
+        <li>
+          ::marker
+          <a href="https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#toxic">Air Toxics</a>
+        </li>
+        <li>
+          ::marker
+        <a href="https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#femfrm">Federal Reference or Equivalent Method (FRM/FEM)</a>
+        </li>
+      </ul>
+    </td>
+  </tr>
 </tbody>
 </table>
 
