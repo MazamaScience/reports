@@ -342,49 +342,14 @@ Moreover, CARB has released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/e
 
 
 ## What types of sensors/monitors are being used to generate data? 
-(Astrid: testing if I can add a table)
+(to be continued tomorrow)
+A summary of monitoring technologies employed by communities and the science behind them can be found [here](https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies). 
 
-Refer to the [Air Monitoring Technologies](https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#techtbl) table below. 
+Following, a closer look to the monitoring methods and equipment employed by each community:
 
-  <table>
-  
-  <thead>
-  <tr>
-  <th>Measurement Technology</th>
-  <th>Cost*</th>
-  <th>Range of Manufacturers**</th>
-  <th>Expertise Level***</th>
-  <th>Air Monitoring Approach</th>
-  </tr>
-  </thead>
-  
-  <tbody>
-  <tr>
-  <td>
-  <a href="https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#spec">Spectroscopy</a>
-    </td>
-    <td>
-    $ - $$$$+
-      </td>
-      <td>
-    MMM-MMMM
-    </td>
-      <td>
-    2 - 3
-        </td>
-    <td>
-      <ul>
-        <li>
-          <a href="https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#toxic">Air Toxics</a>
-        </li>
-        <li>
-        <a href="https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring/outline-of-measurement-technologies#femfrm">Federal Reference or Equivalent Method (FRM/FEM)</a>
-        </li>
-      </ul>
-    </td>
-  </tr>
-</tbody>
-</table>
+*[Richmond-San Pablo community]( https://www.baaqmd.gov/community-health/community-health-protection-program/richmond-area-community-health-protection-program): [Monitoring Methods and Equipment (p. 46, C-4](https://www.baaqmd.gov/~/media/files/ab617-community-health/richmond/richmondsanpabloairmonitoringplanjuly2020-pdf.pdf?la=en): Custom-designed Aclima mobile sensor nodes, measuring measure carbon dioxide (CO2), carbon monoxide
+(CO), nitric oxide (NO), nitrogen dioxide (NO2), ozone (O3), and particulate matter (PM2.5). 
+
 
 _TODO_
 
