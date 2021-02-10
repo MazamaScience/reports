@@ -366,8 +366,11 @@ Following, a closer look to the monitoring methods and equipment employed by eac
 * [Southwest Stockton Community]( https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/southwest-stockton): No sensors/monitors available. The Stockton community is in the process of drafting a Community Emissions Reduction Program, and the plan is expected to be published in 2021. The CERP file will be made available here after it is published.
 
 * [East Los Angeles, Boyle Heights, West Commerce](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/east-los-angeles-boyle-heights-west): Lists of mobile monitors/sensors (first two tables) and fixed monitors/sensors (third table) are included below ([Community Air Monitoring Plan - draft](http://www.aqmd.gov/docs/default-source/ab-617-ab-134/camps/elabhwc-camp.pdf?sfvrsn=4))
+
 <img src="./images/EastLosAngelesNeighborhoods_sensors_mob1.png”>
+
 <img src="./images/EastLosAngelesNeighborhoods_sensors_mob2.png”>
+
 <img src="./images/EastLosAngelesNeighborhoods_sensors.png”>
 
 
