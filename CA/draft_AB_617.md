@@ -351,7 +351,11 @@ Following, a closer look to the monitoring methods and equipment employed by eac
 
 * [West Oakland community](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/west-oakland): no methods/technologies/sensors found. It is possible that they get their data from [Bay Area Air Quality Management District]( https://www.baaqmd.gov/) which seems to use low-cost sensors such as PM sensors to count particles, PurpleAir, and Clarity. This info was found in the [Air Quality Data Sources Explained]( https://www.baaqmd.gov/~/media/files/communications-and-outreach/wildfire-materials/air-quality-data-sources-explained-pdf.pdf?la=en), and there is no reference to AB 617. The [West Oakland Environmental Indicators Project]( https://woeip.org/) partnered with the Air District and a community-based Steering Committee to develop [Owning Our Air: The West Oakland Community Action Plan](https://www.baaqmd.gov/~/media/files/ab617-community-health/west-oakland/2020_1101_wo_annual_report_slide_deck-pdf.pdf?la=en) which includes 6 Air District and 8 CARB measures.
 
-* El Centro, Heber, Calexico community: [Dylos DC1700 sensor](https://c1b3e492-1448-4e62-b7f8-7aaf61550a90.filesusr.com/ugd/99eb03_4aacc3a0f9b34bbbbc9c908b8ba628bc.pdf) (light-scattering particle counter to measure particle counts).
+* [El Centro, Heber, Calexico community](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/calexico-el-centro-heber): [Dylos DC1700 sensor](https://c1b3e492-1448-4e62-b7f8-7aaf61550a90.filesusr.com/ugd/99eb03_4aacc3a0f9b34bbbbc9c908b8ba628bc.pdf) (light-scattering particle counter to measure particle counts).
+
+
+
+All communities seem to use **low-cost sensors** and due to their new development, there is no well-established, widely accepted set of data quality indicators. “The South Coast Air Quality Management District ([SCAQMD](http://www.aqmd.gov/)) evaluates and shares sensor evaluation through their Air Quality Sensor Performance Evaluation Center ([AQ-SPEC]( http://www.aqmd.gov/aq-spec)). This program evaluates the performance of sensors both in laboratory and field applications to help inform the general public of the performance of commercially available sensors. Similarly, the US EPA's air sensor toolbox provides guidelines on best practices in the selection, use, and data interpretation ([Air Sensor Toolbox]( https://www.epa.gov/air-sensor-toolbox/how-use-air-sensors-air-sensor-guidebook)) of air sensors.”
 
 
 
