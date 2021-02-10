@@ -375,7 +375,6 @@ Following, a closer look to the monitoring methods and equipment employed by eac
 
 
 
-
 Most communities use **low-cost sensors** and due to their new development, there is no well-established, widely accepted set of data quality indicators. “The South Coast Air Quality Management District ([SCAQMD](http://www.aqmd.gov/)) evaluates and shares sensor evaluation through their Air Quality Sensor Performance Evaluation Center ([AQ-SPEC]( http://www.aqmd.gov/aq-spec)). This program evaluates the performance of sensors both in laboratory and field applications to help inform the general public of the performance of commercially available sensors. Similarly, the US EPA's air sensor toolbox provides guidelines on best practices in the selection, use, and data interpretation ([Air Sensor Toolbox]( https://www.epa.gov/air-sensor-toolbox/how-use-air-sensors-air-sensor-guidebook)) of air sensors.”
 
 
