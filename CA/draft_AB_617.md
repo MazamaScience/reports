@@ -361,6 +361,10 @@ Following, a closer look to the monitoring methods and equipment employed by eac
 * [Shafter community]( https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/shafter): [(Community Air Monitoring Plan)]( http://community.valleyair.org/media/1306/shafter_camp_-v1_-2019_july.pdf) mentions that the community air monitoring network design for Shafter includes the use of several fixed, mobile, and semi-mobile monitoring platforms, all of which are equipped to detect the community-specific pollutants of concern as shown in the table below.
 <img src="./images/shafter_sensors.png">
 
+* [South Central Fresno community]( https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/south-central-fresno): same as Shafter community, but does not include VOC Speciation pollutant [(Community Air Monitoring Plan)]( http://community.valleyair.org/media/1308/fresno_camp_v1_2019_july-1.pdf).
+
+* [Southwest Stockton Community]( https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/southwest-stockton): No sensors/monitors available. The Stockton community is in the process of drafting a Community Emissions Reduction Program, and the plan is expected to be published in 2021. The CERP file will be made available here after it is published.
+
 
 
 Most communities use **low-cost sensors** and due to their new development, there is no well-established, widely accepted set of data quality indicators. “The South Coast Air Quality Management District ([SCAQMD](http://www.aqmd.gov/)) evaluates and shares sensor evaluation through their Air Quality Sensor Performance Evaluation Center ([AQ-SPEC]( http://www.aqmd.gov/aq-spec)). This program evaluates the performance of sensors both in laboratory and field applications to help inform the general public of the performance of commercially available sensors. Similarly, the US EPA's air sensor toolbox provides guidelines on best practices in the selection, use, and data interpretation ([Air Sensor Toolbox]( https://www.epa.gov/air-sensor-toolbox/how-use-air-sensors-air-sensor-guidebook)) of air sensors.”
@@ -380,11 +384,14 @@ Time series analysis? Maps?
 
 ## What software tools are being used to analyze this data?
 
+
 _TODO_
 
 _Jon Comment: This may be hard to figure out unless pages specifically mention
 software. But it might be interesting to look at the different types of data downlaod
 they provide._
+
+According to their Community Air Monitoring Plans, Shafter and South Central Fresno communities use [Agilaire’s 8872](https://agilaire.com/solutions-for/model-8872/) data loggers to collect and organize data from the analyzers integrated into their operation, and Agilaire’s AirVision software as its air quality data management system for the community air monitoring network.
 
 ## _Other interesting questions that come up_
 
