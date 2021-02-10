@@ -369,9 +369,7 @@ Following, a closer look to the monitoring methods and equipment employed by eac
 
 <img src="./images/EastLosAngelesNeighborhoods_sensors_mob1.png”>
 
-<img src="./images/EastLosAngelesNeighborhoods_sensors_mob2.png”>
 
-<img src="./images/EastLosAngelesNeighborhoods_sensors.png”>
 
 
 
