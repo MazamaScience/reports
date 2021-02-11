@@ -359,13 +359,17 @@ Following, a closer look to the monitoring methods and equipment employed by eac
 
 * [Southwest Stockton Community]( https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/southwest-stockton): No sensors/monitors available. The Stockton community is in the process of drafting a Community Emissions Reduction Program, and the plan is expected to be published in 2021. The CERP file will be made available here after it is published.
 
-* [East Los Angeles, Boyle Heights, West Commerce](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/east-los-angeles-boyle-heights-west): Lists of mobile monitors/sensors (first two tables) and fixed monitors/sensors (third table) are included below ([Community Air Monitoring Plan](http://www.aqmd.gov/docs/default-source/ab-617-ab-134/camps/elabhwc-camp.pdf?sfvrsn=4)).
+* [East Los Angeles, Boyle Heights, West Commerce Community](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/east-los-angeles-boyle-heights-west): Lists of mobile monitors/sensors (first two tables) and fixed monitors/sensors (third table) are included below ([Community Air Monitoring Plan](http://www.aqmd.gov/docs/default-source/ab-617-ab-134/camps/elabhwc-camp.pdf?sfvrsn=4)).
 
 <img src="./images/EastLosAngelesNeighborhoods_sensors_mob1.png">
 
 <img src="./images/EastLosAngelesNeighborhoods_sensors_mob2.png">
 
 <img src="./images/EastLosAngelesNeighborhoods_sensors.png">
+
+* [Eastern Coachella Valley Community](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/eastern-coachella-valley): the Eastern Coachella Valley community is in the process of drafting a Community Emissions Reduction Program, the [November 2020 Discussion Draft](http://www.aqmd.gov/docs/default-source/ab-617-ab-134/steering-committees/eastern-coachella-valley/cerp/draft---november-2020/draft---executive-summary-rtc.pdf?sfvrsn=2), and the plan is expected to be published in 2021. The Community Emissions Reduction Plan (CERP) file will be made available [here]( https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/eastern-coachella-valley) after it is published.
+
+* [San Bernardino and Muscoy](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/san-bernardino-muscoy): same as East Los Angeles, Boyle Heights, West Commerce Community [(Community Air Monitoring Plan)](http://www.aqmd.gov/docs/default-source/ab-617-ab-134/camps/sbm_camp.pdf?sfvrsn=6).
 
 
 Most communities use **low-cost sensors** and due to their new development, there is no well-established, widely accepted set of data quality indicators. “The South Coast Air Quality Management District ([SCAQMD](http://www.aqmd.gov/)) evaluates and shares sensor evaluation through their Air Quality Sensor Performance Evaluation Center ([AQ-SPEC]( http://www.aqmd.gov/aq-spec)). This program evaluates the performance of sensors both in laboratory and field applications to help inform the general public of the performance of commercially available sensors. Similarly, the US EPA's air sensor toolbox provides guidelines on best practices in the selection, use, and data interpretation ([Air Sensor Toolbox]( https://www.epa.gov/air-sensor-toolbox/how-use-air-sensors-air-sensor-guidebook)) of air sensors.”
