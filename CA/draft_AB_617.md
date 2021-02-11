@@ -24,13 +24,15 @@ _Last updated January 31, 2021_
 
 # Community monitoring component
 
-_TODO Add a sentence or two intro._
+Community air monitoring plays an important role in supporting effective action to reduce emissions and exposure to criteria air pollutants and toxic air contaminants within impacted communities. [AB 617](https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201720180AB617) requires the [CARB Governing Board](https://ww2.arb.ca.gov/about/leadership), with input from air districts and communities, to identify communities to deploy community air monitoring. When a community is selected for air monitoring, air districts, working with the community, must deploy community air monitoring within 12 months. However, for the first set of communities selected for community air monitoring under the Program, monitoring must begin by July 1, 2019.
+
+CARB has defined [14 planning elements](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/resource-center/community-air-monitoring) that air districts, communities, and others should include in community-specific air monitoring plans developed under the Program.
 
 ## Summarise the goals of the "community-level air monitoring" component.
 
 _INPROGRESS_
 
-The overarching goal of the “community-level air monitoring” is to identify the communities with the highest air pollution burden, with a focus on criteria air pollutants and toxic air contaminants, to develop *new community-specific emissions reduction programs*. 
+The overarching **goal** of the “community-level air monitoring” is to identify the communities with the highest air pollution burden, with a focus on criteria air pollutants and toxic air contaminants, to develop *new community-specific emissions reduction programs*. 
 
 ## How much money is being spent (annualy?) and where does it come from?
 
@@ -47,10 +49,10 @@ According to this report, the deadline of the 2020-2021 budget of $200 million p
 
 ## Which state agencies are in charge?
 
-_TODO_
+The [California Air Resource Board](https://ww2.arb.ca.gov/about#:~:text=CARB's%20mission%20is%20to%20promote,considering%20effects%20on%20the%20economy.) (CARB) is the lead agency for climate change programs and oversees all air pollution control efforts in California to attain and maintain health-based air quality standards. CARB's mission is to promote and protect public health, welfare, and ecological resources through effective reduction of air pollutants while recognizing and considering effects on the economy.
 
-_Jon Comment: I think this is all CARB and its regional AQMDs and APCDs. A brief
-summary of CARB and their mission would be appropriate here._
+In response to Assembly Bill (AB) 617 (C. Garcia, Chapter 136, Statutes of 2017), CARB established the Community Air Protection Program (CAPP or Program). The Program’s focus is to reduce exposure in communities most impacted by air pollution. Communities around the State are working together to develop and implement new strategies to measure air pollution and reduce health impacts, counting on the support of their respective Air Quality Management Distrcts (AQMD) and Air Pollution Control Districts (APCD). 
+
 
 ## Which communities are involved?
 
@@ -375,7 +377,7 @@ Following, a closer look to the monitoring methods and equipment employed by eac
 
 * [Wilmington, West Long Beach, and Carson Community](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/wilmington-carson-west-long-beach): same as East Los Angeles, Boyle Heights, West Commerce Community [(Community Air Monitoring Plan)]( http://www.aqmd.gov/docs/default-source/ab-617-ab-134/camps/wcwlb_camp.pdf?sfvrsn=6).
 
-Most communities use **low-cost sensors** and due to their new development, there is no well-established, widely accepted set of data quality indicators. “The South Coast Air Quality Management District ([SCAQMD](http://www.aqmd.gov/)) evaluates and shares sensor evaluation through their Air Quality Sensor Performance Evaluation Center ([AQ-SPEC]( http://www.aqmd.gov/aq-spec)). This program evaluates the performance of sensors both in laboratory and field applications to help inform the general public of the performance of commercially available sensors. Similarly, the US EPA's air sensor toolbox provides guidelines on best practices in the selection, use, and data interpretation ([Air Sensor Toolbox]( https://www.epa.gov/air-sensor-toolbox/how-use-air-sensors-air-sensor-guidebook)) of air sensors.”
+Most communities use **low-cost sensors** and due to their new development, there is no well-established, widely accepted set of data quality indicators. “The South Coast Air Quality Management District ([SCAQMD](http://www.aqmd.gov/)) evaluates and shares sensor evaluation through their Air Quality Sensor Performance Evaluation Center ([AQ-SPEC]( http://www.aqmd.gov/aq-spec)). This program evaluates the performance of sensors both in laboratory and field applications to help inform the general public of the performance of commercially available sensors. Similarly, the US [EPA's air sensor toolbox](https://www.epa.gov/air-sensor-toolbox) provides guidelines on best practices in the selection, use, and data interpretation ([Air Sensor Toolbox]( https://www.epa.gov/air-sensor-toolbox/how-use-air-sensors-air-sensor-guidebook)) of air sensors.”
 
 
 
