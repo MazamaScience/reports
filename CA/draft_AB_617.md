@@ -22,11 +22,9 @@ _Last updated January 31, 2021_
 
 ----
 
-# _TODO:_
-
 # Community monitoring component
 
-_TODO_
+_TODO Add a sentence or two intro._
 
 ## Summarise the goals of the "community-level air monitoring" component.
 
@@ -267,10 +265,6 @@ _INPROGRESS_
 Since 2018, more than 120 communities have been nominated for consideration for community actions defined as monitoring and/or emission reduction programs, but only 13 have been approved. 
 The [CARB website](https://ww2.arb.ca.gov/capp-selection) does not include a clear plan for 2021. They mention that "one of the main lessons learned is that building new community partnerships and developing and implementing effective community-focused programs takes time and resources" and that the 2020-2021 state budget is very limited. This affected the number of communities considered for addition to the Program in 2020 and it will limit new 2021 additions. 
 
-## Which of the Air Quality Managment Districts (AQMDs) have made the most progress?
-
-_TODO_
-
 ## What other organizations (federal agencies universities, NGOs, ...) have been working with community data.
 
 _INPROGRESS_
@@ -380,26 +374,4 @@ Most communities use **low-cost sensors** and due to their new development, ther
 
 _TODO_
 
-## What types of analysis have been done on this data?
 
-_TODO_
-
-_Jon Comment: The AQview data viewer is what CARB thinks is important. You might
-look at other viewers or reports and just summarize the different types of graphics
-or analyses they are using to communicate information._ Is it current only? Archival?
-Time series analysis? Maps?
-
-## What software tools are being used to analyze this data?
-
-
-_TODO_
-
-_Jon Comment: This may be hard to figure out unless pages specifically mention
-software. But it might be interesting to look at the different types of data downlaod
-they provide._
-
-According to their Community Air Monitoring Plans, Shafter and South Central Fresno communities use [Agilaire’s 8872](https://agilaire.com/solutions-for/model-8872/) data loggers to collect and organize data from the analyzers integrated into their operation, and Agilaire’s AirVision software as its air quality data management system for the community air monitoring network.
-
-## _Other interesting questions that come up_
-
-_TODO_
