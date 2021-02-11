@@ -385,7 +385,7 @@ Most communities use **low-cost sensors** and due to their new development, ther
 _TODO_
 
 ## Which communities have been sharing data with the public?
-The community of [Shafter](http://community.valleyair.org/selected-communities/shafter/community-air-monitoring/), [South Central Fresno](http://community.valleyair.org/selected-communities/south-central-fresno/community-air-monitoring/), and [Stockton](http://community.valleyair.org/selected-communities/stockton/community-air-monitoring/) (Air district [San Joaquin Valley APCD](http://community.valleyair.org/)) have a dedicated web page including active monitors and graphic weekly updates. The Stockton’s web page is under constructions.  
+The community of [Shafter](http://community.valleyair.org/selected-communities/shafter/community-air-monitoring/), [South Central Fresno](http://community.valleyair.org/selected-communities/south-central-fresno/community-air-monitoring/), and [Stockton](http://community.valleyair.org/selected-communities/stockton/community-air-monitoring/) (Air district [San Joaquin Valley APCD](http://community.valleyair.org/)) have a dedicated webpage including active monitors and graphic weekly updates. The Stockton’s web page is under constructions.  
 The community of [Sacramento-Florin](http://www.airquality.org/Air-Quality-Health/Community-Air-Protection/Community-Air-Monitoring) (Air district [Sacramento Metropolitan](http://www.airquality.org/)) has instead a dedicated webpage comprising a map of all monitors showing PM2.5 AQI and descriptive information about their monitors and sensors.
 
 
