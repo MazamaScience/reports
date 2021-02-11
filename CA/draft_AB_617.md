@@ -21,12 +21,11 @@ _Last updated January 31, 2021_
 > Additionally, CARB may direct additional grant funding to communities determined to have the highest air pollution burden.
 
 ----
-
 # Community monitoring component
 
-Community air monitoring plays an important role in supporting effective action to reduce emissions and exposure to criteria air pollutants and toxic air contaminants within impacted communities. [AB 617](https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201720180AB617) requires the [CARB Governing Board](https://ww2.arb.ca.gov/about/leadership), with input from air districts and communities, to identify communities to deploy community air monitoring. When a community is selected for air monitoring, air districts, working with the community, must deploy community air monitoring within 12 months. However, for the first set of communities selected for community air monitoring under the Program, monitoring must begin by July 1, 2019.
+[Community air monitoring](https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring) plays an important role in supporting effective action to reduce emissions and exposure to criteria air pollutants and toxic air contaminants within impacted communities. [AB 617](https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201720180AB617) requires the [CARB Governing Board](https://ww2.arb.ca.gov/about/leadership), with input from air districts and communities, to identify communities to deploy community air monitoring. When a community is selected for air monitoring, air districts, working with the community, must deploy community air monitoring within 12 months. However, for the first set of communities selected for community air monitoring under the Program, monitoring must begin by July 1, 2019.
 
-CARB has defined [14 planning elements](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/resource-center/community-air-monitoring) that air districts, communities, and others should include in community-specific air monitoring plans developed under the Program.
+CARB has defined **[14 planning elements](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/resource-center/community-air-monitoring)** that air districts, communities, and others should include in community-specific air monitoring plans developed under the Program.
 
 ## Summarise the goals of the "community-level air monitoring" component.
 
@@ -49,7 +48,7 @@ According to this report, the deadline of the 2020-2021 budget of $200 million p
 
 ## Which state agencies are in charge?
 
-The [California Air Resource Board](https://ww2.arb.ca.gov/about#:~:text=CARB's%20mission%20is%20to%20promote,considering%20effects%20on%20the%20economy.) (CARB) is the lead agency for climate change programs and oversees all air pollution control efforts in California to attain and maintain health-based air quality standards. CARB's mission is to promote and protect public health, welfare, and ecological resources through effective reduction of air pollutants while recognizing and considering effects on the economy.
+The [California Air Resource Board](https://ww2.arb.ca.gov/about) (CARB) is the lead agency for climate change programs and oversees all air pollution control efforts in California to attain and maintain health-based air quality standards. CARB's mission is to promote and protect public health, welfare, and ecological resources through effective reduction of air pollutants while recognizing and considering effects on the economy.
 
 In response to Assembly Bill (AB) 617 (C. Garcia, Chapter 136, Statutes of 2017), CARB established the Community Air Protection Program (CAPP or Program). The Program’s focus is to reduce exposure in communities most impacted by air pollution. Communities around the State are working together to develop and implement new strategies to measure air pollution and reduce health impacts, counting on the support of their respective Air Quality Management Distrcts (AQMD) and Air Pollution Control Districts (APCD). 
 
@@ -118,7 +117,7 @@ The [communities involved]( https://ww2.arb.ca.gov/capp-communities) are the fol
 <a href="//ww2.arb.ca.gov/our-work/programs/community-air-protection-program/communities/south-sacramento-florin">South Sacramento - Florin</a>
     </td>
     <td>
-<a href="http://www.airquality.org/Air-Quality-Health/Community-Air-Protection">Sacramento Metropolitan Air Quality Management District</a>
+<a href="http://www.airquality.org/Air-Quality-Health/Community-Air-Protection">Sacramento Metropolitan AQMD</a>
     </td>
     <td>
     &nbsp;
@@ -320,6 +319,8 @@ Criteria and toxic pollutant emissions data are stored in the California Emissio
 
 Moreover, CARB has released a [Pollution Mapping Tool]( https://ww3.arb.ca.gov/ei/tools/pollution_map/pollution_map.htm), which allows users to explore maps but also to visualize graphs and export data on emissions from large facilities (stationary point sources). However, the most recent year available is 2018, and there are [caveats about using data in the tool for Comparative analyses](https://ww3.arb.ca.gov/ei/tools/pollution_map/doc/caveats%20document10_19_2020.pdf) since the criteria, toxic and GHG pollutant emissions data presented in the tool are collected through different emissions reporting programs, each designed to meet specific goals. The tool is slow and not very user friendly.
 
+CARB will also be launching a new air quality viewer called [AQview](https://aqview.arb.ca.gov/), which will focus on displaying air quality data collected in AB 617 communities. While community data are the focus for AQview, CARB will provide air quality data from many existing sources to create a single, central hub for viewing the current air quality across the state. AQview is currently under construction and is scheduled to launch in phases. Bookmark [this page](https://ww2.arb.ca.gov/community-air-quality-portal) to keep up-to-date with releases.
+
 **other links to explore further:**
 [Community Air Monitoring]( https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring): Community air monitoring technologies, activities, and resources.
 
@@ -382,5 +383,10 @@ Most communities use **low-cost sensors** and due to their new development, ther
 
 
 _TODO_
+
+## Which communities have been sharing data with the public?
+The community of [Shafter](http://community.valleyair.org/selected-communities/shafter/community-air-monitoring/), [South Central Fresno](http://community.valleyair.org/selected-communities/south-central-fresno/community-air-monitoring/), and Stockton(http://community.valleyair.org/selected-communities/stockton/community-air-monitoring/) (Air district [San Joaquin Valley APCD](http://community.valleyair.org/)) have a dedicated web page including active monitors and graphic weekly updates. The Stockton’s web page is under constructions.  
+The community of [Sacramento-Florin](http://www.airquality.org/Air-Quality-Health/Community-Air-Protection/Community-Air-Monitoring) (Air district [Sacramento Metropolitan](http://www.airquality.org/)) has instead a dedicated webpage comprising a map of all monitors showing PM2.5 AQI and descriptive information about their monitors and sensors.
+
 
 
