@@ -23,15 +23,15 @@ agencies to eliminate racial/ethnic/class disparities in environmental exposures
 
 ----
 # Community monitoring component
+> AB 617 has provided critical support for community-based air quality monitoring. People need information in order to understand local problems, take action in the near term, and advocate for permanent solutions in the long term. Expanded monitoring at the neighborhood level also builds trust in the policy process and helps focus pollution control agency attention on problem areas and sources ([Brookings Report: Climate policy, environmental justice,and local air pollution](https://www.brookings.edu/wp-content/uploads/2020/10/ES-10.14.20-Fowlie-Walker-Wooley.pdf)).
 
-[Community air monitoring](https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring) plays an important role in supporting effective action to reduce emissions and exposure to criteria air pollutants and toxic air contaminants within impacted communities. 
-AB 617 requires the [CARB Governing Board](https://ww2.arb.ca.gov/about/leadership), with input from air districts and communities, to identify communities to deploy community air monitoring. When a community is selected for air monitoring, air districts, working with the community, must deploy community air monitoring within 12 months. 
+AB 617 requires the [CARB Governing Board](https://ww2.arb.ca.gov/about/leadership), with input from air districts and communities, to identify communities to deploy [community air monitoring](https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring. When a community is selected for air monitoring, air districts, working with the community, must deploy community air monitoring within 12 months. 
 
-CARB has defined **[14 planning elements](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/resource-center/community-air-monitoring)** that air districts, communities, and others should include in community-specific air monitoring plans developed under the Program.
+CARB has defined [14 planning elements](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/resource-center/community-air-monitoring) that air districts, communities, and others should include in community-specific air monitoring plans developed under the Program.
 
 ## Summarise the goals of the "community-level air monitoring" component.
 
-The overarching **goal** of the “community-level air monitoring” is to identify the communities with the highest air pollution burden, with a focus on criteria air pollutants and toxic air contaminants, to develop *new community-specific emissions reduction programs*. 
+The overarching **goal** of the “community-level air monitoring” is to identify the communities with the highest air pollution burden, with a focus on criteria air pollutants and toxic air contaminants, to develop **new community-specific emissions reduction programs**. 
 
 ## How much money is being spent (annualy?) and where does it come from?
 
@@ -50,6 +50,10 @@ According to this report, the deadline of the 2020-2021 budget of $200 million p
 The [California Air Resource Board](https://ww2.arb.ca.gov/about) (CARB) is the lead agency for climate change programs and oversees all air pollution control efforts in California to attain and maintain health-based air quality standards. **CARB's mission** is to promote and protect public health, welfare, and ecological resources through effective reduction of air pollutants while recognizing and considering effects on the economy.
 
 In response to AB 617, CARB established the Community Air Protection Program (CAPP or Program). The Program’s focus is to reduce exposure in communities most impacted by air pollution. Communities around the State are working together to develop and implement new strategies to measure air pollution and reduce health impacts, counting on the support of their respective Air Quality Management Distrcts (AQMD) and Air Pollution Control Districts (APCD). 
+
+## How is the AB 617 governace structured?
+
+> AB 617 has a unique governance structure, split between CARB, communities, and local air districts. CARB provides oversight and grants to community groups to participate in the process; communities provide direction and partner with air districts on monitoring and emissions reduction programs; local air districts partner with communities on community air monitoring and emissions reduction plans, provide incentive funding, and can require stronger pollution controls for sources ([Brookings Report: Climate policy, environmental justice,and local air pollution](https://www.brookings.edu/wp-content/uploads/2020/10/ES-10.14.20-Fowlie-Walker-Wooley.pdf)). 
 
 
 ## Which communities are involved?
