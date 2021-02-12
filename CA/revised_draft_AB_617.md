@@ -363,6 +363,11 @@ Most communities use **low-cost sensors** and due to their new development, ther
 The community of [Shafter](http://community.valleyair.org/selected-communities/shafter/community-air-monitoring/) and [South Central Fresno](http://community.valleyair.org/selected-communities/south-central-fresno/community-air-monitoring/) (Air district [San Joaquin Valley APCD](http://community.valleyair.org/)) have a dedicated webpage showing active monitors and weekly air monitoring updates on PM2.5 and PM10 (μg/m3) levels ([graphic example](http://community.valleyair.org/media/2311/1312021-shafter-weekly-update.pdf)).   
 The community of [Sacramento-Florin](http://www.airquality.org/Air-Quality-Health/Community-Air-Protection/Community-Air-Monitoring) (Air district [Sacramento Metropolitan](http://www.airquality.org/)) has instead a dedicated webpage comprising a dynamic AB617 Community Air Monitoring Map showing PM2.5 AQI for each monitor, and information about the monitors and sensors employed such as sensor name, type of monitor, facility name, address, and installation date.
 
+## What do the news say about AB 617?
+### * [This California Law Offers Biden a Tool in the Fight for Environmental Justice
+](https://www.thenation.com/article/environment/ab617-environment-california-epa/)
+> With a community-based approach, AB 617 could help guide Biden’s EPA in leveraging the 1970 Clean Air Act to fight for racial justice […] “One of the geniuses of the American democracy is that laypeople at the community level can have a real and meaningful impact,” says David Wooley, a public policy professor at the University of California–Berkeley, who co-authored a new Brookings Institution study arguing that California’s experience with AB 617 could help guide the EPA in leveraging the 1970 Clean Air Act to fight for racial justice. “If you don’t have that community involvement, then that’s a failure of democracy.”
+
 
 
 
