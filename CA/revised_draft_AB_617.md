@@ -6,8 +6,6 @@ _Last updated February 12, 2021_
 
 ## Background
 
-(http://www.airquality.org/air-quality-health/community-air-protection/ab-617-background)
-
 > In 2017, Governor Brown signed [Assembly Bill 617 (C. Garcia, Chapter 136, Statutes of 2017)](https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201720180AB617) to develop a new community focused program to more effectively reduce exposure to air pollution and preserve public health. This bill directs the California Air Resources Board (CARB) and all local air districts, including the Sacramento Metropolitan Air Quality Management District (Sac Metro Air District or District), to take measures to protect communities disproportionally impacted by air pollution. With input from communities and air districts throughout California, [CARB developed a Community Air Protection Blueprint to implement AB 617](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/community-air-protection-blueprint).
 >
 > There are five central components to the new AB 617 mandate:
@@ -18,12 +16,17 @@ _Last updated February 12, 2021_
 > * Enhanced emission reporting requirements
 > * Increased penalty provisions for polluters
 > 
-> Additionally, CARB may direct additional grant funding to communities determined to have the highest air pollution burden.
+> Additionally, CARB may direct additional grant funding to communities determined to have the highest air pollution burden ([AB 617 Background](http://www.airquality.org/air-quality-health/community-air-protection/ab-617-background)).
+
+> AB 617 is also demonstrating proof of an essential procedural concept: Community-Driven Regulation. AB 617 is not replacing or even circumventing traditional command-and-control regulation, but rather represents a supplementary, community-based “demand-andcontrol” approach. In principle, community pressures can help build the capacity of state
+agencies to eliminate racial/ethnic/class disparities in environmental exposures, bolster agency demands for greater resources, improve community influence over decisions affecting air quality, increase the likelihood that existing command-and-control regulation is implemented, and advance other mechanisms of environmental regulation ([Brookings Report: Climate policy, environmental justice,
+and local air pollution](https://www.brookings.edu/wp-content/uploads/2020/10/ES-10.14.20-Fowlie-Walker-Wooley.pdf)).
 
 ----
 # Community monitoring component
 
-[Community air monitoring](https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring) plays an important role in supporting effective action to reduce emissions and exposure to criteria air pollutants and toxic air contaminants within impacted communities. AB 617 requires the [CARB Governing Board](https://ww2.arb.ca.gov/about/leadership), with input from air districts and communities, to identify communities to deploy community air monitoring. When a community is selected for air monitoring, air districts, working with the community, must deploy community air monitoring within 12 months. 
+[Community air monitoring](https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring) plays an important role in supporting effective action to reduce emissions and exposure to criteria air pollutants and toxic air contaminants within impacted communities. 
+AB 617 requires the [CARB Governing Board](https://ww2.arb.ca.gov/about/leadership), with input from air districts and communities, to identify communities to deploy community air monitoring. When a community is selected for air monitoring, air districts, working with the community, must deploy community air monitoring within 12 months. 
 
 CARB has defined **[14 planning elements](https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program/resource-center/community-air-monitoring)** that air districts, communities, and others should include in community-specific air monitoring plans developed under the Program.
 
