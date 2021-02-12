@@ -19,7 +19,7 @@ _Last updated February 12, 2021_
 > Additionally, CARB may direct additional grant funding to communities determined to have the highest air pollution burden ([AB 617 Background](http://www.airquality.org/air-quality-health/community-air-protection/ab-617-background)).
 
 > AB 617 is also demonstrating proof of an essential procedural concept: Community-Driven Regulation. AB 617 is not replacing or even circumventing traditional command-and-control regulation, but rather represents a supplementary, community-based “demand-andcontrol” approach. In principle, community pressures can help build the capacity of state
-agencies to eliminate racial/ethnic/class disparities in environmental exposures, bolster agency demands for greater resources, improve community influence over decisions affecting air quality, increase the likelihood that existing command-and-control regulation is implemented, and advance other mechanisms of environmental regulation ([Brookings Report: Climate policy, environmental justice,and local air pollution](https://www.brookings.edu/wp-content/uploads/2020/10/ES-10.14.20-Fowlie-Walker-Wooley.pdf)).
+agencies to eliminate racial/ethnic/class disparities in environmental exposures, bolster agency demands for greater resources, improve community influence over decisions affecting air quality, increase the likelihood that existing command-and-control regulation is implemented, and advance other mechanisms of environmental regulation ([Brookings Institution Report](https://www.brookings.edu/wp-content/uploads/2020/10/ES-10.14.20-Fowlie-Walker-Wooley.pdf)).
 
 ----
 # Community monitoring component
