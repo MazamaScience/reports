@@ -1,6 +1,6 @@
 # California Assembly Bill 617
 
-_Last updated February 11, 2021_
+_Last updated February 12, 2021_
 
 ----
 
