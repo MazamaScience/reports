@@ -23,7 +23,7 @@ agencies to eliminate racial/ethnic/class disparities in environmental exposures
 
 ----
 # Community monitoring component
-> AB 617 has provided critical support for community-based air quality monitoring. People need information in order to understand local problems, take action in the near term, and advocate for permanent solutions in the long term. Expanded monitoring at the neighborhood level also builds trust in the policy process and helps focus pollution control agency attention on problem areas and sources ([Brookings Report: Climate policy, environmental justice,and local air pollution](https://www.brookings.edu/wp-content/uploads/2020/10/ES-10.14.20-Fowlie-Walker-Wooley.pdf)).
+> AB 617 has provided critical support for community-based air quality monitoring. People need information in order to understand local problems, take action in the near term, and advocate for permanent solutions in the long term. Expanded monitoring at the neighborhood level also builds trust in the policy process and helps focus pollution control agency attention on problem areas and sources ([Brookings Institution Report](https://www.brookings.edu/wp-content/uploads/2020/10/ES-10.14.20-Fowlie-Walker-Wooley.pdf)).
 
 AB 617 requires the [CARB Governing Board](https://ww2.arb.ca.gov/about/leadership), with input from air districts and communities, to identify communities to deploy [community air monitoring](https://ww2.arb.ca.gov/capp-resource-center/community-air-monitoring. When a community is selected for air monitoring, air districts, working with the community, must deploy community air monitoring within 12 months. 
 
@@ -53,7 +53,7 @@ In response to AB 617, CARB established the Community Air Protection Program (CA
 
 ## How is the AB 617 governace structured?
 
-> AB 617 has a unique governance structure, split between CARB, communities, and local air districts. CARB provides oversight and grants to community groups to participate in the process; communities provide direction and partner with air districts on monitoring and emissions reduction programs; local air districts partner with communities on community air monitoring and emissions reduction plans, provide incentive funding, and can require stronger pollution controls for sources ([Brookings Report: Climate policy, environmental justice,and local air pollution](https://www.brookings.edu/wp-content/uploads/2020/10/ES-10.14.20-Fowlie-Walker-Wooley.pdf)). 
+> AB 617 has a unique governance structure, split between CARB, communities, and local air districts. CARB provides oversight and grants to community groups to participate in the process; communities provide direction and partner with air districts on monitoring and emissions reduction programs; local air districts partner with communities on community air monitoring and emissions reduction plans, provide incentive funding, and can require stronger pollution controls for sources ([Brookings Institution Report](https://www.brookings.edu/wp-content/uploads/2020/10/ES-10.14.20-Fowlie-Walker-Wooley.pdf)). 
 
 
 ## Which communities are involved?
@@ -365,8 +365,10 @@ The community of [Sacramento-Florin](http://www.airquality.org/Air-Quality-Healt
 
 ## What do the news say about AB 617?
 * **[This California Law Offers Biden a Tool in the Fight for Environmental Justice](https://www.thenation.com/article/environment/ab617-environment-california-epa/)**
-> With a community-based approach, AB 617 could help guide Biden’s EPA in leveraging the 1970 Clean Air Act to fight for racial justice […] “One of the geniuses of the American democracy is that laypeople at the community level can have a real and meaningful impact,” says David Wooley, a public policy professor at the University of California–Berkeley, who co-authored a new Brookings Institution study arguing that California’s experience with AB 617 could help guide the EPA in leveraging the 1970 Clean Air Act to fight for racial justice. “If you don’t have that community involvement, then that’s a failure of democracy.”
+> With a community-based approach, AB 617 could help guide Biden’s EPA in leveraging the 1970 Clean Air Act to fight for racial justice […] “One of the geniuses of the American democracy is that laypeople at the community level can have a real and meaningful impact,” says David Wooley, a public policy professor at the University of California–Berkeley, who co-authored a new [Brookings Institution study](https://www.brookings.edu/research/climate-policy-environmental-justice-and-local-air-pollution/) arguing that California’s experience with AB 617 could help guide the EPA in leveraging the 1970 Clean Air Act to fight for racial justice. *“If you don’t have that community involvement, then that’s a failure of democracy.”
 
+* **[Newsom budget hurts environmental justice programs](https://48hills.org/2021/01/newsom-budget-hurts-environmental-justice-programs/)
+> Newsom’s proposed state budget lets utilities, such as PG&E, off the hook for funding wildfire prevention and recovery from wildfires, and puts the burden on the state. That means that *equity-designed programs don’t get the funding they need to continue functioning — ultimately disproportionately affecting low-income communities and communities of color.
 
 
 
