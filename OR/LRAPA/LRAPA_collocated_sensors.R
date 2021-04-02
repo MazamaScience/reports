@@ -25,7 +25,7 @@
 # 2) 18 sensors pwfsl_closestDistance <= 1000; 
 #    13 18 sensors pwfsl_closestDistance <= 500.
 
-
+#---- work ----
 #---- libraries ----
 library(PWFSLSmoke)
 library(AirSensor)
