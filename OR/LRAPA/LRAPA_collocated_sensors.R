@@ -510,7 +510,7 @@ summary(SC_lm_ex)
 # both_data$pa_pm25 0.661990   0.004622 143.238  < 2e-16 ***
 # Adjusted R-squared: 0.8783
 
-#----- create airsensor objects ----
+#----- create airsensor objects param PM2.5 ----
 # Prepare sensor info 
 # Set up months
 timezone <- "America/Los_Angeles"
@@ -537,85 +537,230 @@ for ( monthStamp in monthStamps ) {
   idCount <- length(near_sensorsID)
   count <- 0 
   successCount <- 0
-# Create the archiveDir/airsensor/YYYY/ directory
-dir.create(
-  file.path(archiveDir, "airsensor", YYYY), 
-  showWarnings = FALSE,
-  recursive = TRUE
-)
-
-# Assign a collection name that makes sense
-collectionName <- "lrapa"
-
-# Init counts
-successCount <- 0
-count <- 0
-
-dataList <- list()
-
-# Loop over all ids and aggregate to hourly
-for ( id in near_sensorsID ) {
-  
-  count <- count + 1
-  
-  # Debug info
-  logger.debug(
-    "%4d/%d Calling pat_createAirSensor('%s')",
-    count,
-    length(near_sensorsID),
-    id
+  # Create the archiveDir/airsensor/YYYY/ directory
+  dir.create(
+    file.path(archiveDir, "airsensor", YYYY), 
+    showWarnings = FALSE,
+    recursive = TRUE
   )
   
-  # Load the pat data, convert to an airsensor and add to dataList
-  dataList[[id]] <- tryCatch(
+  # Assign a collection name that makes sense
+  collectionName <- "lrapa"
+  
+  # Init counts
+  successCount <- 0
+  count <- 0
+  
+  dataList <- list()
+  
+  # Loop over all ids and aggregate to hourly
+  for ( id in near_sensorsID ) {
+    
+    count <- count + 1
+    
+    # Debug info
+    logger.debug(
+      "%4d/%d Calling pat_createAirSensor('%s')",
+      count,
+      length(near_sensorsID),
+      id
+    )
+    
+    # Load the pat data, convert to an airsensor and add to dataList
+    dataList[[id]] <- tryCatch(
+      expr = {
+        airsensor <- pat_load(
+          id = id,
+          label = NULL,
+          pas = LRAPA_sensors,
+          startdate = startdate,
+          enddate = enddate,
+          timezone = "America/Los_Angeles"
+        ) %>%
+          pat_createAirSensor(
+            FUN = AirSensor::PurpleAirQC_hourly_AB_00
+          )
+      }, 
+      error = function(e) {
+        logger.warn('Unable to load PAT data for %s ', id)
+        NULL
+      }
+      
+      # Keep going in the face of errors
+    )
+    
+  } # END of deviceDeploymentIDs loop
+  
+  # Combine the airsensors into a single airsensor object and save
+  tryCatch(
     expr = {
-      airsensor <- pat_load(
-        id = id,
-        label = NULL,
-        pas = LRAPA_sensors,
-        startdate = startdate,
-        enddate = enddate,
-        timezone = "America/Los_Angeles"
-      ) %>%
-        pat_createAirSensor(
-          FUN = AirSensor::PurpleAirQC_hourly_AB_00
-        )
+      logger.info('Combining airsensors...')
+      
+      airsensor <- PWFSLSmoke::monitor_combine(dataList)
+      class(airsensor) <- c("airsensor", "ws_monitor", "list")
+      
+      logger.info('Combined successfully...')
+      
+      # Create Airsensor canonical file name
+      fileName <- paste0("airsensor_", collectionName, "_", YYYY, MM, ".rda")
+      
+      # Create Airsensor canonical file path
+      filePath <- file.path(archiveDir, "airsensor", YYYY, fileName)
+      
+      save(list = "airsensor", file = filePath)
     }, 
     error = function(e) {
-      logger.warn('Unable to load PAT data for %s ', id)
-      NULL
+      msg <- paste("Error creating monthly AirSensor file: ", e)
+      logger.error(msg)
     }
-    
-    # Keep going in the face of errors
   )
   
-} # END of deviceDeploymentIDs loop
+  # Now proceed to the next month
+}
 
-# Combine the airsensors into a single airsensor object and save
-tryCatch(
-  expr = {
-    logger.info('Combining airsensors...')
-    
-    airsensor <- PWFSLSmoke::monitor_combine(dataList)
-    class(airsensor) <- c("airsensor", "ws_monitor", "list")
-    
-    logger.info('Combined successfully...')
-    
-    # Create Airsensor canonical file name
-    fileName <- paste0("airsensor_", collectionName, "_", YYYY, MM, ".rda")
-    
-    # Create Airsensor canonical file path
-    filePath <- file.path(archiveDir, "airsensor", YYYY, fileName)
-    
-    save(list = "airsensor", file = filePath)
-  }, 
-  error = function(e) {
-    msg <- paste("Error creating monthly AirSensor file: ", e)
-    logger.error(msg)
-  }
-)
 
-# Now proceed to the next month
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#----- create airsensor objects param humidity WIP ----
+# Prepare sensor info 
+# Set up months
+timezone <- "America/Los_Angeles"
+monthStamps <- c(202007, 202008, 202009, 202010)
+
+for ( monthStamp in monthStamps ) {
+  
+  logger.debug("Working on monthStamp %s ---------- ...", monthStamp) 
+  
+  # Get POSXct startdate
+  startdate <- MazamaCoreUtils::parseDatetime(monthStamp, timezone = timezone)
+  
+  # Guarantee that the enddate is the first of the next month
+  enddate <- lubridate::floor_date(
+    startdate + lubridate::ddays(40),
+    unit = "month"
+  )
+  
+  # Get YYYY and MM strings
+  YYYY <- strftime(startdate, "%Y")
+  MM <- strftime(startdate, "%m")
+  
+  # Initialize counters
+  idCount <- length(near_sensorsID)
+  count <- 0 
+  successCount <- 0
+  # Create the archiveDir/airsensor/YYYY/ directory
+  dir.create(
+    file.path(archiveDir, "airsensor", YYYY), 
+    showWarnings = FALSE,
+    recursive = TRUE
+  )
+  
+  # Assign a collection name that makes sense
+  collectionName <- "lrapa"
+  
+  # Init counts
+  successCount <- 0
+  count <- 0
+  
+  dataList <- list()
+  
+  # Loop over all ids and aggregate to hourly
+  for ( id in near_sensorsID ) {
+    
+    count <- count + 1
+    
+    # Debug info
+    logger.debug(
+      "%4d/%d Calling pat_createAirSensor('%s')",
+      count,
+      length(near_sensorsID),
+      id
+    )
+    
+    # Load the pat data, convert to an airsensor and add to dataList
+    dataList[[id]] <- tryCatch(
+      expr = {
+        airsensor <- pat_load(
+          id = id,
+          label = NULL,
+          pas = LRAPA_sensors,
+          startdate = startdate,
+          enddate = enddate,
+          timezone = "America/Los_Angeles"
+        ) %>%
+          pat_createAirSensor(
+            FUN = AirSensor::PurpleAirQC_hourly_AB_00
+          )
+      }, 
+      error = function(e) {
+        logger.warn('Unable to load PAT data for %s ', id)
+        NULL
+      }
+      
+      # Keep going in the face of errors
+    )
+    
+  } # END of deviceDeploymentIDs loop
+  
+  # Combine the airsensors into a single airsensor object and save
+  tryCatch(
+    expr = {
+      logger.info('Combining airsensors...')
+      
+      airsensor <- PWFSLSmoke::monitor_combine(dataList)
+      class(airsensor) <- c("airsensor", "ws_monitor", "list")
+      
+      logger.info('Combined successfully...')
+      
+      # Create Airsensor canonical file name
+      fileName <- paste0("airsensor_", collectionName, "_", YYYY, MM, ".rda")
+      
+      # Create Airsensor canonical file path
+      filePath <- file.path(archiveDir, "airsensor", YYYY, fileName)
+      
+      save(list = "airsensor", file = filePath)
+    }, 
+    error = function(e) {
+      msg <- paste("Error creating monthly AirSensor file: ", e)
+      logger.error(msg)
+    }
+  )
+  
+  # Now proceed to the next month
 }
 
 
@@ -697,15 +842,18 @@ SC_sensor <- monitor_subset(
 monitor_timeseriesPlot(SC_sensor)
 SC_sensor %>% sensor_calendarPlot()
 
+#----- figuring out humidity WIP ----
 # left here: I guess I'll have to create separate sensor objects, one per parameter.
 # extract data 
 AP_sensor_d <- AP_sensor %>% 
   sensor_extractData()
-  
+
 test <- pat_createAirSensor(
   pat = Amazon_Park,
-  parameter = c("pm25","humidity"),
-  FUN = PurpleAirQC_hourly_AB_00)
+  parameter = "humidity",
+  FUN = NULL)
+test_data <- test$data
+?pat_createAirSensor
 
 # Error: Can't subset columns that don't exist.
 # x Column `humidity` doesn't exist.
@@ -714,9 +862,31 @@ test <- pat_createAirSensor(
 # In if (!parameter %in% names(hourlyData)) { :
 #   the condition has length > 1 and only the first element will be used
 
-test_meta <- Amazon_Park$meta
-test_data <- Amazon_Park$data
 
-names(Amazon_Park$data)
+# try create function for humidity 
+# Custom FUN
+humidity <- function(pat, humidity = hourlyData$humidity) {
+  
+  # Default hourly aggregation
+  hourlyData <- 
+    pat %>%
+    pat_aggregate() %>%
+    pat_extractData()
+  
+  # Create custom_pm variable 
+  humidity <- hourlyData$humidity
+  
+  return(hourlyData)
+} 
+
+# Evaluate custom FUN 
+sensor <- pat_createAirSensor(
+  Amazon_Park, 
+  parameter = "humidity", 
+  FUN = humidity
+)
+
+sensor_data <- sensor$data
 
 
+#----- sensorPM25 ~ monitorPM25
