@@ -24,8 +24,8 @@
 # 1) monitors = 7; sensors = 60
 # 2) 18 sensors pwfsl_closestDistance <= 1000; 
 #    13 18 sensors pwfsl_closestDistance <= 500.
-# 3) reasonable data for Amazon Park, Oakridge 2, Springfield City Hall
-
+# 3) reasonable data for Amazon Park, Oakridge 2, Springfield City Hall, 
+# Oakridge 3 (startdate = 20200815)
 
 #---- Set up ----
 # libraries 
@@ -104,6 +104,14 @@ LRAPA_sensors$pwfsl_closestDistance
 near_sensors <- LRAPA_sensors %>%
   pas_filter(pwfsl_closestDistance <= 500)
 length(unique(near_sensors$deviceDeploymentID)) #13
+
+# visual way to get closest sensors 
+pas_leaflet(LRAPA_sensors, parameter = "pwfsl_closestDistance")
+
+# code to find natural breakpoint to define "colocated"
+dplyr::filter(LRAPA_sensors, pwfsl_closestDistance < 1000) %>% 
+  dplyr::pull(pwfsl_closestDistance) %>% 
+  hist(n=100)
 
 # select most useful meta data
 near_sensors_short <- near_sensors %>%
@@ -234,14 +242,14 @@ pat_multiplot(Amazon_Park)
 pat_scatterPlotMatrix(Amazon_Park)
 #h:t = -0.815
 # smokiest period: Sep-Oct
-AM_lm <- pat_internalFit(Amazon_Park,   showPlot = FALSE)
+AM_lm <- pat_internalFit(Amazon_Park, showPlot = TRUE)
 summary(AM_lm)
 # Coefficients:
 #           Estimate Std. Error  t value Pr(>|t|)    
 # (Intercept) -5.590e-01  9.237e-03   -60.52   <2e-16 ***
 # data$pm25_B  1.083e+00  8.154e-05 13286.55   <2e-16 ***
 # Adjusted R-squared:  0.9995
-AM_lm_ex <- pat_externalFit(Amazon_Park, showPlot = FALSE)
+AM_lm_ex <- pat_externalFit(Amazon_Park, showPlot = TRUE)
 summary(AM_lm_ex)
 # Coefficients:
 # Estimate Std. Error t value Pr(>|t|)    
@@ -431,14 +439,14 @@ pat_multiplot(Oakridge2)
 pat_scatterPlotMatrix(Oakridge2)
 #h:t = -0.880
 # smokiest period: Sep-Oct
-Oa2_lm <- pat_internalFit(Oakridge2,   showPlot = FALSE)
+Oa2_lm <- pat_internalFit(Oakridge2,   showPlot = TRUE)
 summary(Oa2_lm)
 # Coefficients:
 #               Estimate Std. Error  t value Pr(>|t|)    
 # (Intercept) 4.840e-01  7.971e-03    60.72   <2e-16 ***
 # data$pm25_B 9.666e-01  8.447e-05 11442.67   <2e-16 ***
 # Adjusted R-squared:  0.9994 
-Oa2_lm_ex <- pat_externalFit(Oakridge2, showPlot = FALSE)
+Oa2_lm_ex <- pat_externalFit(Oakridge2, showPlot = TRUE)
 summary(Oa2_lm_ex)
 # Coefficients:
 #                     Estimate Std. Error t value Pr(>|t|)    
@@ -448,7 +456,7 @@ summary(Oa2_lm_ex)
 
 
 
-# Oakridge 3 (startdate = 20200815) ----
+# Oakridge 3 (startdate = 20200815) *********************** ----
 Oakridge3 <- pat_load(
   id = "799da69adac45e75_38631", 
   startdate = startdate, 
@@ -469,7 +477,7 @@ Oakridge3 <- pat_load(
   timezone = timezone)
 
 # smokiest period: Sep-Oct
-Oa3_lm <- pat_internalFit(Oakridge3,   showPlot = TRUE)
+Oa3_lm <- pat_internalFit(Oakridge3,   showPlot = FALSE)
 summary(Oa3_lm)
 # Coefficients:
 #   Estimate Std. Error t value Pr(>|t|)    
@@ -763,43 +771,6 @@ for ( monthStamp in monthStamps ) {
   # Now proceed to the next month
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #----- airsensor analysis ----
 All_sensors <- sensor_load(
   collection = "lrapa",
@@ -831,6 +802,17 @@ Oa_sensor <- monitor_subset(
 monitor_timeseriesPlot(Oa_sensor)
 
 Oa_sensor %>% sensor_calendarPlot()
+
+# Oakridge 3 
+Oa3_sensor <- monitor_subset(
+  All_sensors,
+  monitorIDs = 	"799da69adac45e75_38631",
+  dropMonitors = TRUE,
+  timezone = timezone
+)
+monitor_timeseriesPlot(Oa3_sensor)
+
+Oa3_sensor %>% sensor_calendarPlot()
 
 # Springfield City Hall 
 SC_sensor <- monitor_subset(
@@ -889,4 +871,99 @@ sensor <- pat_createAirSensor(
 sensor_data <- sensor$data
 
 
-#----- sensorPM25 ~ monitorPM25
+#----- sensorPM25 ~ monitorPM25 ----
+# 4) Use the R lm() function to calculate linear fits of ‘airsensor’ object 
+# PM2.5 to ‘monitor’ PM2.5. Do this for one weeks worth of data in each of July, 
+# August, September and October.
+
+# load monitor data for 2020
+LRAPA_monitors2020 <- monitor_load(startdate = 20200701, enddate = 20201101) %>%
+  monitor_subset(monitorIDs = c("410390060_01", "410392013_01", "410391009_01"))
+monitors_meta <- LRAPA_monitors2020$meta
+
+##################### Amazon Park ##############################################
+# create Amazon Park monitor obj
+AP_monitor <- LRAPA_monitors2020 %>%
+  monitor_subset(monitorIDs = "410390060_01")
+
+# combine sensor and monitor
+AP_combine <- list(AP_sensor, AP_monitor)
+AP_combine <- monitor_combine(AP_combine)
+
+AP_sensor %>% sensor_calendarPlot()
+# extract July week 
+AP_combine_data <- AP_combine$data
+AP_comb_07 <- AP_combine_data %>%
+  monitor_subsetData(
+    tlim = c(20200710, 20200718),
+    timezone = timezone
+  )
+
+# run lm monitor~sensor
+AP07_lm <- lm(AP_comb_07$`410390060_01` ~ AP_comb_07$`947c72aa269258cc_56971`)
+summary(AP07_lm)
+par(mfrow=c(2,2))
+plot(AP07_lm)
+library(car)
+shapiro.test(AP07_lm$residuals) #p-value = 0.09393
+ncvTest(AP07_lm) #p = 0.076741
+par(mfrow=c(1,1))
+plot(AP_comb_07$`410390060_01` ~ AP_comb_07$`947c72aa269258cc_56971`, col=1, 
+     pch=16, main  = "Amazon Park -- July 10-18, 2020", xlab = "sensor", 
+     ylab = "monitor")
+abline(AP07_lm)
+
+# extract August week
+AP_comb_08 <- AP_combine_data %>%
+  monitor_subsetData(
+    tlim = c(20200813, 20200821),
+    timezone = timezone
+  )
+
+# run lm monitor~sensor
+AP08_lm <- lm(AP_comb_08$`410390060_01` ~ AP_comb_08$`947c72aa269258cc_56971`)
+summary(AP08_lm)
+par(mfrow=c(2,2))
+plot(AP08_lm)
+shapiro.test(AP08_lm$residuals) #p-value = 0.0003979 not normally distributed 
+ncvTest(AP08_lm) #p = 0.0014064
+par(mfrow=c(1,1))
+plot(AP_comb_08$`410390060_01` ~ AP_comb_08$`947c72aa269258cc_56971`, col=1, 
+     pch=16, main  = "Amazon Park -- August 13-21, 2020", xlab = "sensor", 
+     ylab = "monitor")
+abline(AP08_lm)
+
+# finish lms for other months 
+
+##################### Oakridge 2 ##############################################
+# create Oakridge monitor obj
+Oa_monitor <- LRAPA_monitors2020 %>%
+  monitor_subset(monitorIDs = "410392013_01")
+
+# combine sensor and monitor
+Oa2_combine <- list(Oa_sensor, Oa_monitor)
+Oa2_combine <- monitor_combine(Oa2_combine)
+
+# extract July week 
+Oa2_combine_data <- Oa2_combine$data
+Oa2_comb_07 <- Oa2_combine_data %>%
+  monitor_subsetData(
+    tlim = c(20200720, 20200728),
+    timezone = timezone
+  )
+
+# run lm monitor~sensor
+Oa207_lm <- lm(Oa2_comb_07$`410392013_01` ~ Oa2_comb_07$f2ace631a501333b_38681)
+summary(Oa207_lm)
+par(mfrow=c(2,2))
+plot(Oa207_lm)
+library(car)
+shapiro.test(Oa207_lm$residuals) #p-value = 0.01791 not normally distributed 
+ncvTest(Oa207_lm) #p = 0.076741
+par(mfrow=c(1,1))
+plot(Oa2_comb_07$`410392013_01` ~ Oa2_comb_07$f2ace631a501333b_38681, col=1, 
+     pch=16, main  = "Oakridge 2 -- July 20-28, 2020", xlab = "sensor", 
+     ylab = "monitor")
+abline(Oa207_lm)
+
+# finish lms for other months 
