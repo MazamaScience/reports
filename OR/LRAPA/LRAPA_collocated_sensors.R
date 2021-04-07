@@ -397,8 +397,6 @@ summary(Ma_lm_ex)
 # both_data$pa_pm25 0.203559   0.008988   22.65   <2e-16 ***
 # Adjusted R-squared:  0.2395
 
-
-
 # Oakridge 1	 ----
 Oakridge1 <- pat_load(
   id = "fd5f069cc7447626_56793", 
@@ -626,43 +624,6 @@ for ( monthStamp in monthStamps ) {
   # Now proceed to the next month
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #----- create airsensor objects param humidity WIP ----
 # Prepare sensor info 
 # Set up months
@@ -885,6 +846,7 @@ monitors_meta <- LRAPA_monitors2020$meta
 # create Amazon Park monitor obj
 AP_monitor <- LRAPA_monitors2020 %>%
   monitor_subset(monitorIDs = "410390060_01")
+AP_monitor_data <- AP_monitor$data # discrete values
 
 # combine sensor and monitor
 AP_combine <- list(AP_sensor, AP_monitor)

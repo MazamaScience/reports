@@ -25,8 +25,6 @@ path.expand("~")
 DATA_DIR <- "~/Data/LRAPA" # type yours changing only "~" and keeping "/Data/LRAPA". 
 # Example: "C:/Data/LRAPA" 
 
-# LARPA local data archive: Setup
-
 # ----- Setup archive directory ------------------------------------------------
 # Create an archive directory underneath ~/Data
 if ( exists("DATA_DIR") ) {
@@ -41,6 +39,7 @@ dir.create(archiveDir, recursive = TRUE)
 library(AirSensor)
 
 # Set the archiveBaseUrl so we can get a 'pas' object
+setArchiveBaseDir(NULL)
 setArchiveBaseUrl("http://data.mazamascience.com/PurpleAir/v1")
 
 
@@ -56,20 +55,20 @@ LRAPA_sensors <-
 pas_leaflet(LRAPA_sensors)
 
 # Save it in our archive directory
-save(LRAPA, file = paste0(archiveDir, "LRAPA_sensors.rda"))
+save(LRAPA_sensors, file = paste0(archiveDir, "test_sensors.rda"))
 
 # Examine archive directory:
 list.files(file.path(archiveDir))
 
-# ----- Find colocated sensors -------------------------------------------------
+# ----- Find colocated sensors and monitors ------------------------------------
 # To find colocated senosors check for natural breakpoints in the spatial distribution 
 # of the sensors with respect to the closest monitor 
-
 dplyr::filter(LRAPA_sensors, pwfsl_closestDistance < 1000) %>% 
   dplyr::pull(pwfsl_closestDistance) %>% 
   hist(n=100)
+# there is a natural breakpoint at 100 m. 
 
-# there is a natural breakpoint at 100 m. Let's use that to extract our sensors IDs
+# * Extract sensors IDs w/in 100 m radius from nearest monitor
 near_sensors <- LRAPA_sensors %>%
   pas_filter(pwfsl_closestDistance <= 100)
 
@@ -89,6 +88,20 @@ near_sensorsID <- unique(near_sensorsID)
 # and then try 
 # test_sensorID <- pas_getDeviceDeploymentIDs(LRAPA_sensors)
 # length(test_sensorID) # 44
+
+# * Extract monitor IDs   
+near_monitorIDs <- unique(near_sensors$pwfsl_closestMonitorID)
+
+# * Load monitors data for July-October 2020
+LRAPA_monitors <- monitor_load(startdate = 20200701, enddate = 20201101) %>%
+  monitor_subset(monitorIDs = near_monitorIDs)
+
+# * Save monitors data in the archive directory
+save(LRAPA_monitors, file = file.path(archiveDir, "LRAPA_monitors.rda"))
+
+# * Load LRAPA monitors from archive directory 
+LRAPA_monitors <- get(load(file.path(archiveDir, "LRAPA_monitors.rda")))
+
 
 # ----- create pat objects -----------------------------------------------------
 # * Setup -----
@@ -183,5 +196,7 @@ list.files(file.path(archiveDir, "pat/2020/09"))
 list.files(file.path(archiveDir, "pat/2020/10"))
 
 # notice that the number of sensors ranges from 9 to 13 depending on the months. 
+
+
 
 
