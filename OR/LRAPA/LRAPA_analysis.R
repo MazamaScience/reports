@@ -96,7 +96,7 @@ summary(AP_mlm)
 plot(AP_comb_07$monitor_pm25 ~ AP_comb_07$pm25 + AP_comb_07$humidity, col=1, 
      pch=16, main  = "Amazon Park -- July 10-18, 2020", 
      xlab = "Sensor hourly data", 
-     ylab = "Monitor PM2.5 hourly data")
+     ylab = "Monitor PM2.5 hourly data") 
 
 
 
