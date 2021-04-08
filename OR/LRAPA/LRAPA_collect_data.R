@@ -35,9 +35,6 @@ if ( exists("DATA_DIR") ) {
 
 dir.create(archiveDir, recursive = TRUE)
 
-# AirSensor package
-library(AirSensor)
-
 # Set the archiveBaseUrl so we can get a 'pas' object
 setArchiveBaseDir(NULL)
 setArchiveBaseUrl("http://data.mazamascience.com/PurpleAir/v1")
