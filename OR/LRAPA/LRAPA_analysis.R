@@ -15,7 +15,7 @@ near_sensors_tb <- near_sensors %>%
          pwfsl_closestDistance, 
          DEVICE_LOCATIONTYPE)
 
-# ----- Load and explore pat data ----------------------------------------------
+# ----- Load pat data ----------------------------------------------------------
 # * Setup -----
 setArchiveBaseDir(archiveDir)
 getArchiveBaseDir()
@@ -31,6 +31,7 @@ Amazon_Park <- pat_load(
   enddate = enddate, 
   timezone = timezone)
 
+# ----- Explore pat data -------------------------------------------------------
 pat_multiplot(Amazon_Park)
 pat_scatterPlotMatrix(Amazon_Park)
 AM_lm <- pat_internalFit(Amazon_Park, showPlot = TRUE)
@@ -42,7 +43,7 @@ summary(AM_lm_ex)
 # * Load monitors 
 LRAPA_monitors <- get(load(file.path(archiveDir, "LRAPA_monitors.rda")))
 
-# * July: PM2.5 hourly data (HD) for the Amazon Park MONITOR
+# * July: PM2.5 hourly data (HD) for the Amazon Park MONITOR -----
 AP_monitor_HD <-
   LRAPA_monitors %>% 
   monitor_subset(monitorIDs = "410390060_01", tlim=c(20200710, 20200718)) %>% 
@@ -62,12 +63,12 @@ AP_sensor_HD <-
 
 names(AP_sensor_HD) # double check columns names 
 
-# * combine monitor and sensor data
+# * combine monitor and sensor data ----
 AP_comb_07 <- dplyr::left_join(AP_sensor_HD, AP_monitor_HD, by = "datetime")
 names(AP_comb_07) #check columns 
 # note: all columns come from the sensor's pat object exept for "monitor_pm25"
 
-# * run lm 
+# * run lm ----
 AP_lm <- lm(AP_comb_07$monitor_pm25 ~ AP_comb_07$pm25)
 summary(AP_lm)
 plot(AP_comb_07$monitor_pm25 ~ AP_comb_07$pm25, col=1, 
@@ -82,7 +83,7 @@ abline(AP_lm, col = "red")
 
 # Adjusted R-squared:  0.8675 
 
-# * run multiple lm w/ humidity 
+# * run multiple lm w/ humidity -----
 AP_mlm <- lm(AP_comb_07$monitor_pm25 ~ AP_comb_07$pm25 + AP_comb_07$humidity)
 summary(AP_mlm)
 # Coefficients:
