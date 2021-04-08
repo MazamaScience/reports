@@ -55,7 +55,7 @@ LRAPA_sensors <-
 pas_leaflet(LRAPA_sensors)
 
 # Save it in our archive directory
-save(LRAPA_sensors, file = paste0(archiveDir, "test_sensors.rda"))
+save(LRAPA_sensors, file = paste0(archiveDir, "LRAPA_sensors.rda"))
 
 # Examine archive directory:
 list.files(file.path(archiveDir))
@@ -111,6 +111,7 @@ MazamaCoreUtils::logger.setLevel(TRACE)
 
 # Set the package archiveBaseDir so we can load pat objects with `pat_load()`
 setArchiveBaseDir(archiveDir)
+getArchiveBaseDir() # double check
 
 # * Get PAS object -----
 pas <- get(load(file.path(archiveDir, "LRAPA_sensors.rda")))
@@ -195,7 +196,7 @@ list.files(file.path(archiveDir, "pat/2020/08"))
 list.files(file.path(archiveDir, "pat/2020/09"))
 list.files(file.path(archiveDir, "pat/2020/10"))
 
-# notice that the number of sensors ranges from 9 to 13 depending on the months. 
+# notice that the number of sensors ranges from 9 to 13 depending on the month. 
 
 
 
