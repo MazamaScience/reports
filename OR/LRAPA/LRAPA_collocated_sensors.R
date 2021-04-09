@@ -77,7 +77,7 @@ LRAPA_sensors <- pas_load() %>%
 class(LRAPA_sensors)
 LRAPA_sensors$label
 
-# Save it in our archive directory
+# Save it in your archive directory
 archiveDir <- file.path("C:/Users/astri/Mirror/Mazamascience/Projects/Data/LRAPA")
 save(LRAPA_sensors, file = file.path(archiveDir, "LRAPA_sensors.rda"))
 
