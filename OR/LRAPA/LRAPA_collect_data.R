@@ -49,7 +49,7 @@ LRAPA_pas <-
 pas_leaflet(LRAPA_pas)
 
 # Save it in our archive directory
-save(LRAPA_pas, file = paste0(archiveDir, "LRAPA_pas.rda"))
+save(LRAPA_pas, file = file.path(archiveDir, "LRAPA_pas.rda"))
 
 # Examine archive directory:
 list.files(file.path(archiveDir))
