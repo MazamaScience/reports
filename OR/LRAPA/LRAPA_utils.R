@@ -113,7 +113,7 @@ sensorMonitorFit <- function(
   # pat data
   pat <-
     pat %>%
-    pat_filterDate(startdate, enddate, timezone = paste(pat$meta$timezone)) %>%
+    pat_filterDate(startdate, enddate, timezone = "America/Los_Angeles") %>%
     pat_aggregate() %>%
     pat_extractData() %>%
     dplyr::mutate(pm25 = (pm25_A + pm25_B)/2) %>%
@@ -126,13 +126,13 @@ sensorMonitorFit <- function(
     monitor_subset(
       monitorIDs = monitorID,
       tlim = c(startdate, enddate),
-      timezone = paste(ws_monitor$meta$timezone)
+      timezone = "America/Los_Angeles"
     ) %>%
     monitor_extractData() %>%
     dplyr::rename(pm25_monitor = !!monitorID)
   
   # combine
-  df <- dplyr::left_join(pat_hourlyData, monitor_hourlyData, by = "datetime")
+  df <- dplyr::left_join(pat, ws_monitor, by = "datetime")
   
   # ----- Linear fit -----------------------------------------------------------
   
