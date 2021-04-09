@@ -62,6 +62,11 @@ AM_lm_ex <- pat_externalFit(Amazon_Park, showPlot = TRUE)
 summary(AM_lm_ex)
 
 # ----- Linear moled PM2.5 monitor ~ PM2.5 sensor for specific weeks -----------
+# * Setup sensorMonitorFit() 
+# 1) Open LRAPA_utils.R script 
+# 2) "Source" the script 
+# 3) Check that you have sensorMonitorFit() in your R environment 
+
 # * July data frame: sensor and monitor hourly data
 AP_df_07<- sensorMonitorFit(
   pat = Amazon_Park,
