@@ -61,7 +61,7 @@ summary(AM_lm)
 AM_lm_ex <- pat_externalFit(Amazon_Park, showPlot = TRUE)
 summary(AM_lm_ex)
 
-# ----- Linear moled PM2.5 monitor ~ PM2.5 sensor for specific weeks -----------
+# ----- Linear model PM2.5 monitor ~ PM2.5 sensor for specific weeks -----------
 # * Setup sensorMonitorFit() 
 # 1) Open LRAPA_utils.R script 
 # 2) "Source" the script 
@@ -78,7 +78,7 @@ View(AP_df_07)
 # note: all columns come from the sensor's pat object exept for "monitor_pm25"
 
 # * run lm ----
-AP_lm <- lm(AP_df_07$monitor_pm25 ~ AP_df_07$pm25)
+AP_lm <- lm(AP_df_07$pm25_monitor ~ AP_df_07$pm25)
 
 # check lm results
 summary(AP_lm)
@@ -88,7 +88,7 @@ lm07_results <- list(summary(AP_lm)$adj.r.squared,
                       summary(AP_lm)$coefficients[1],
                       summary(AP_lm)$coefficients[2],
                       summary(AP_lm)$coefficients[3])
-
+View(lm07_results)
 
 plot(AP_df_07$monitor_pm25 ~ AP_df_07$pm25, col=1, 
      pch=16, main  = "Amazon Park -- July 10-18, 2020", 
@@ -98,7 +98,7 @@ abline(AP_lm, col = "red")
 
 
 # * run multiple lm w/ humidity -----
-AP_mlm <- lm(AP_df_07$monitor_pm25 ~ AP_df_07$pm25 + AP_df_07$humidity)
+AP_mlm <- lm(AP_df_07$pm25_monitor ~ AP_df_07$pm25 + AP_df_07$humidity)
 
 # check mlm results
 summary(AP_mlm)
@@ -108,6 +108,7 @@ mlm07_results <- list(summary(AP_mlm)$adj.r.squared,
                       summary(AP_mlm)$coefficients[1],
                       summary(AP_mlm)$coefficients[2],
                       summary(AP_mlm)$coefficients[3])
+View(mlm07_results)
 
 plot(AP_df_07$monitor_pm25 ~ AP_df_07$pm25 + AP_df_07$humidity, col=1, 
      pch=16, main  = "Amazon Park -- July 10-18, 2020", 
@@ -132,10 +133,18 @@ AP_lm <- lm(AP_df_09$monitor_pm25 ~ AP_df_09$pm25)
 summary(AP_lm)
 
 # create a lm results list
-lm09_results <- list(summary(AP_lm)$adj.r.squared,
+lm09_results <- data.frame(summary(AP_lm)$adj.r.squared,
                        summary(AP_lm)$coefficients[1],
                        summary(AP_lm)$coefficients[2],
                        summary(AP_lm)$coefficients[3])
+# lm09_results %>% 
+#   rename(
+#     intercept = summary(AP_lm)$coefficients[1],
+#     PM25 = summary(AP_lm)$coefficients[2],
+#     Humidity = summary(AP_lm)$coefficients[3],
+#     R_sq = summary(AP_lm)$adj.r.squared)
+# 
+# View(lm09_results)
 
 # plot lm
 plot(AP_df_09$monitor_pm25 ~ AP_df_09$pm25, col=1, 
@@ -163,6 +172,6 @@ plot(AP_df_09$monitor_pm25 ~ AP_df_09$pm25 + AP_df_09$humidity, col=1,
      ylab = "Monitor PM2.5 hourly data") 
 
 
-
+?predict.lm
 
 
