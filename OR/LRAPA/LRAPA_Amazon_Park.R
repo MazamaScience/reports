@@ -6,6 +6,13 @@
 # Now that we have found colocate sensors (within 100 m from the closest FRM 
 # monitor) we can start exploring the pat files by running pat_scatterPlotMatrix()
 # pat_internalFit and pat_externalFit, and select the best performing sensors.
+# We'll then:
+# 1) combine sensor hourly data (PM2.5, temperature, humidity) with monitor
+# hourly data (PM2.5).
+# 2) fit linear and multilinear models to explore the influence of humidity on the 
+# sensor performance.
+# 3) compare results from step 2) to linearly modeled predicted results.   
+
 
 # ----- Setup --------------------------------------------------------------
 # * libraries -----
