@@ -13,8 +13,9 @@ library(AirSensor)
 library(PWFSLSmoke)
 
 # ----- Create a table including only $meta useful to your analysis ------------
-# load LRAPA sensor file from archiveDir 
+# load LRAPA sensor and monitirs file from archiveDir 
 LRAPA_sensors <- get(load(file.path(archiveDir, "LRAPA_sensors.rda")))
+LRAPA_monitors <- get(load(file.path(archiveDir, "LRAPA_monitors.rda")))
 
 # create table 
 near_sensors_tb <- LRAPA_sensors %>%
@@ -116,11 +117,17 @@ AP_fit<- sensorMonitorFit(
   monitorID = "410390060_01",
   startdate = 20200710,
   enddate = 20200718,
-  modelParameters = c("pm25", "humidity")
-)
+  modelParameters = c("pm25", "humidity"))
+summary(AP_fit)
+
 # Error in MazamaCoreUtils::parseDatetime(tlim, timezone = timezone) : 
 # argument 'timezone' must be a character string of length one
 # Called from: MazamaCoreUtils::parseDatetime(tlim, timezone = timezone)
+
+length(timezone)
+length(Amazon_Park$meta$timezone)
+print(timezone)
+
 
 # * September: PM2.5 hourly data (HD) for the Amazon Park MONITOR -----
 AP_monitor_HD <-
@@ -149,12 +156,9 @@ names(AP_comb_08) #check columns
 
 # * run lm ----
 AP_lm <- lm(AP_comb_09$monitor_pm25 ~ AP_comb_09$pm25)
+
+# check results as a summary ...
 summary(AP_lm)
-plot(AP_comb_09$monitor_pm25 ~ AP_comb_09$pm25, col=1, 
-     pch=16, main  = "Amazon Park -- Sep 7-14, 2020", 
-     xlab = "Sensor PM2.5 hourly data", 
-     ylab = "Monitor PM2.5 hourly data")
-abline(AP_lm, col = "red")
 # Coefficients:
 #                 Estimate Std. Error t value Pr(>|t|)    
 # (Intercept)     -35.87032    9.78607  -3.665 0.000325 ***
@@ -162,8 +166,23 @@ abline(AP_lm, col = "red")
 
 # Adjusted R-squared:  0.8799
 
+# or check results one by one 
+summary(AP_lm)$adj.r.squared
+summary(AP_lm)$coefficients[1]
+summary(AP_lm)$coefficients[2]
+
+
+# plot mlm
+plot(AP_comb_09$monitor_pm25 ~ AP_comb_09$pm25, col=1, 
+     pch=16, main  = "Amazon Park -- Sep 7-14, 2020", 
+     xlab = "Sensor PM2.5 hourly data", 
+     ylab = "Monitor PM2.5 hourly data")
+abline(AP_lm, col = "red")
+
 # * run multiple lm w/ humidity -----
 AP_mlm <- lm(AP_comb_09$monitor_pm25 ~ AP_comb_09$pm25 + AP_comb_09$humidity)
+
+# check results as a summary ...
 summary(AP_mlm)
 # Coefficients:
 #                       Estimate Std. Error t value Pr(>|t|)    
@@ -173,10 +192,18 @@ summary(AP_mlm)
 
 # Adjusted R-squared:  0.8999 
 
+# or check results one by one 
+summary(AP_mlm)$adj.r.squared
+summary(AP_mlm)$coefficients[1]
+summary(AP_mlm)$coefficients[2]
+summary(AP_mlm)$coefficients[3]
+
+# plot mlm
 plot(AP_comb_09$monitor_pm25 ~ AP_comb_09$pm25 + AP_comb_09$humidity, col=1, 
      pch=16, main  = "Amazon Park -- Sept 7-14, 2020", 
      xlab = "Sensor hourly data", 
      ylab = "Monitor PM2.5 hourly data") 
+
 
 
 
