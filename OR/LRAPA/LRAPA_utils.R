@@ -90,61 +90,64 @@ sensorMonitorFit <- function(
   enddate = NULL,
   modelParameters = c("pm25", "humidity")
 ) {
-  
+
   # ----- Validate parameters --------------------------------------------------
-  
+
   MazamaCoreUtils::stopIfNull(pat)
   MazamaCoreUtils::stopIfNull(ws_monitor)
   MazamaCoreUtils::stopIfNull(modelParameters)
-  
+
   validParameters <- c("pm25", "humidity", "temperature")
   unrecognizedParameters <- setdiff(modelParameters, validParameters)
-  
+
   if ( length(unrecognizedParameters > 0) ) {
     stop(sprintf("modelParameter '%s' is not recognized", unrecognizedParameters))
   }
-  
+
   # Single monitors don't need to specify monitorID
   if ( nrow(ws_monitor$meta) == 1 )
     monitorID <- ws_monitor$meta$monitorID
-  
+
+  # Use the single timezone from pat because ws_monitor might have more than one
+  timezone <- pat$meta$timezone
+
   # ----- Create dataframe of hourly data --------------------------------------
-  
+
   # pat data
   pat <-
     pat %>%
-    pat_filterDate(startdate, enddate, timezone = "America/Los_Angeles") %>%
+    pat_filterDate(startdate, enddate, timezone = timezone) %>%
     pat_aggregate() %>%
     pat_extractData() %>%
     dplyr::mutate(pm25 = (pm25_A + pm25_B)/2) %>%
     dplyr::select(datetime, pm25, pm25_A, pm25_B, temperature, humidity) %>%
     dplyr::mutate_all(round)
-  
+
   # monitor data
   ws_monitor <-
     ws_monitor %>%
     monitor_subset(
       monitorIDs = monitorID,
       tlim = c(startdate, enddate),
-      timezone = "America/Los_Angeles"
+      timezone = timezone
     ) %>%
     monitor_extractData() %>%
     dplyr::rename(pm25_monitor = !!monitorID)
-  
+
   # combine
   df <- dplyr::left_join(pat, ws_monitor, by = "datetime")
-  
+
   # ----- Linear fit -----------------------------------------------------------
-  
+
   # See ?stats::formula
   model <- lm(
     as.formula(paste("pm25_monitor ~ ", paste(modelParameters, collapse = " + "))),
     data = df,
     na.action = na.exclude
   )
-  
+
   # ----- Return ---------------------------------------------------------------
-  
+
   return(model)
-  
+
 }
