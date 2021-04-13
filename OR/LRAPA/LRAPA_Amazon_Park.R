@@ -1,7 +1,7 @@
 ################################################################
 # Author: Astrid Sanna
-# Issue: LRAPA colocated sensors #1 (MazamaScience/reports)
-# Date: 4/12/2021
+# Issue: LRAPA colocated sensors #4 (MazamaScience/reports)
+# Date: 4/13/2021
 ################################################################
 # Now that we have found colocate sensors (within 100 m from the closest FRM 
 # monitor) we can start exploring the pat files by running pat_scatterPlotMatrix()
@@ -101,16 +101,14 @@ summary(lm)
 lm07_results <- data.frame(
   round(summary(lm)$adj.r.squared,3),
   round(summary(lm)$coefficients[1],3),
-  round(summary(lm)$coefficients[2],3),
-  round(summary(lm)$coefficients[3],3))
+  round(summary(lm)$coefficients[2],3))
 View(lm07_results)
 
 lm07_results <- lm07_results %>%
   rename(
     R_sq = paste(names(lm07_results[1])),
     intercept = paste(names(lm07_results[2])),
-    PM25 = paste(names(lm07_results[3])),
-    Humidity = paste(names(lm07_results[4])))
+    PM25 = paste(names(lm07_results[3])))
 View(lm07_results)
 
 # * run multiple lm w/ humidity -----
@@ -169,16 +167,14 @@ summary(lm)
 lm09_results <- data.frame(
   round(summary(lm)$adj.r.squared,3),
   round(summary(lm)$coefficients[1],3),
-  round(summary(lm)$coefficients[2],3),
-  round(summary(lm)$coefficients[3],3))
+  round(summary(lm)$coefficients[2],3))
 View(lm09_results)
 
 lm09_results <- lm09_results %>%
   rename(
     R_sq = paste(names(lm09_results[1])),
     intercept = paste(names(lm09_results[2])),
-    PM25 = paste(names(lm09_results[3])),
-    Humidity = paste(names(lm09_results[4])))
+    PM25 = paste(names(lm09_results[3])))
 View(lm09_results)
 
 # * run multiple lm w/ humidity -----
