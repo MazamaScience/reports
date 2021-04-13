@@ -9,7 +9,7 @@
 # In this case it will turn out to be the Amazon Park sensor.
 # We'll then:
 # 1) combine sensor hourly data (PM2.5, temperature, humidity) with monitor
-# hourly data (PM2.5) using the sensorMonitorFit() function.
+# hourly data (PM2.5) using the sensorMonitorData() function.
 # 2) fit linear and multilinear models for one week of low and one week of high
 # PM2.5 concentrations to explore the influence of humidity on the 
 # sensor performance.
@@ -72,17 +72,17 @@ summary(lm_ex)
 # reapeat this step for other sensors you want to explore 
 
 # ----- Linear model PM2.5 monitor ~ PM2.5 sensor for specific weeks -----------
-# We'll be using the function sensorMonitorFit() to create a data frame (df) 
+# We'll be using the function sensorMonitorData() to create a data frame (df) 
 # containing the raw data we'll need to build our linear and multilinear models.
 
-# * Setup sensorMonitorFit() 
+# * Setup sensorMonitorData() 
 # 1) Open LRAPA_utils.R script 
 # 2) "Source" the script 
-# 3) Check that you have sensorMonitorFit() in your R environment 
+# 3) Check that you have sensorMonitorData() in your R environment 
 
 # * July 01-08 data frame: sensor and monitor hourly data -----
 # low PM25 week according to pat_internalFit() plot  
-df_07<- sensorMonitorFit(
+df_07<- sensorMonitorData(
   pat = Amazon_Park,
   ws_monitor = LRAPA_monitors,
   monitorID = "410390060_01",
@@ -148,7 +148,7 @@ View(pred_data07)
 
 # * September 05-13 data frame: sensor and monitor hourly data -----
 # smokiest week according to pat_internalFit() plot 
-df_09 <- sensorMonitorFit(
+df_09 <- sensorMonitorData(
   pat = Amazon_Park,
   ws_monitor = LRAPA_monitors,
   monitorID = "410390060_01",
