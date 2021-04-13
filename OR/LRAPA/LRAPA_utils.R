@@ -64,7 +64,7 @@
 #' ws_monitor <- get(load(file.path(archiveDir, "LRAPA_monitors.rda")))
 #'
 #' df <-
-#'   sensorMonitorFit(
+#'   sensorMonitorData(
 #'     pat,
 #'     ws_monitor,
 #'     monitorID = monitorID,
@@ -76,7 +76,7 @@
 #'
 #' }
 
-sensorMonitorFit <- function(
+sensorMonitorData <- function(
   pat = NULL,
   ws_monitor = NULL,
   monitorID = NULL,
