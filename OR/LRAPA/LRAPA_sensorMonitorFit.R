@@ -16,8 +16,8 @@ sensorMonitorFit <- function(
   # ----- Validate parameters ------------------------------------------------
 
   # TODO
-  pm25 <- round(df$pm25)
-  humidity <- round(df$humidity)
+  pm25 <- df$pm25
+  humidity <- df$humidity
 
   # ----- Create model ------------------------------------------------------
 
