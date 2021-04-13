@@ -5,13 +5,16 @@
 ################################################################
 # Now that we have found colocate sensors (within 100 m from the closest FRM 
 # monitor) we can start exploring the pat files by running pat_scatterPlotMatrix()
-# pat_internalFit and pat_externalFit, and select the best performing sensors.
+# pat_internalFit and pat_externalFit, and select the best performing sensors. 
+# In this case it will turn out to be the Amazon Park sensor.
 # We'll then:
 # 1) combine sensor hourly data (PM2.5, temperature, humidity) with monitor
-# hourly data (PM2.5).
-# 2) fit linear and multilinear models to explore the influence of humidity on the 
+# hourly data (PM2.5) using the sensorMonitorFit() function.
+# 2) fit linear and multilinear models for one week of low and one week of high
+# PM2.5 concentrations to explore the influence of humidity on the 
 # sensor performance.
-# 3) compare results from step 2) to linearly modeled predicted data.   
+# 3) predict monitor PM25 data.
+# 4) create timeseries including raw and fitted data.
 
 
 # ----- Setup --------------------------------------------------------------
@@ -24,7 +27,7 @@ library(car)
 library(MASS)
 
 # * archiveDir -----
-archiveDir <- "C:/Users/astri/Mirror/Mazamascience/Projects/Data/LRAPA"
+archiveDir <- "~/Data/LRAPA"
 
 # * load sensors and monitors data -----
 # load LRAPA sensor and monitirs file from archiveDir 
@@ -56,6 +59,8 @@ Amazon_Park <- pat_load(
   enddate = enddate, 
   timezone = timezone)
 
+# reapeat this step for other sensors you want to explore 
+
 # ----- Explore pat data -------------------------------------------------------
 pat_multiplot(Amazon_Park)
 pat_scatterPlotMatrix(Amazon_Park)
@@ -64,7 +69,12 @@ summary(AM_lm)
 AM_lm_ex <- pat_externalFit(Amazon_Park, showPlot = TRUE)
 summary(AM_lm_ex)
 
+# reapeat this step for other sensors you want to explore 
+
 # ----- Linear model PM2.5 monitor ~ PM2.5 sensor for specific weeks -----------
+# We'll be using the function sensorMonitorFit() to create a data frame (df) 
+# containing the raw data we'll need to build our linear and multilinear models.
+
 # * Setup sensorMonitorFit() 
 # 1) Open LRAPA_utils.R script 
 # 2) "Source" the script 
@@ -79,7 +89,7 @@ AP_df_07<- sensorMonitorFit(
   startdate = 20200701,
   enddate = 20200708)
 View(AP_df_07)
-# note: all columns come from the sensor's pat object exept for "monitor_pm25"
+# note: all columns come from the sensor's pat object exept for "pm25_monitor"
 
 # * run lm ----
 AP_lm <- lm(AP_df_07$pm25_monitor ~ AP_df_07$pm25)
@@ -126,7 +136,7 @@ mlm07_results <- mlm07_results %>%
 View(mlm07_results)
 
 # * predict July monitor PM2.5 ---------------------------------------------
-# subset df by extracting sensor pm25 and humidity variables 
+# subset AP_df_07 by extracting sensor pm25 and humidity variables 
 pred_data07 <- AP_df_07 %>%
   dplyr::select(pm25, humidity)
 
@@ -147,7 +157,7 @@ AP_df_09 <- sensorMonitorFit(
   startdate = 20200905,
   enddate = 20200913)
 View(AP_df_09)
-# note: all columns come from the sensor's pat object exept for "monitor_pm25"
+# note: all columns come from the sensor's pat object exept for "pm25_monitor"
 
 # * run lm ----
 AP_lm <- lm(AP_df_09$pm25_monitor ~ AP_df_09$pm25)
@@ -193,8 +203,8 @@ mlm09_results <- mlm09_results %>%
     Humidity = paste(names(mlm09_results[4])))
 View(mlm09_results)
 
-# * Predict September monitor PM2.5 -----
-# subset df by extracting sensor pm25 and humidity variables 
+# * predict September monitor PM2.5 -----
+# subset AP_df_09 by extracting sensor pm25 and humidity variables 
 pred_data09 <- AP_df_09 %>%
   dplyr::select(pm25, humidity)
 
@@ -211,11 +221,9 @@ View(pred_data09)
 # create a single df including the the fitted monitor values 
 AP_df_07 <- AP_df_07 %>%
   left_join(pred_data07)
-View(AP_df_07)
+AP_df_07$pred_pm25_monitor <- round(AP_df_07$pred_pm25_monitor)
 AP_df_07$pred_pm25_monitor_humidity <- round(AP_df_07$pred_pm25_monitor_humidity)
 View(AP_df_07)
-
-
 
 # * create timeseries 
 library(ggplot2)
@@ -228,14 +236,11 @@ gg <-
   ggplot2::labs(title = "Raw and Fitted Monitor Data")
 print(gg)
 
-
 # * September -----
 # create a single df including the the fitted monitor values 
 AP_df_09 <- AP_df_09 %>%
   left_join(pred_data09)
-View(AP_df_09)
 AP_df_09$pred_pm25_monitor<- round(AP_df_09$pred_pm25_monitor)
-View(AP_df_09)
 AP_df_09$pred_pm25_monitor_humidity <- round(AP_df_09$pred_pm25_monitor_humidity)
 View(AP_df_09)
 
