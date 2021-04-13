@@ -38,10 +38,10 @@ LRAPA_monitors <- get(load(file.path(archiveDir, "LRAPA_monitors.rda")))
 near_sensors_tb <- LRAPA_sensors %>%
   pas_filter(pwfsl_closestDistance <= 100) %>%
   dplyr::select(label, 
-         deviceDeploymentID, 
-         pwfsl_closestMonitorID, 
-         pwfsl_closestDistance, 
-         DEVICE_LOCATIONTYPE)
+                deviceDeploymentID, 
+                pwfsl_closestMonitorID, 
+                pwfsl_closestDistance, 
+                DEVICE_LOCATIONTYPE)
 
 # ----- Load pat data ----------------------------------------------------------
 # * setup -----
@@ -64,10 +64,10 @@ Amazon_Park <- pat_load(
 # ----- Explore pat data -------------------------------------------------------
 pat_multiplot(Amazon_Park)
 pat_scatterPlotMatrix(Amazon_Park)
-AM_lm <- pat_internalFit(Amazon_Park, showPlot = TRUE)
-summary(AM_lm)
-AM_lm_ex <- pat_externalFit(Amazon_Park, showPlot = TRUE)
-summary(AM_lm_ex)
+lm <- pat_internalFit(Amazon_Park, showPlot = TRUE)
+summary(lm)
+lm_ex <- pat_externalFit(Amazon_Park, showPlot = TRUE)
+summary(lm_ex)
 
 # reapeat this step for other sensors you want to explore 
 
@@ -82,27 +82,27 @@ summary(AM_lm_ex)
 
 # * July 01-08 data frame: sensor and monitor hourly data -----
 # low PM25 week according to pat_internalFit() plot  
-AP_df_07<- sensorMonitorFit(
+df_07<- sensorMonitorFit(
   pat = Amazon_Park,
   ws_monitor = LRAPA_monitors,
   monitorID = "410390060_01",
   startdate = 20200701,
   enddate = 20200708)
-View(AP_df_07)
+View(df_07)
 # note: all columns come from the sensor's pat object exept for "pm25_monitor"
 
 # * run lm ----
-AP_lm <- lm(AP_df_07$pm25_monitor ~ AP_df_07$pm25)
+lm <- lm(df_07$pm25_monitor ~ df_07$pm25)
 
 # check lm results
-summary(AP_lm)
+summary(lm)
 
 # create a lm results df
 lm07_results <- data.frame(
-  round(summary(AP_lm)$adj.r.squared,3),
-  round(summary(AP_lm)$coefficients[1],3),
-  round(summary(AP_lm)$coefficients[2],3),
-  round(summary(AP_lm)$coefficients[3],3))
+  round(summary(lm)$adj.r.squared,3),
+  round(summary(lm)$coefficients[1],3),
+  round(summary(lm)$coefficients[2],3),
+  round(summary(lm)$coefficients[3],3))
 View(lm07_results)
 
 lm07_results <- lm07_results %>%
@@ -114,17 +114,17 @@ lm07_results <- lm07_results %>%
 View(lm07_results)
 
 # * run multiple lm w/ humidity -----
-AP_mlm <- lm(AP_df_07$pm25_monitor ~ AP_df_07$pm25 + AP_df_07$humidity)
+mlm <- lm(df_07$pm25_monitor ~ df_07$pm25 + df_07$humidity)
 
 # check mlm results
-summary(AP_mlm)
+summary(mlm)
 
 # create a mlm results df
 mlm07_results <- data.frame(
-  round(summary(AP_mlm)$adj.r.squared,3),
-  round(summary(AP_mlm)$coefficients[1],3),
-  round(summary(AP_mlm)$coefficients[2],3),
-  round(summary(AP_mlm)$coefficients[3],3))
+  round(summary(mlm)$adj.r.squared,3),
+  round(summary(mlm)$coefficients[1],3),
+  round(summary(mlm)$coefficients[2],3),
+  round(summary(mlm)$coefficients[3],3))
 View(mlm07_results)
 
 mlm07_results <- mlm07_results %>%
@@ -136,41 +136,41 @@ mlm07_results <- mlm07_results %>%
 View(mlm07_results)
 
 # * predict July monitor PM2.5 ---------------------------------------------
-# subset AP_df_07 by extracting sensor pm25 and humidity variables 
-pred_data07 <- AP_df_07 %>%
+# subset df_07 by extracting sensor pm25 and humidity variables 
+pred_data07 <- df_07 %>%
   dplyr::select(pm25, humidity)
 
 # pedict lm response (monitor pm25)
-pred_data07$pred_pm25_monitor <- predict(AP_lm, newdata= pred_data07)
+pred_data07$pred_pm25_monitor <- predict(lm, newdata= pred_data07)
 View(pred_data07)
 
 # pedict mlm response (monitor pm25)
-pred_data07$pred_pm25_monitor_humidity <- predict(AP_mlm, newdata= pred_data07)
+pred_data07$pred_pm25_monitor_humidity <- predict(mlm, newdata= pred_data07)
 View(pred_data07)
 
 # * September 05-13 data frame: sensor and monitor hourly data -----
 # smokiest week according to pat_internalFit() plot 
-AP_df_09 <- sensorMonitorFit(
+df_09 <- sensorMonitorFit(
   pat = Amazon_Park,
   ws_monitor = LRAPA_monitors,
   monitorID = "410390060_01",
   startdate = 20200905,
   enddate = 20200913)
-View(AP_df_09)
+View(df_09)
 # note: all columns come from the sensor's pat object exept for "pm25_monitor"
 
 # * run lm ----
-AP_lm <- lm(AP_df_09$pm25_monitor ~ AP_df_09$pm25)
+lm <- lm(df_09$pm25_monitor ~ df_09$pm25)
 
 # check lm results
-summary(AP_lm)
+summary(lm)
 
 # create a lm results df
 lm09_results <- data.frame(
-  round(summary(AP_lm)$adj.r.squared,3),
-  round(summary(AP_lm)$coefficients[1],3),
-  round(summary(AP_lm)$coefficients[2],3),
-  round(summary(AP_lm)$coefficients[3],3))
+  round(summary(lm)$adj.r.squared,3),
+  round(summary(lm)$coefficients[1],3),
+  round(summary(lm)$coefficients[2],3),
+  round(summary(lm)$coefficients[3],3))
 View(lm09_results)
 
 lm09_results <- lm09_results %>%
@@ -182,17 +182,17 @@ lm09_results <- lm09_results %>%
 View(lm09_results)
 
 # * run multiple lm w/ humidity -----
-AP_mlm <- lm(AP_df_09$pm25_monitor ~ AP_df_09$pm25 + AP_df_09$humidity)
+mlm <- lm(df_09$pm25_monitor ~ df_09$pm25 + df_09$humidity)
 
 # check mlm results 
-summary(AP_mlm)
+summary(mlm)
 
 # create a mlm results df
 mlm09_results <- data.frame(
-  round(summary(AP_mlm)$adj.r.squared,3),
-  round(summary(AP_mlm)$coefficients[1],3),
-  round(summary(AP_mlm)$coefficients[2],3),
-  round(summary(AP_mlm)$coefficients[3],3))
+  round(summary(mlm)$adj.r.squared,3),
+  round(summary(mlm)$coefficients[1],3),
+  round(summary(mlm)$coefficients[2],3),
+  round(summary(mlm)$coefficients[3],3))
 View(mlm09_results)
 
 mlm09_results <- mlm09_results %>%
@@ -204,31 +204,31 @@ mlm09_results <- mlm09_results %>%
 View(mlm09_results)
 
 # * predict September monitor PM2.5 -----
-# subset AP_df_09 by extracting sensor pm25 and humidity variables 
-pred_data09 <- AP_df_09 %>%
+# subset df_09 by extracting sensor pm25 and humidity variables 
+pred_data09 <- df_09 %>%
   dplyr::select(pm25, humidity)
 
 # pedict lm response (monitor pm25)
-pred_data09$pred_pm25_monitor <- predict(AP_lm, newdata= pred_data09)
+pred_data09$pred_pm25_monitor <- predict(lm, newdata= pred_data09)
 View(pred_data09)
 
 # pedict mlm response (monitor pm25)
-pred_data09$pred_pm25_monitor_humidity <- predict(AP_mlm, newdata= pred_data09)
+pred_data09$pred_pm25_monitor_humidity <- predict(mlm, newdata= pred_data09)
 View(pred_data09)
 
 # ----- Timeseries -------------------------------------------------------------
 # * July -----
 # create a single df including the the fitted monitor values 
-AP_df_07 <- AP_df_07 %>%
+df_07 <- df_07 %>%
   left_join(pred_data07)
-AP_df_07$pred_pm25_monitor <- round(AP_df_07$pred_pm25_monitor)
-AP_df_07$pred_pm25_monitor_humidity <- round(AP_df_07$pred_pm25_monitor_humidity)
-View(AP_df_07)
+df_07$pred_pm25_monitor <- round(df_07$pred_pm25_monitor)
+df_07$pred_pm25_monitor_humidity <- round(df_07$pred_pm25_monitor_humidity)
+View(df_07)
 
 # * create timeseries 
 library(ggplot2)
 gg <-
-  ggplot(AP_df_07) +
+  ggplot(df_07) +
   geom_line(aes(x = datetime, y = pm25)) +
   geom_point(aes(x = datetime, y = humidity), size = 0.8, color = 'red', alpha = 0.5) +
   geom_point(aes(x = datetime, y = pm25_monitor), color = 'black', alpha = 0.3) +
@@ -238,16 +238,16 @@ print(gg)
 
 # * September -----
 # create a single df including the the fitted monitor values 
-AP_df_09 <- AP_df_09 %>%
+df_09 <- df_09 %>%
   left_join(pred_data09)
-AP_df_09$pred_pm25_monitor<- round(AP_df_09$pred_pm25_monitor)
-AP_df_09$pred_pm25_monitor_humidity <- round(AP_df_09$pred_pm25_monitor_humidity)
-View(AP_df_09)
+df_09$pred_pm25_monitor<- round(df_09$pred_pm25_monitor)
+df_09$pred_pm25_monitor_humidity <- round(df_09$pred_pm25_monitor_humidity)
+View(df_09)
 
 #* create timeseries 
 library(ggplot2)
 gg <-
-  ggplot(AP_df_09) +
+  ggplot(df_09) +
   geom_line(aes(x = datetime, y = pm25)) +
   geom_point(aes(x = datetime, y = humidity), size = 0.8, color = 'red', alpha = 0.5) +
   geom_point(aes(x = datetime, y = pm25_monitor), color = 'black', alpha = 0.3) +
