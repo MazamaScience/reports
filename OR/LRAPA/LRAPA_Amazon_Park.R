@@ -225,10 +225,9 @@ View(df_07)
 library(ggplot2)
 gg <-
   ggplot(df_07) +
-  geom_line(aes(x = datetime, y = pm25)) +
-  geom_point(aes(x = datetime, y = humidity), size = 0.8, color = 'red', alpha = 0.5) +
-  geom_point(aes(x = datetime, y = pm25_monitor), color = 'black', alpha = 0.3) +
-  geom_point(aes(x = datetime, y = pred_pm25_monitor_humidity), col = 'blue', alpha = 0.3) +
+  geom_line(aes(x = datetime, y = pred_pm25_monitor_humidity), color = "blue") +
+  geom_line(aes(x = datetime, y = pm25_monitor), linetype = "dashed") +
+  geom_point(aes(x = datetime, y = pm25 ), shape = 1) +
   ggplot2::labs(title = "Raw and Fitted Monitor Data")
 print(gg)
 
@@ -241,13 +240,11 @@ df_09$pred_pm25_monitor_humidity <- round(df_09$pred_pm25_monitor_humidity)
 View(df_09)
 
 #* create timeseries 
-library(ggplot2)
 gg <-
   ggplot(df_09) +
-  geom_line(aes(x = datetime, y = pm25)) +
-  geom_point(aes(x = datetime, y = humidity), size = 0.8, color = 'red', alpha = 0.5) +
-  geom_point(aes(x = datetime, y = pm25_monitor), color = 'black', alpha = 0.3) +
-  geom_point(aes(x = datetime, y = pred_pm25_monitor_humidity), col = 'blue', alpha = 0.3) +
+  geom_line(aes(x = datetime, y = pred_pm25_monitor_humidity), color = "blue") +
+  geom_line(aes(x = datetime, y = pm25_monitor), linetype = "dashed") +
+  geom_point(aes(x = datetime, y = pm25 ), shape = 1) +
   ggplot2::labs(title = "Raw and Fitted Monitor Data")
 print(gg)
 
