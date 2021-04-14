@@ -27,7 +27,7 @@ library(car)
 library(MASS)
 
 # * archiveDir -----
-archiveDir <- "~/Data/LRAPA"
+archiveDir <- "C:/Users/astri/Mirror/Mazamascience/Projects/Data/LRAPA"
 
 # * load sensors and monitors data -----
 # load LRAPA sensor and monitirs file from archiveDir 
@@ -58,6 +58,10 @@ Amazon_Park <- pat_load(
   startdate = startdate, 
   enddate = enddate, 
   timezone = timezone)
+Amazon_Park %>% 
+  pat_filterDate(20200905, 20200913) %>%
+  pat_multiplot()
+
 
 # reapeat this step for other sensors you want to explore 
 
@@ -223,13 +227,15 @@ View(df_07)
 
 # * create timeseries 
 library(ggplot2)
-gg <-
+gg07 <-
   ggplot(df_07) +
   geom_line(aes(x = datetime, y = pred_pm25_monitor_humidity), color = "blue") +
   geom_line(aes(x = datetime, y = pm25_monitor), linetype = "dashed") +
   geom_point(aes(x = datetime, y = pm25 ), shape = 1) +
-  ggplot2::labs(title = "Raw and Fitted Monitor Data")
-print(gg)
+  ylab("PM2.5 (µg/m3)") +
+  xlab("Date") +
+  ggtitle("Raw and Fitted Monitor Data -- July 01-08, 2020")
+print(gg07)
 
 # * September -----
 # create a single df including the the fitted monitor values 
@@ -237,16 +243,19 @@ df_09 <- df_09 %>%
   left_join(pred_data09)
 df_09$pred_pm25_monitor<- round(df_09$pred_pm25_monitor)
 df_09$pred_pm25_monitor_humidity <- round(df_09$pred_pm25_monitor_humidity)
+df_09$pm25_monitor<- round(df_09$pm25_monitor)
 View(df_09)
 
 #* create timeseries 
-gg <-
+gg09 <-
   ggplot(df_09) +
   geom_line(aes(x = datetime, y = pred_pm25_monitor_humidity), color = "blue") +
   geom_line(aes(x = datetime, y = pm25_monitor), linetype = "dashed") +
   geom_point(aes(x = datetime, y = pm25 ), shape = 1) +
-  ggplot2::labs(title = "Raw and Fitted Monitor Data")
-print(gg)
-
+  ylab("PM2.5 (µg/m3)") +
+  xlab("Date") +
+  ggtitle("Raw and Fitted Monitor Data -- Sep 05-12, 2020")
+print(gg09)
+View
 
 

@@ -16,8 +16,7 @@ sensorMonitorFit <- function(
   # ----- Validate parameters ------------------------------------------------
 
   # TODO
-  pm25 <- df$pm25
-  humidity <- df$humidity
+  
 
   # ----- Create model ------------------------------------------------------
 
@@ -38,22 +37,20 @@ sensorMonitorFit <- function(
     na.action = na.exclude
   )
 
-  # ----- Return ---------------------------------------------------------------
+  # ----- Return ----------------------------------------------------
 
   # TODO:  extract the fit parameters and r-squared and put them in a named vector
-  fitValues <- data.frame(
-    round(summary(model)$adj.r.squared,3),
-    round(summary(model)$coefficients[1],3),
-    round(summary(model)$coefficients[2],3),
-    round(summary(model)$coefficients[3],3))
   
-  fitValues <- fitValues %>%
-    rename(
-      R_sq = paste(names(fitValues[1])),
-      intercept = paste(names(fitValues[2])),
-      PM25 = paste(names(fitValues[3])),
-      Humidity = paste(names(fitValues[4])))
-
-  return(fitValues)
-
+  # Ugly hack but it works
+  fitValues <- c(summary(model)$adj.r.squared, model$coefficients)
+  names(fitValues) <- c("r.squared", "intercept", names(model$coefficients)[-1])
+  fitDF <- as.data.frame(t(round(fitValues, 3)))
+  
+  return(fitDF)
 }
+  
+
+  
+    
+ 
+
