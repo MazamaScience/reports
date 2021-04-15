@@ -22,9 +22,7 @@
 library(MazamaCoreUtils)   
 library(AirSensor)
 library(PWFSLSmoke)
-library(fBasics)
-library(car)
-library(MASS)
+
 
 # * archiveDir -----
 archiveDir <- "C:/Users/astri/Mirror/Mazamascience/Projects/Data/LRAPA"
@@ -58,10 +56,6 @@ Amazon_Park <- pat_load(
   startdate = startdate, 
   enddate = enddate, 
   timezone = timezone)
-Amazon_Park %>% 
-  pat_filterDate(20200905, 20200913) %>%
-  pat_multiplot()
-
 
 # reapeat this step for other sensors you want to explore 
 
@@ -145,6 +139,7 @@ pred_data07 <- df_07 %>%
 # pedict lm response (monitor pm25)
 pred_data07$pred_pm25_monitor <- predict(lm, newdata= pred_data07)
 View(pred_data07)
+?predict
 
 # pedict mlm response (monitor pm25)
 pred_data07$pred_pm25_monitor_humidity <- predict(mlm, newdata= pred_data07)
@@ -257,5 +252,7 @@ gg09 <-
   ggtitle("Raw and Fitted Monitor Data -- Sep 05-12, 2020")
 print(gg09)
 View
+
+
 
 
