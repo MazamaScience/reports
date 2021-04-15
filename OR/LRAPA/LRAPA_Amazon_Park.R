@@ -1,8 +1,7 @@
-################################################################
 # Author: Astrid Sanna
-# Issue: LRAPA colocated sensors #4 (MazamaScience/reports)
+# Issue: LRAPA_Amazon_Park #4 (MazamaScience/reports)
 # Date: 4/13/2021
-################################################################
+
 # Now that we have found colocate sensors (within 100 m from the closest FRM 
 # monitor) we can start exploring the pat files by running pat_scatterPlotMatrix()
 # pat_internalFit and pat_externalFit, and select the best performing sensors. 

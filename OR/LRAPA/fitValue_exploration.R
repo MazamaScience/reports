@@ -1,3 +1,7 @@
+# Author: Astrid Sanna
+# Issue: fitValue_exploration #6 (MazamaScience/reports)
+# Date: 4/13/2021
+
 library(MazamaCoreUtils)   
 library(AirSensor)
 library(PWFSLSmoke)
