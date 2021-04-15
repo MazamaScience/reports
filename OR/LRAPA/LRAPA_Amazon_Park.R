@@ -152,7 +152,7 @@ df_09 <- sensorMonitorData(
   ws_monitor = LRAPA_monitors,
   monitorID = "410390060_01",
   startdate = 20200905,
-  enddate = 20200913)
+  enddate = 20200912)
 View(df_09)
 # note: all columns come from the sensor's pat object exept for "pm25_monitor"
 
