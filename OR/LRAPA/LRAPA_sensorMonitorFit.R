@@ -1,8 +1,6 @@
-################################################################
-# Author: Astrid Sanna
-# Issue: LRAPA colocated sensors #5 (MazamaScience/reports)
+# Issue: sensorMonitorFitValue #5 (MazamaScience/reports)
 # Date: 4/13/2021
-################################################################
+
 
 sensorMonitorFit <- function(
   pat = NULL,
