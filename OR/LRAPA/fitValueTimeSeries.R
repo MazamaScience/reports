@@ -1,5 +1,3 @@
-
-
 fitValueTimeSeries <- function(
   pat = NULL,
   ws_monitor = NULL,
