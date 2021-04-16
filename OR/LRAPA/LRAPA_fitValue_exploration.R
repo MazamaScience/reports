@@ -2,12 +2,14 @@
 # Issue: fitValue_exploration #6 (MazamaScience/reports)
 # Date: 4/13/2021
 
+# ----- Libraries and Functions ------------------------------------------------
 library(MazamaCoreUtils)
 library(AirSensor)
 library(PWFSLSmoke)
 
-source("sensorMonitorData.R")
-source("sensorMonitorFit.R")
+source("OR/LRAPA/sensorMonitorData.R")
+source("OR/LRAPA/sensorMonitorFit.R")
+source("OR/LRAPA/fitValueTimeSeries.R")
 
 # ----- load LRAPA sensor and monitirs file from archiveDir --------------------
 archiveDir <- "C:/Users/astri/Mirror/Mazamascience/Projects/Data/LRAPA"
@@ -87,7 +89,6 @@ print(fitValues09)
 # 1     0.933   -34.902 0.716    0.496
 
 # ---- Fit Values Timeseries  --------------------------------------------------
-# source function fitValueTimeSeries()
 fullSeasonFitValues <- fitValueTimeSeries(
   pat = Amazon_Park,
   ws_monitor = LRAPA_monitors,
@@ -99,4 +100,44 @@ fullSeasonFitValues <- fitValueTimeSeries(
 ) 
 View(fullSeasonFitValues)
 
+## Plot it:
+names(fullSeasonFitValues)
+r.squared <- fullSeasonFitValues$r.squared
+intercept <- fullSeasonFitValues$intercept
+pm25 <- fullSeasonFitValues$pm25
+humidity <- fullSeasonFitValues$humidity
+se.monitorFit.mu <- fullSeasonFitValues$se.monitorFit.mu
+enddate <- fullSeasonFitValues$enddate
 
+
+library(lubridate)
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(x)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+?seq
+  
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
+     main="Fit Values -- July-Oct, 2020", xlab="Date", ylab = "Values" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=enddate, y=r.squared, col= 3 )
+lines( x=enddate, y=pm25, col = 2 )
+lines( x=enddate, y=humidity, col = 5 )
+lines( x=enddate, se.monitorFit.mu, lty="dashed" )
+?plot
+
+
+## Legend:
+labels <- c(
+  "R squared","Sensor PM25","Humidity", "Monitor Fit SE Avg"
+)
+legend(
+  "topright",
+  legend = labels,
+  lty=c("solid", "solid","solid","dashed"),
+  col=c(3,2,5,1)
+)
