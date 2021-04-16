@@ -230,6 +230,15 @@ gg09 <-
   ggtitle("Raw and Fitted Monitor Data -- Sep 05-12, 2020")
 print(gg09)
 
+# test_gg <- ggplot(df_09, aes(x = datetime)) + 
+#   geom_line(aes(y = pred_pm25_monitor_humidity, colour = "pred_pm25_monitor_humidity")) + 
+#   geom_line(aes(y = pm25_monitor, colour = "pm25_monitor"), linetype = "dashed") +
+#   geom_point(aes(y = pm25, colour = "pm25"), shape = 1) +
+#   ylab("PM2.5 (µg/m3)") +
+#   xlab("Date") +
+#   ggtitle("Raw and Fitted Monitor Data -- Sep 05-12, 2020")
+# print(test_gg)
+# doesn't work! legend is off. 
 
 
 

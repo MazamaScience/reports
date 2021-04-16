@@ -86,50 +86,17 @@ print(fitValues09)
 #   r.squared intercept  pm25 humidity
 # 1     0.933   -34.902 0.716    0.496
 
-# ---- loop --------------------------------------------------------------------
-# I'm trying to create a loop where the start date is incremented by day and
-# save the start date and fitValues as elements of a list.
-# At the end of the loop use dplyr::bind_rows() or something similar to create
-# a data frame.
-
-# * loop ingredients -----
-
-# pat
-Amazon_Park <- pat_load(
-  id = "947c72aa269258cc_56971",
-  startdate = 20200701,
-  enddate = 20201101,
-  timezone = "America/Los_Angeles")
-
-# ws_monitor
-LRAPA_monitors <- get(load(file.path(archiveDir, "LRAPA_monitors.rda")))
-
-# monitor ID
-monitorID <- "410390060_01"
-
-# sensorMonitorFit function
-fitValues <- sensorMonitorFit(
+# ---- Fit Values Timeseries  --------------------------------------------------
+# source function fitValueTimeSeries()
+fullSeasonFitValues <- fitValueTimeSeries(
   pat = Amazon_Park,
   ws_monitor = LRAPA_monitors,
   monitorID = monitorID,
-  startdate = startdate,
-  enddate = enddate,
-  modelParameters = c("pm25", "humidity"))
-
-# list: storage for fit values and startdate
-fitValuesList <- list()
-
-# Get date components
-startdate <- MazamaCoreUtils::parseDatetime(20200701, timezone = "America/Los_Angeles")
-#?MazamaCoreUtils::parseDatetime
-
-# Guarantee that the enddate is after a week
-enddate <- lubridate::floor_date(
-startdate + lubridate::ddays(8),
-unit = "day")
-#?lubridate::floor_date
-
-# need a list of days to loop through?
-
+  startdate = 20200701,
+  enddate = 20201031,
+  modelParameters = c("pm25", "humidity"),
+  windowSize = 7 # days
+) 
+View(fullSeasonFitValues)
 
 
