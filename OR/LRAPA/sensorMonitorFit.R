@@ -13,8 +13,21 @@ sensorMonitorFit <- function(
 
   # ----- Validate parameters ------------------------------------------------
 
-  # TODO
-  
+  MazamaCoreUtils::stopIfNull(pat)
+  MazamaCoreUtils::stopIfNull(ws_monitor)
+  MazamaCoreUtils::stopIfNull(startdate)
+  MazamaCoreUtils::stopIfNull(enddate)
+  MazamaCoreUtils::stopIfNull(modelParameters)
+
+  validParameters <- c("pm25", "humidity", "temperature")
+  unrecognizedParameters <- setdiff(modelParameters, validParameters)
+  if ( length(unrecognizedParameters) > 0 ) {
+    stop(paste0(
+      "The following parameters are not recognized: \"",
+      paste(unrecognizedParameters, collapse = ", "),
+      "\".  Please choose among [pm25|humidity|temperature]."
+    ))
+  }
 
   # ----- Create model ------------------------------------------------------
 
@@ -37,18 +50,18 @@ sensorMonitorFit <- function(
 
   # ----- Return ----------------------------------------------------
 
-  # TODO:  extract the fit parameters and r-squared and put them in a named vector
-  
   # Ugly hack but it works
   fitValues <- c(summary(model)$adj.r.squared, model$coefficients)
   names(fitValues) <- c("r.squared", "intercept", names(model$coefficients)[-1])
   fitDF <- as.data.frame(t(round(fitValues, 3)))
-  
-  return(fitDF)
-}
-  
+  fitDF$enddate <- enddate
 
-  
-    
- 
+  return(fitDF)
+
+}
+
+
+
+
+
 
