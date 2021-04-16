@@ -47,13 +47,17 @@ sensorMonitorFit <- function(
     data = df,
     na.action = na.exclude
   )
-
-  # ----- Return ----------------------------------------------------
+  
+  # ----- Monitor fitted values ------------------------------------------------
+  predMonitorFit <- predict(model, newdata= df, se.fit = TRUE)
+  
+  # ----- Return ---------------------------------------------------------------
 
   # Ugly hack but it works
-  fitValues <- c(summary(model)$adj.r.squared, model$coefficients, coef(summary(model))[, "Std. Error"])
+  fitValues <- c(summary(model)$adj.r.squared, model$coefficients, coef(summary(model))[, "Std. Error"], 
+                 mean(predMonitorFit$se.fit))
   names(fitValues) <- c("r.squared", "intercept", names(model$coefficients)[-1], 
-                        "se.intercept", "se.pm25", "se.humidity")
+                        "se.intercept", "se.pm25", "se.humidity", "se.monitorFit.mu")
   fitDF <- as.data.frame(t(round(fitValues, 3)))
   fitDF$enddate <- enddate
 
