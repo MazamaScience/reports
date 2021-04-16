@@ -94,41 +94,31 @@ lm <- lm(df_07$pm25_monitor ~ df_07$pm25)
 # check lm results
 summary(lm)
 
-# create a lm results df
-lm07_results <- data.frame(
-  round(summary(lm)$adj.r.squared,3),
-  round(summary(lm)$coefficients[1],3),
-  round(summary(lm)$coefficients[2],3))
-View(lm07_results)
-
-lm07_results <- lm07_results %>%
-  rename(
-    R_sq = paste(names(lm07_results[1])),
-    intercept = paste(names(lm07_results[2])),
-    PM25 = paste(names(lm07_results[3])))
-View(lm07_results)
+fitValues07 <- sensorMonitorFit( # source sensorMonitorFit script first 
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID ,
+  startdate = 20200701,
+  enddate = 20200708,
+  modelParameters = "pm25")
+print(fitvalues07)
 
 # * run multiple lm w/ humidity -----
 mlm <- lm(df_07$pm25_monitor ~ df_07$pm25 + df_07$humidity)
 
-# check mlm results
+# check mlm summary
 summary(mlm)
+names(coef(summary(mlm))[, "Std. Error"])
 
-# create a mlm results df
-mlm07_results <- data.frame(
-  round(summary(mlm)$adj.r.squared,3),
-  round(summary(mlm)$coefficients[1],3),
-  round(summary(mlm)$coefficients[2],3),
-  round(summary(mlm)$coefficients[3],3))
-View(mlm07_results)
-
-mlm07_results <- mlm07_results %>%
-  rename(
-    R_sq = paste(names(mlm07_results[1])),
-    intercept = paste(names(mlm07_results[2])),
-    PM25 = paste(names(mlm07_results[3])),
-    Humidity = paste(names(mlm07_results[4])))
-View(mlm07_results)
+# check mlm fit values
+fitValues07 <- sensorMonitorFit( # source sensorMonitorFit script first 
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID ,
+  startdate = 20200701,
+  enddate = 20200708,
+  modelParameters = c("pm25","humidity"))
+print(fitValues07)
 
 # * predict July monitor PM2.5 ---------------------------------------------
 # subset df_07 by extracting sensor pm25 and humidity variables 
@@ -138,13 +128,12 @@ pred_data07 <- df_07 %>%
 # pedict lm response (monitor pm25)
 pred_data07$pred_pm25_monitor <- predict(lm, newdata= pred_data07)
 View(pred_data07)
-?predict
 
 # pedict mlm response (monitor pm25)
 pred_data07$pred_pm25_monitor_humidity <- predict(mlm, newdata= pred_data07)
 View(pred_data07)
 
-# * September 05-13 data frame: sensor and monitor hourly data -----
+# * September 05-12 data frame: sensor and monitor hourly data -----
 # smokiest week according to pat_internalFit() plot 
 df_09 <- sensorMonitorData(
   pat = Amazon_Park,
@@ -158,44 +147,34 @@ View(df_09)
 # * run lm ----
 lm <- lm(df_09$pm25_monitor ~ df_09$pm25)
 
-# check lm results
+# check lm summary
 summary(lm)
 
-# create a lm results df
-lm09_results <- data.frame(
-  round(summary(lm)$adj.r.squared,3),
-  round(summary(lm)$coefficients[1],3),
-  round(summary(lm)$coefficients[2],3))
-View(lm09_results)
-
-lm09_results <- lm09_results %>%
-  rename(
-    R_sq = paste(names(lm09_results[1])),
-    intercept = paste(names(lm09_results[2])),
-    PM25 = paste(names(lm09_results[3])))
-View(lm09_results)
+# check lm fit values
+fitValues09 <- sensorMonitorFit( # source sensorMonitorFit script first 
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID ,
+  startdate = 20200905,
+  enddate = 20200912,
+  modelParameters = c("pm25", "humidity"))
+print(fitvalues09)
 
 # * run multiple lm w/ humidity -----
 mlm <- lm(df_09$pm25_monitor ~ df_09$pm25 + df_09$humidity)
 
-# check mlm results 
+# check mlm summary
 summary(mlm)
 
-# create a mlm results df
-mlm09_results <- data.frame(
-  round(summary(mlm)$adj.r.squared,3),
-  round(summary(mlm)$coefficients[1],3),
-  round(summary(mlm)$coefficients[2],3),
-  round(summary(mlm)$coefficients[3],3))
-View(mlm09_results)
-
-mlm09_results <- mlm09_results %>%
-  rename(
-    R_sq = paste(names(mlm09_results[1])),
-    intercept = paste(names(mlm09_results[2])),
-    PM25 = paste(names(mlm09_results[3])),
-    Humidity = paste(names(mlm09_results[4])))
-View(mlm09_results)
+# check mlm fit values
+fitValues09 <- sensorMonitorFit( # source sensorMonitorFit script first 
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID ,
+  startdate = 20200905,
+  enddate = 20200912,
+  modelParameters = c("pm25", "humidity"))
+print(fitvalues09)
 
 # * predict September monitor PM2.5 -----
 # subset df_09 by extracting sensor pm25 and humidity variables 
@@ -250,7 +229,7 @@ gg09 <-
   xlab("Date") +
   ggtitle("Raw and Fitted Monitor Data -- Sep 05-12, 2020")
 print(gg09)
-View
+
 
 
 
