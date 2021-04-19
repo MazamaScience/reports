@@ -6,6 +6,7 @@
 library(MazamaCoreUtils)
 library(AirSensor)
 library(PWFSLSmoke)
+library(lubridate)
 
 source("OR/LRAPA/sensorMonitorData.R")
 source("OR/LRAPA/sensorMonitorFit.R")
@@ -30,7 +31,7 @@ Amazon_Park <- pat_load(
   enddate = 20201101,
   timezone = timezone)
 
-# ----- data exploration -------------------------------------------------------
+# ----- data exploration ------------------------------------------------------- ---------------------------------------------------
 # * first week of July -----
 # check if under non-smoky conditions the time window affects the fit values
 # 1 week window
@@ -89,7 +90,8 @@ print(fitValues09)
 # 1     0.933   -34.902 0.716    0.496
 
 # ---- Fit Values Timeseries  --------------------------------------------------
-fullSeasonFitValues <- fitValueTimeSeries(
+# * w = 7 -----
+FitValues_w7 <- fitValueTimeSeries(
   pat = Amazon_Park,
   ws_monitor = LRAPA_monitors,
   monitorID = monitorID,
@@ -98,46 +100,230 @@ fullSeasonFitValues <- fitValueTimeSeries(
   modelParameters = c("pm25", "humidity"),
   windowSize = 7 # days
 ) 
-View(fullSeasonFitValues)
+View(FitValues_w7)
 
-## Plot it:
-names(fullSeasonFitValues)
-r.squared <- fullSeasonFitValues$r.squared
-intercept <- fullSeasonFitValues$intercept
-pm25 <- fullSeasonFitValues$pm25
-humidity <- fullSeasonFitValues$humidity
-se.monitorFit.mu <- fullSeasonFitValues$se.monitorFit.mu
-enddate <- fullSeasonFitValues$enddate
+# Setup
+names(FitValues_w7)
+r.squared <- FitValues_w7$r.squared
+intercept <- FitValues_w7$intercept
+pm25 <- FitValues_w7$pm25
+humidity <- FitValues_w7$humidity
+se.monitorFit.mu <- FitValues_w7$se.monitorFit.mu
+enddate <- FitValues_w7$enddate
 
-
-library(lubridate)
 a <- approx(
   c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
-  n = length(x)
+  n = length(enddate)
 )
 x.date <- as_datetime(a$y)
 
 dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 ?seq
-  
+
+# Plot
 plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
-     main="Fit Values -- July-Oct, 2020", xlab="Date", ylab = "Values" )
+     main="Fit Values -- July-Oct, 2020 -- 7 Days", xlab="Date", ylab = "Values" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
-lines( x=enddate, y=r.squared, col= 3 )
-lines( x=enddate, y=pm25, col = 2 )
-lines( x=enddate, y=humidity, col = 5 )
-lines( x=enddate, se.monitorFit.mu, lty="dashed" )
+lines( x=enddate, y=r.squared, col = colors()[640], lwd=2)
+lines( x=enddate, y=pm25, col = colors()[641], lwd=2 )
+lines( x=enddate, y=humidity, col = colors()[642], lwd=2 )
+lines( x=enddate, se.monitorFit.mu, col = colors()[644], lty="dashed", lwd=2 )
 ?plot
 
 
 ## Legend:
 labels <- c(
-  "R squared","Sensor PM25","Humidity", "Monitor Fit SE Avg"
+  "R squared (7 d)","Sensor PM25 (7 d)","Humidity (7 d)", "Monitor Fit SE Avg (7 d)"
 )
 legend(
   "topright",
   legend = labels,
   lty=c("solid", "solid","solid","dashed"),
-  col=c(3,2,5,1)
+  lwd=2,
+  col= c(colors()[640], colors()[641], colors()[642], colors()[644])
 )
+
+# * w = 5 -----
+FitValues_w5 <- fitValueTimeSeries(
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID,
+  startdate = 20200701,
+  enddate = 20201031,
+  modelParameters = c("pm25", "humidity"),
+  windowSize = 5 # days
+) 
+View(FitValues_w5)
+
+# Setup
+names(FitValues_w5)
+r.squared <- FitValues_w5$r.squared
+intercept <- FitValues_w5$intercept
+pm25 <- FitValues_w5$pm25
+humidity <- FitValues_w5$humidity
+se.monitorFit.mu <- FitValues_w5$se.monitorFit.mu
+enddate <- FitValues_w5$enddate
+
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+# Plot
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
+     main="Fit Values -- July-Oct, 2020 -- 5 Days", xlab="Date", ylab = "Values" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=enddate, y=r.squared, col = colors()[636], lwd=2)
+lines( x=enddate, y=pm25, col = colors()[616], lwd=2 )
+lines( x=enddate, y=humidity, col = colors()[122], lwd=2 )
+lines( x=enddate, se.monitorFit.mu, col = colors()[131], lwd=2, lty="dashed" )
+?plot
+
+
+## Legend:
+labels <- c(
+  "R squared (5 d)","Sensor PM25 (5 d)","Humidity (5 d)", "Monitor Fit SE Avg (5 d)"
+)
+legend(
+  "topright",
+  legend = labels,
+  lty=c("solid", "solid","solid","dashed"),
+  lwd=2,
+  col= c(colors()[636], colors()[616], colors()[122], colors()[131])
+)
+
+
+# * w = 10 -----
+FitValues_w10 <- fitValueTimeSeries(
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID,
+  startdate = 20200701,
+  enddate = 20201031,
+  modelParameters = c("pm25", "humidity"),
+  windowSize = 10 # days
+) 
+View(FitValues_w10)
+
+# Setup
+names(FitValues_w10)
+r.squared <- FitValues_w10$r.squared
+intercept <- FitValues_w10$intercept
+pm25 <- FitValues_w10$pm25
+humidity <- FitValues_w10$humidity
+se.monitorFit.mu <- FitValues_w10$se.monitorFit.mu
+enddate <- FitValues_w10$enddate
+
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+# Plot
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
+     main="Fit Values -- July-Oct, 2020 -- 10 Days", xlab="Date", ylab = "Values" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=enddate, y=r.squared, col = colors()[498], lwd=2)
+lines( x=enddate, y=pm25, col = colors()[53], lwd=2)
+lines( x=enddate, y=humidity, col = colors()[52],lwd=2)
+lines( x=enddate, se.monitorFit.mu, col = colors()[32], lty="dashed", lwd=2)
+
+
+## Legend:
+labels <- c(
+  "R squared (10 d)","Sensor PM25 (10 d)","Humidity (10 d)", "Monitor Fit SE Avg (10 d)"
+)
+legend(
+  "topright",
+  legend = labels,
+  lty=c("solid", "solid","solid","dashed"),
+  lwd = 2,
+  col= c(colors()[498], colors()[53], colors()[52], colors()[32])
+)
+
+# * Full plot ----- 
+# setup
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+# plot
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
+     main="Fit Values -- July-Oct, 2020 -- 5/7/10 Days", xlab="Date", ylab = "Values" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+
+# 5 days 
+r.squared <- FitValues_w5$r.squared
+intercept <- FitValues_w5$intercept
+pm25 <- FitValues_w5$pm25
+humidity <- FitValues_w5$humidity
+se.monitorFit.mu <- FitValues_w5$se.monitorFit.mu
+enddate <- FitValues_w5$enddate
+
+lines( x=enddate, y=r.squared, col = colors()[636], lwd=2)
+lines( x=enddate, y=pm25, col = colors()[616], lwd=2 )
+lines( x=enddate, y=humidity, col = colors()[122], lwd=2 )
+lines( x=enddate, se.monitorFit.mu, col = colors()[131], lwd=2, lty="dashed" )
+
+# 7 days
+r.squared <- FitValues_w7$r.squared
+intercept <- FitValues_w7$intercept
+pm25 <- FitValues_w7$pm25
+humidity <- FitValues_w7$humidity
+se.monitorFit.mu <- FitValues_w7$se.monitorFit.mu
+enddate <- FitValues_w7$enddate
+
+lines( x=enddate, y=r.squared, col = colors()[640], lwd=2)
+lines( x=enddate, y=pm25, col = colors()[641], lwd=2 )
+lines( x=enddate, y=humidity, col = colors()[642], lwd=2 )
+lines( x=enddate, se.monitorFit.mu, col = colors()[644], lty="dashed", lwd=2 )
+
+# 10 days 
+r.squared <- FitValues_w10$r.squared
+intercept <- FitValues_w10$intercept
+pm25 <- FitValues_w10$pm25
+humidity <- FitValues_w10$humidity
+se.monitorFit.mu <- FitValues_w10$se.monitorFit.mu
+enddate <- FitValues_w10$enddate
+
+# Plot
+lines( x=enddate, y=r.squared, col = colors()[498], lwd=2)
+lines( x=enddate, y=pm25, col = colors()[53], lwd=2)
+lines( x=enddate, y=humidity, col = colors()[52],lwd=2)
+lines( x=enddate, se.monitorFit.mu, col = colors()[32], lty="dashed", lwd=2)
+
+
+# Legend 
+colors_5d <- c(colors()[636], colors()[616], colors()[122], colors()[131]) 
+colors_7d <- c(colors()[640], colors()[641], colors()[642], colors()[644])
+colors_10d <- c(colors()[498], colors()[53], colors()[52], colors()[32])
+
+labels_5d <- c("R squared (5 d)","Sensor PM25 (5 d)","Humidity (5 d)", "Monitor Fit SE Avg (5 d)")
+labels_7d <- c("R squared (7 d)","Sensor PM25 (7 d)","Humidity (7 d)", "Monitor Fit SE Avg (7 d)")
+labels_10d <- c("R squared (10 d)","Sensor PM25 (10 d)","Humidity (10 d)", "Monitor Fit SE Avg (10 d)")
+
+labels <- c(labels_5d, labels_7d, labels_10d)
+
+legend(
+  "topright",
+  legend = labels,
+  lty=c("solid", "solid","solid","dashed",
+        "solid", "solid","solid","dashed",
+        "solid", "solid","solid","dashed"),
+  lwd=2,
+  col= c(colors_5d, colors_7d, colors_10d))
+
