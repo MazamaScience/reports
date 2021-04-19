@@ -132,7 +132,7 @@ lines( x=enddate, se.monitorFit.mu, col = colors()[644], lty="dashed", lwd=2 )
 ?plot
 
 
-## Legend:
+# Legend:
 labels <- c(
   "R squared (7 d)","Sensor PM25 (7 d)","Humidity (7 d)", "Monitor Fit SE Avg (7 d)"
 )
@@ -238,7 +238,7 @@ lines( x=enddate, y=humidity, col = colors()[52],lwd=2)
 lines( x=enddate, se.monitorFit.mu, col = colors()[32], lty="dashed", lwd=2)
 
 
-## Legend:
+# Legend:
 labels <- c(
   "R squared (10 d)","Sensor PM25 (10 d)","Humidity (10 d)", "Monitor Fit SE Avg (10 d)"
 )
@@ -327,3 +327,150 @@ legend(
   lwd=2,
   col= c(colors_5d, colors_7d, colors_10d))
 
+# * pm25 only -----
+pm25 <- FitValues_w5$pm25 # highest pm25 -- best for x-axis range
+enddate <- FitValues_w5$enddate
+
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+
+# plot
+plot(enddate, pm25, xaxt="n", type="n", 
+     main="PM2.5 Fit Values -- July-Oct, 2020 -- 5/7/10 Days", xlab="Date", ylab = "Values")
+axis( 1, at=date.at, format(date.at,"%b %d") )
+
+pm25 <- FitValues_w5$pm25
+lines( x=enddate, y=pm25, col = colors()[616], lwd=2 )
+
+pm25 <- FitValues_w7$pm25
+lines( x=enddate, y=pm25, col = colors()[641], lwd=2 )
+
+pm25 <- FitValues_w10$pm25
+lines( x=enddate, y=pm25, col = colors()[53], lwd=2)
+
+labels <- c("Sensor PM25 (5 d)", "Sensor PM25 (7 d)", "Sensor PM25 (10 d)")
+
+legend(
+  "topright",
+  legend = labels,
+  lty=c("solid", "solid","solid"),
+  lwd=2,
+  col= c(colors()[616], colors()[641], colors()[53]))
+
+# * r.squared only -----
+r.squared <- FitValues_w5$r.squared # highest r.squared -- best for x-axis range
+enddate <- FitValues_w5$enddate
+
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+
+# plot
+plot(enddate, r.squared, xaxt="n", type="n", 
+     main="R squared Fit Values -- July-Oct, 2020 -- 5/7/10 Days", xlab="Date", ylab = "Values")
+axis( 1, at=date.at, format(date.at,"%b %d") )
+
+r.squared <- FitValues_w5$r.squared
+lines( x=enddate, y=r.squared, col = colors()[616], lwd=2 )
+
+r.squared <- FitValues_w7$r.squared
+lines( x=enddate, y=r.squared, col = colors()[641], lwd=2 )
+
+r.squared <- FitValues_w10$r.squared
+lines( x=enddate, y=r.squared, col = colors()[53], lwd=2)
+
+labels <- c("R squared (5 d)", "R squared (7 d)", "R squared (10 d)")
+
+legend(
+  "bottomright",
+  legend = labels,
+  lty=c("solid", "solid","solid"),
+  lwd=2,
+  col= c(colors()[616], colors()[641], colors()[53]))
+
+# * humidity only -----
+humidity <- FitValues_w5$humidity # highest humidity -- best for x-axis range
+enddate <- FitValues_w5$enddate
+
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+
+# plot
+plot(enddate, humidity, xaxt="n", type="n", 
+     main= "Humidity Fit Values -- July-Oct, 2020 -- 5/7/10 Days", xlab="Date", ylab = "Values")
+axis( 1, at=date.at, format(date.at,"%b %d"))
+
+humidity <- FitValues_w5$humidity
+lines( x=enddate, y=humidity, col = colors()[616], lwd=2 )
+
+humidity <- FitValues_w7$humidity
+lines( x=enddate, y=humidity, col = colors()[641], lwd=2 )
+
+humidity <- FitValues_w10$humidity
+lines( x=enddate, y=humidity, col = colors()[53], lwd=2)
+
+labels <- c("Humidity (5 d)", "Humidity (7 d)", "Humidity (10 d)")
+
+legend(
+  "topright",
+  legend = labels,
+  lty=c("solid", "solid","solid"),
+  lwd=2,
+  col= c(colors()[616], colors()[641], colors()[53]))
+
+# * se.monitorFit.mu only -----
+se.monitorFit.mu<- FitValues_w5$se.monitorFit.mu # highest se.monitorFit.mu-- best for x-axis range
+enddate <- FitValues_w5$enddate
+
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+
+# plot
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
+     main= "Monitor Fit SE Avg -- July-Oct, 2020 -- 5/7/10 Days", xlab="Date", ylab = "Values")
+axis( 1, at=date.at, format(date.at,"%b %d"))
+
+se.monitorFit.mu<- FitValues_w5$se.monitorFit.mu
+lines( x=enddate, y=se.monitorFit.mu, col = colors()[616], lwd=2 )
+
+se.monitorFit.mu<- FitValues_w7$se.monitorFit.mu
+lines( x=enddate, y=se.monitorFit.mu, col = colors()[641], lwd=2 )
+
+se.monitorFit.mu<- FitValues_w10$se.monitorFit.mu
+lines( x=enddate, y=se.monitorFit.mu, col = colors()[53], lwd=2)
+
+labels <- c("Monitor Fit SE Avg (5 d)", "Monitor Fit SE Avg (7 d)", "Monitor Fit SE Avg (10 d)")
+
+legend(
+  "topright",
+  legend = labels,
+  lty=c("solid", "solid","solid"),
+  lwd=2,
+  col= c(colors()[616], colors()[641], colors()[53]))
