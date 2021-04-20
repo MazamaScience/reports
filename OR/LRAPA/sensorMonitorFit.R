@@ -54,10 +54,10 @@ sensorMonitorFit <- function(
   # ----- Return ---------------------------------------------------------------
 
   # Ugly hack but it works
-  fitValues <- c(summary(model)$adj.r.squared, model$coefficients, coef(summary(model))[, "Std. Error"], 
+  fitValues <- c(summary(model)$adj.r.squared, model$coefficients, 
                  mean(predMonitorFit$se.fit))
   names(fitValues) <- c("r.squared", "intercept", names(model$coefficients)[-1], 
-                        "se.intercept", "se.pm25", "se.humidity", "se.monitorFit.mu")
+                      "se.monitorFit.mu")
   fitDF <- as.data.frame(t(round(fitValues, 3)))
   fitDF$enddate <- enddate
 

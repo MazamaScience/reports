@@ -31,7 +31,7 @@ Amazon_Park <- pat_load(
   enddate = 20201101,
   timezone = timezone)
 
-# ----- data exploration ------------------------------------------------------- ---------------------------------------------------
+# ----- data exploration ------------------------------------------------------- 
 # * first week of July -----
 # check if under non-smoky conditions the time window affects the fit values
 # 1 week window
@@ -252,6 +252,7 @@ legend(
 
 # * Full plot ----- 
 # setup
+se.monitorFit.mu <- FitValues_w5$se.monitorFit.mu # highest se.monitorFit.mu -- best for x-axis range
 a <- approx(
   c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
   n = length(enddate)
@@ -467,6 +468,75 @@ se.monitorFit.mu<- FitValues_w10$se.monitorFit.mu
 lines( x=enddate, y=se.monitorFit.mu, col = colors()[53], lwd=2)
 
 labels <- c("Monitor Fit SE Avg (5 d)", "Monitor Fit SE Avg (7 d)", "Monitor Fit SE Avg (10 d)")
+
+legend(
+  "topright",
+  legend = labels,
+  lty=c("solid", "solid","solid"),
+  lwd=2,
+  col= c(colors()[616], colors()[641], colors()[53]))
+
+# * comparing SE of fitted monitor values between simple and multiliear models -----
+
+FitValues_p <- fitValueTimeSeries(
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID,
+  startdate = 20200701,
+  enddate = 20201031,
+  modelParameters = "pm25",
+  windowSize = 7 # days
+)
+
+FitValues_ph <- fitValueTimeSeries(
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID,
+  startdate = 20200701,
+  enddate = 20201031,
+  modelParameters = c("pm25", "humidity"),
+  windowSize = 7 # days
+) 
+
+FitValues_pht <- fitValueTimeSeries(
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID,
+  startdate = 20200701,
+  enddate = 20201031,
+  modelParameters = c("pm25", "humidity", "temperature"),
+  windowSize = 7 # days
+)
+
+# Setup
+se.monitorFit.mu <- FitValues_pht$se.monitorFit.mu
+enddate <- FitValues_p$enddate
+
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+# Plot
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
+     main= "Monitor Fit SE Avg -- July-Oct, 2020 -- Simple- vs Multi-linear", 
+     xlab="Date", ylab = "Values")
+axis( 1, at=date.at, format(date.at,"%b %d"))
+
+se.monitorFit.mu <- FitValues_p$se.monitorFit.mu
+lines( x=enddate, y=se.monitorFit.mu, col = colors()[616], lwd=2 )
+
+se.monitorFit.mu <- FitValues_ph$se.monitorFit.mu
+lines( x=enddate, y=se.monitorFit.mu, col = colors()[641], lwd=2 )
+
+se.monitorFit.mu <- FitValues_pht$se.monitorFit.mu
+lines( x=enddate, y=se.monitorFit.mu, col = colors()[53], lwd=2)
+
+labels <- c("PM2.5", "PM2.5+Humidity", "PM2.5+Humidity+Temperature")
 
 legend(
   "topright",
