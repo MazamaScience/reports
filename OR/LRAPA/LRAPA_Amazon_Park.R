@@ -16,11 +16,14 @@
 # 4) create timeseries including raw and fitted data.
 
 
-# ----- Setup --------------------------------------------------------------
+# ----- Setup ------------------------------------------------------------------
 # * libraries -----
 library(MazamaCoreUtils)   
 library(AirSensor)
 library(PWFSLSmoke)
+
+source("OR/LRAPA/sensorMonitorData.R")
+source("OR/LRAPA/sensorMonitorFit.R")
 
 
 # * archiveDir -----
@@ -65,17 +68,12 @@ lm <- pat_internalFit(Amazon_Park, showPlot = TRUE)
 summary(lm)
 lm_ex <- pat_externalFit(Amazon_Park, showPlot = TRUE)
 summary(lm_ex)
-
+?pat_externalFit
 # reapeat this step for other sensors you want to explore 
 
 # ----- Linear model PM2.5 monitor ~ PM2.5 sensor for specific weeks -----------
 # We'll be using the function sensorMonitorData() to create a data frame (df) 
 # containing the raw data we'll need to build our linear and multilinear models.
-
-# * Setup sensorMonitorData() 
-# 1) Open LRAPA_utils.R script 
-# 2) "Source" the script 
-# 3) Check that you have sensorMonitorData() in your R environment 
 
 # * July 01-08 data frame: sensor and monitor hourly data -----
 # low PM25 week according to pat_internalFit() plot  
@@ -94,6 +92,7 @@ lm <- lm(df_07$pm25_monitor ~ df_07$pm25)
 # check lm results
 summary(lm)
 
+# check lm fit values
 fitValues07 <- sensorMonitorFit( # source sensorMonitorFit script first 
   pat = Amazon_Park,
   ws_monitor = LRAPA_monitors,
@@ -108,7 +107,6 @@ mlm <- lm(df_07$pm25_monitor ~ df_07$pm25 + df_07$humidity)
 
 # check mlm summary
 summary(mlm)
-names(coef(summary(mlm))[, "Std. Error"])
 
 # check mlm fit values
 fitValues07 <- sensorMonitorFit( # source sensorMonitorFit script first 
@@ -120,7 +118,7 @@ fitValues07 <- sensorMonitorFit( # source sensorMonitorFit script first
   modelParameters = c("pm25","humidity"))
 print(fitValues07)
 
-# * predict July monitor PM2.5 ---------------------------------------------
+# * predict July monitor PM2.5 -------------------------------------------------
 # subset df_07 by extracting sensor pm25 and humidity variables 
 pred_data07 <- df_07 %>%
   dplyr::select(pm25, humidity)
