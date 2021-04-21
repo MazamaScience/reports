@@ -834,3 +834,68 @@ monitorFit.mu.p <- as.data.frame(monitorFit.mu.p)
 monitorFit.mu.p$monitorFit.mu.ph <- FitValues_ph$monitorFit.mu 
 monitorFit.mu.p$monitorFit.mu.pht <- FitValues_pht$monitorFit.mu 
 View(monitorFit.mu.p)
+
+# ---- Fit Values Timeseries with EPA equation ---------------------------------
+# EPA equation
+# PM2.5 corrected= 0.534*[PA_cf1(avgAB)] - 0.0844*RH +5.604
+?abline
+abline(a = 5.604, b = NULL, h = NULL, v = NULL, reg = NULL,
+       coef = NULL, untf = FALSE, ...)
+# * w = 5 -----
+FitValues_w5 <- fitValueTimeSeries(
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID,
+  startdate = 20200701,
+  enddate = 20201031,
+  modelParameters = c("pm25", "humidity"),
+  windowSize = 5 # days
+) 
+View(FitValues_w5)
+
+# Setup
+names(FitValues_w5)
+r.squared <- FitValues_w5$r.squared
+intercept <- FitValues_w5$intercept
+pm25 <- FitValues_w5$pm25
+humidity <- FitValues_w5$humidity
+se.monitorFit.mu <- FitValues_w5$se.monitorFit.mu
+enddate <- FitValues_w5$enddate
+
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+# Plot w/ intercept
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
+     main="Fit Values -- July-Oct, 2020 -- 5 Days", ylim = c(-2,2),
+     xlab="Date", ylab = "Values" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=enddate, y=intercept, col = colors()[461], lwd=2)
+lines( x=enddate, y=pm25, col = colors()[616], lwd=2 )
+lines( x=enddate, y=humidity, col = colors()[122], lwd=2 )
+lines( x=enddate, se.monitorFit.mu, col = colors()[131], lwd=2, lty="dashed" )
+lines( x=enddate, y=r.squared, col = colors()[636], lwd=2)
+
+## Legend:
+labels <- c(
+  "Intercept" ,"Sensor PM25 (5 d)","Humidity (5 d)", "Monitor Fit SE Avg (5 d)", 
+  "R squared (5 d)"
+)
+legend(
+  "bottomleft",
+  legend = labels,
+  lty=c("solid", "solid","solid","dashed", "solid"),
+  lwd=2,
+  col= c(colors()[461],colors()[636], colors()[616], colors()[122], colors()[131])
+)
+
+
+
+
+
