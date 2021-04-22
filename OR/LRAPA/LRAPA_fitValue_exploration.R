@@ -920,22 +920,20 @@ sensorMonitorData <-sensorMonitorData(pat = Amazon_Park,
   enddate = 20200706)
 View(sensorMonitorData)
 
-# Get PA higher correction factor data averaged from the A and B channels
-Amazon_Park_1 <- Amazon_Park %>%
-  pat_filterDate(startdate = 20200701, enddate = 20200706)
-View(Amazon_Park_1)
-PA_QC_AB01_1 <- PurpleAirQC_hourly_AB_01(Amazon_Park_1)
-View(PA_QC_AB01_1)
-
-# Add PA_QC_AB01_1 to sensorMonitorData
-sensorMonitorData$PA_QC_AB01_pm25 <- round(PA_QC_AB01_1$pm25)
-View(sensorMonitorData)
-
 
 # * Apply EPA equation using raw PA pm25 -----
 EPA_PM25_corrected <- (0.534*sensorMonitorData$pm25 - 0.0844*sensorMonitorData$humidity +5.604)
 sensorMonitorData$EPA_PM25_corrected <- round(EPA_PM25_corrected)
 EPA_PM25_corrected <- sensorMonitorData$EPA_PM25_corrected
+
+# * predict PA -----
+names(sensorMonitorData)
+PA_lm <- lm(pm25 ~ pm25_monitor + humidity, data = sensorMonitorData)
+summary(PA_lm)
+sensorMonitorData$pred_PA_pm25 <- predict(PA_lm, newdata= sensorMonitorData)
+sensorMonitorData$pred_PA_pm25 <- round(sensorMonitorData$pred_PA_pm25)
+pred_PA_pm25 <- sensorMonitorData$pred_PA_pm25
+
 
 # Timeseries setup
 a <- approx(
@@ -959,17 +957,18 @@ plot(datetime, pm25_monitor, xaxt="n", type="n",
 axis( 1, at=date.at, format(date.at,"%b %d") )
 lines( x=datetime, y=pm25_monitor, col = colors()[461], lwd=2)
 lines( x=datetime, y=EPA_PM25_corrected, col = colors()[616], lwd=2)
+lines( x=datetime, y=pred_PA_pm25, col = colors()[640], lwd=2)
 
 ## Legend:
 labels <- c(
-  "Monitor measured PM25" ,"EPA PA corrected PM25"
+  "Monitor measured PM25" ,"EPA PA corrected PM25", "PA PM25 Fit"
 )
 legend(
   "topleft",
   legend = labels,
   lty=c("solid", "solid"),
   lwd=2,
-  col= c(colors()[461],colors()[616])
+  col= c(colors()[461],colors()[616], colors()[640])
 )
 
 
