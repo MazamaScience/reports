@@ -836,11 +836,19 @@ monitorFit.mu.p$monitorFit.mu.pht <- FitValues_pht$monitorFit.mu
 View(monitorFit.mu.p)
 
 # ---- Fit Values Timeseries with EPA equation ---------------------------------
-# EPA equation
-# PM2.5 corrected= 0.534*[PA_cf1(avgAB)] - 0.0844*RH +5.604
-?abline
-abline(a = 5.604, b = NULL, h = NULL, v = NULL, reg = NULL,
-       coef = NULL, untf = FALSE, ...)
+# Create a df with EPA parameters of length(enddate). Values will be overlayed on 
+# timeseries later
+# EPA equation: PM2.5 corrected= 0.534*[PA_cf1(avgAB)] - 0.0844*RH +5.604
+# * EPA parameters df -----
+# PA_cf1[(avgAB)] slope = PurpleAir higher correction factor data averaged
+PA_cf1_avgAB <- rep(0.534, times = length(enddate))
+EPA_param <- as.data.frame(PA_cf1_avgAB)
+# RH slope = relative humidity 
+EPA_param$RH <- rep(- 0.0844, times = length(enddate)) 
+# EPA intercept 
+EPA_param$EPA_intercept <- rep(5.604, times = length(enddate)) 
+View(EPA_param)
+
 # * w = 5 -----
 FitValues_w5 <- fitValueTimeSeries(
   pat = Amazon_Park,
@@ -861,6 +869,9 @@ pm25 <- FitValues_w5$pm25
 humidity <- FitValues_w5$humidity
 se.monitorFit.mu <- FitValues_w5$se.monitorFit.mu
 enddate <- FitValues_w5$enddate
+EPA_PA_cf1_avgAB <- EPA_param$PA_cf1_avgAB
+EPA_RH <- EPA_param$RH
+EPA_intercept <- EPA_param$EPA_intercept
 
 a <- approx(
   c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
@@ -873,27 +884,95 @@ date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # Plot w/ intercept
 plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
-     main="Fit Values -- July-Oct, 2020 -- 5 Days", ylim = c(-2,2),
+     main="Fit Values + EPA param -- July-Oct, 2020 -- 5 Days", ylim = c(-2,6),
      xlab="Date", ylab = "Values" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
 lines( x=enddate, y=intercept, col = colors()[461], lwd=2)
 lines( x=enddate, y=pm25, col = colors()[616], lwd=2 )
 lines( x=enddate, y=humidity, col = colors()[122], lwd=2 )
-lines( x=enddate, se.monitorFit.mu, col = colors()[131], lwd=2, lty="dashed" )
+lines( x=enddate, y=se.monitorFit.mu, col = colors()[131], lwd=2, lty="dashed" )
 lines( x=enddate, y=r.squared, col = colors()[636], lwd=2)
+lines( x=enddate, y=EPA_PA_cf1_avgAB, col = colors()[640], lwd=2)
+lines( x=enddate, y=EPA_RH, col = colors()[641], lwd=2)
+lines( x=enddate, y=EPA_intercept, col = colors()[642], lwd=2)
+
 
 ## Legend:
 labels <- c(
   "Intercept" ,"Sensor PM25 (5 d)","Humidity (5 d)", "Monitor Fit SE Avg (5 d)", 
-  "R squared (5 d)"
+  "R squared (5 d)", "EPA PA_cf1(avgAB)", "EPA RH", "EPA Intercept"
 )
 legend(
   "bottomleft",
   legend = labels,
-  lty=c("solid", "solid","solid","dashed", "solid"),
+  lty=c("solid", "solid","solid","dashed", "solid", "solid", "solid", "solid"),
   lwd=2,
-  col= c(colors()[461],colors()[636], colors()[616], colors()[122], colors()[131])
+  col= c(colors()[461],colors()[636], colors()[616], colors()[122], colors()[131],
+         colors()[640], colors()[641], colors()[642])
 )
+
+# PA corrected values using EPA linear fit paramters
+# Create df
+sensorMonitorData <-sensorMonitorData(pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID,
+  startdate = 20200701,
+  enddate = 20200706)
+View(sensorMonitorData)
+
+# Get PA higher correction factor data averaged from the A and B channels
+Amazon_Park_1 <- Amazon_Park %>%
+  pat_filterDate(startdate = 20200701, enddate = 20200706)
+View(Amazon_Park_1)
+PA_QC_AB01_1 <- PurpleAirQC_hourly_AB_01(Amazon_Park_1)
+View(PA_QC_AB01_1)
+
+# Add PA_QC_AB01_1 to sensorMonitorData
+sensorMonitorData$PA_QC_AB01_pm25 <- round(PA_QC_AB01_1$pm25)
+View(sensorMonitorData)
+
+
+# * Apply EPA equation using raw PA pm25 -----
+EPA_PM25_corrected <- (0.534*sensorMonitorData$pm25 - 0.0844*sensorMonitorData$humidity +5.604)
+sensorMonitorData$EPA_PM25_corrected <- round(EPA_PM25_corrected)
+EPA_PM25_corrected <- sensorMonitorData$EPA_PM25_corrected
+
+# Timeseries setup
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-07-06T00:00:00') ),
+  n = length(datetime)
+)
+x.date <- as_datetime(a$y)
+length(x.date)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,120,1)]
+
+# timeseries axes
+datetime <- sensorMonitorData$datetime
+pm25_monitor <- sensorMonitorData$pm25_monitor
+
+# Plot w/ intercept
+plot(datetime, pm25_monitor, xaxt="n", type="n", 
+     main="FRM vs EPA PA corrected PM25 -- July 1-5, 2020",
+     xlab="Date", ylab = "Values" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=datetime, y=pm25_monitor, col = colors()[461], lwd=2)
+lines( x=datetime, y=EPA_PM25_corrected, col = colors()[616], lwd=2)
+
+## Legend:
+labels <- c(
+  "Monitor measured PM25" ,"EPA PA corrected PM25"
+)
+legend(
+  "topleft",
+  legend = labels,
+  lty=c("solid", "solid"),
+  lwd=2,
+  col= c(colors()[461],colors()[616])
+)
+
+
 
 
 
