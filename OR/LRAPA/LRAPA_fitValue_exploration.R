@@ -31,7 +31,7 @@ Amazon_Park <- pat_load(
   enddate = 20201101,
   timezone = timezone)
 
-# ----- data exploration -------------------------------------------------------
+# ----- data exploration ------------------------------------------------------- 
 # * first week of July -----
 # check if under non-smoky conditions the time window affects the fit values
 # 1 week window
@@ -99,7 +99,7 @@ FitValues_w7 <- fitValueTimeSeries(
   enddate = 20201031,
   modelParameters = c("pm25", "humidity"),
   windowSize = 7 # days
-)
+) 
 View(FitValues_w7)
 
 # Setup
@@ -122,7 +122,7 @@ date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 ?seq
 
 # Plot
-plot(enddate, se.monitorFit.mu, xaxt="n", type="n",
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
      main="Fit Values -- July-Oct, 2020 -- 7 Days", xlab="Date", ylab = "Values" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
 lines( x=enddate, y=r.squared, col = colors()[640], lwd=2)
@@ -153,7 +153,7 @@ FitValues_w5 <- fitValueTimeSeries(
   enddate = 20201031,
   modelParameters = c("pm25", "humidity"),
   windowSize = 5 # days
-)
+) 
 View(FitValues_w5)
 
 # Setup
@@ -175,7 +175,7 @@ dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # Plot w/ intercept
-plot(enddate, se.monitorFit.mu, xaxt="n", type="n",
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
      main="Fit Values -- July-Oct, 2020 -- 5 Days", ylim = c(-2,2),
      xlab="Date", ylab = "Values" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
@@ -187,15 +187,9 @@ lines( x=enddate, y=r.squared, col = colors()[636], lwd=2)
 
 ## Legend:
 labels <- c(
-<<<<<<< HEAD
   "Intercept" ,"Sensor PM25 (5 d)","Humidity (5 d)", "Monitor Fit SE Avg (5 d)", 
   "R squared (5 d)"
 )
-=======
- "Intercept" ,"Sensor PM25 (5 d)","Humidity (5 d)", "Monitor Fit SE Avg (5 d)",
- "R squared (5 d)"
- )
->>>>>>> d7978be38acbfcc5ffb48326ef7bd4408720594d
 legend(
   "bottomleft",
   legend = labels,
@@ -205,7 +199,7 @@ legend(
 )
 
 # Plot w/ ONLY intercept
-plot(enddate, intercept, xaxt="n", type="n",
+plot(enddate, intercept, xaxt="n", type="n", 
      main="Fit Intercept -- July-Oct, 2020 -- 5 Days",
      xlab="Date", ylab = "Values" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
@@ -221,7 +215,7 @@ FitValues_w10 <- fitValueTimeSeries(
   enddate = 20201031,
   modelParameters = c("pm25", "humidity"),
   windowSize = 10 # days
-)
+) 
 View(FitValues_w10)
 
 # Setup
@@ -243,7 +237,7 @@ dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # Plot
-plot(enddate, se.monitorFit.mu, xaxt="n", type="n",
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
      main="Fit Values -- July-Oct, 2020 -- 10 Days", xlab="Date", ylab = "Values" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
 lines( x=enddate, y=r.squared, col = colors()[498], lwd=2)
@@ -264,7 +258,7 @@ legend(
   col= c(colors()[498], colors()[53], colors()[52], colors()[32])
 )
 
-# * Full plot -----
+# * Full plot ----- 
 # setup
 se.monitorFit.mu <- FitValues_w5$se.monitorFit.mu # highest se.monitorFit.mu -- best for x-axis range
 a <- approx(
@@ -277,11 +271,11 @@ dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # plot
-plot(enddate, se.monitorFit.mu, xaxt="n", type="n",
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
      main="Fit Values -- July-Oct, 2020 -- 5/7/10 Days", xlab="Date", ylab = "Values" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
 
-# 5 days
+# 5 days 
 r.squared <- FitValues_w5$r.squared
 intercept <- FitValues_w5$intercept
 pm25 <- FitValues_w5$pm25
@@ -307,7 +301,7 @@ lines( x=enddate, y=pm25, col = colors()[641], lwd=2 )
 lines( x=enddate, y=humidity, col = colors()[642], lwd=2 )
 lines( x=enddate, se.monitorFit.mu, col = colors()[644], lty="dashed", lwd=2 )
 
-# 10 days
+# 10 days 
 r.squared <- FitValues_w10$r.squared
 intercept <- FitValues_w10$intercept
 pm25 <- FitValues_w10$pm25
@@ -322,8 +316,8 @@ lines( x=enddate, y=humidity, col = colors()[52],lwd=2)
 lines( x=enddate, se.monitorFit.mu, col = colors()[32], lty="dashed", lwd=2)
 
 
-# Legend
-colors_5d <- c(colors()[636], colors()[616], colors()[122], colors()[131])
+# Legend 
+colors_5d <- c(colors()[636], colors()[616], colors()[122], colors()[131]) 
 colors_7d <- c(colors()[640], colors()[641], colors()[642], colors()[644])
 colors_10d <- c(colors()[498], colors()[53], colors()[52], colors()[32])
 
@@ -357,7 +351,7 @@ date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 
 # plot
-plot(enddate, pm25, xaxt="n", type="n",
+plot(enddate, pm25, xaxt="n", type="n", 
      main="PM2.5 Fit Values -- July-Oct, 2020 -- 5/7/10 Days", xlab="Date", ylab = "Values")
 axis( 1, at=date.at, format(date.at,"%b %d") )
 
@@ -394,7 +388,7 @@ date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 
 # plot
-plot(enddate, r.squared, xaxt="n", type="n",
+plot(enddate, r.squared, xaxt="n", type="n", 
      main="R squared Fit Values -- July-Oct, 2020 -- 5/7/10 Days", xlab="Date", ylab = "Values")
 axis( 1, at=date.at, format(date.at,"%b %d") )
 
@@ -431,7 +425,7 @@ date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 
 # plot
-plot(enddate, humidity, xaxt="n", type="n",
+plot(enddate, humidity, xaxt="n", type="n", 
      main= "Humidity Fit Values -- July-Oct, 2020 -- 5/7/10 Days", xlab="Date", ylab = "Values")
 axis( 1, at=date.at, format(date.at,"%b %d"))
 
@@ -468,7 +462,7 @@ date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 
 # plot
-plot(enddate, se.monitorFit.mu, xaxt="n", type="n",
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
      main= "Monitor Fit SE Avg -- July-Oct, 2020 -- 5/7/10 Days", xlab="Date", ylab = "Values")
 axis( 1, at=date.at, format(date.at,"%b %d"))
 
@@ -511,7 +505,7 @@ FitValues_ph <- fitValueTimeSeries(
   enddate = 20201031,
   modelParameters = c("pm25", "humidity"),
   windowSize = 7 # days
-)
+) 
 View(FitValues_ph)
 
 FitValues_pht <- fitValueTimeSeries(
@@ -539,8 +533,8 @@ dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # Plot
-plot(enddate, se.monitorFit.mu, xaxt="n", type="n",
-     main= "Monitor Fit SE Avg -- July-Oct, 2020 -- Simple- vs Multi-linear",
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
+     main= "Monitor Fit SE Avg -- July-Oct, 2020 -- Simple- vs Multi-linear", 
      xlab="Date", ylab = "Values")
 axis( 1, at=date.at, format(date.at,"%b %d"))
 
@@ -577,8 +571,8 @@ dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # Plot
-plot(enddate, monitorFit.mu, xaxt="n", type="n",
-     main= "Monitor Fit Avg -- July-Oct, 2020 -- Simple- vs Multi-linear",
+plot(enddate, monitorFit.mu, xaxt="n", type="n", 
+     main= "Monitor Fit Avg -- July-Oct, 2020 -- Simple- vs Multi-linear", 
      xlab="Date", ylab = "Values")
 axis( 1, at=date.at, format(date.at,"%b %d"))
 
@@ -600,13 +594,13 @@ legend(
   lwd=2,
   col= c(colors()[616], colors()[641], colors()[53]))
 
-# lines overlap "perfectly". Check fit values.
+# lines overlap "perfectly". Check fit values. 
 
-# df monitor fit values
+# df monitor fit values 
 monitorFit.mu.p <- FitValues_p$monitorFit.mu
 monitorFit.mu.p <- as.data.frame(monitorFit.mu.p)
-monitorFit.mu.p$monitorFit.mu.ph <- FitValues_ph$monitorFit.mu
-monitorFit.mu.p$monitorFit.mu.pht <- FitValues_pht$monitorFit.mu
+monitorFit.mu.p$monitorFit.mu.ph <- FitValues_ph$monitorFit.mu 
+monitorFit.mu.p$monitorFit.mu.pht <- FitValues_pht$monitorFit.mu 
 View(monitorFit.mu.p)
 
 # * SE of fitted monitor values: simple vs multiliear models (w = 5) -------------------
@@ -629,7 +623,7 @@ FitValues_ph <- fitValueTimeSeries(
   enddate = 20201031,
   modelParameters = c("pm25", "humidity"),
   windowSize = 5 # days
-)
+) 
 
 FitValues_pht <- fitValueTimeSeries(
   pat = Amazon_Park,
@@ -655,8 +649,8 @@ dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # Plot
-plot(enddate, se.monitorFit.mu, xaxt="n", type="n",
-     main= "Monitor Fit SE Avg (w = 5) -- July-Oct, 2020 -- Simple- vs Multi-linear",
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
+     main= "Monitor Fit SE Avg (w = 5) -- July-Oct, 2020 -- Simple- vs Multi-linear", 
      xlab="Date", ylab = "Values")
 axis( 1, at=date.at, format(date.at,"%b %d"))
 
@@ -693,8 +687,8 @@ dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # Plot
-plot(enddate, monitorFit.mu, xaxt="n", type="n",
-     main= "Monitor Fit Avg (w = 5) -- July-Oct, 2020 -- Simple- vs Multi-linear",
+plot(enddate, monitorFit.mu, xaxt="n", type="n", 
+     main= "Monitor Fit Avg (w = 5) -- July-Oct, 2020 -- Simple- vs Multi-linear", 
      xlab="Date", ylab = "Values")
 axis( 1, at=date.at, format(date.at,"%b %d"))
 
@@ -716,13 +710,13 @@ legend(
   lwd=2,
   col= c(colors()[616], colors()[641], colors()[53]))
 
-# lines overlap "perfectly". Check fit values.
+# lines overlap "perfectly". Check fit values. 
 
-# df monitor fit values
+# df monitor fit values 
 monitorFit.mu.p <- FitValues_p$monitorFit.mu
 monitorFit.mu.p <- as.data.frame(monitorFit.mu.p)
-monitorFit.mu.p$monitorFit.mu.ph <- FitValues_ph$monitorFit.mu
-monitorFit.mu.p$monitorFit.mu.pht <- FitValues_pht$monitorFit.mu
+monitorFit.mu.p$monitorFit.mu.ph <- FitValues_ph$monitorFit.mu 
+monitorFit.mu.p$monitorFit.mu.pht <- FitValues_pht$monitorFit.mu 
 View(monitorFit.mu.p)
 
 # * SE of fitted monitor values: simple vs multiliear models (w = 10) -------------------
@@ -745,7 +739,7 @@ FitValues_ph <- fitValueTimeSeries(
   enddate = 20201031,
   modelParameters = c("pm25", "humidity"),
   windowSize = 10 # days
-)
+) 
 
 FitValues_pht <- fitValueTimeSeries(
   pat = Amazon_Park,
@@ -771,8 +765,8 @@ dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # Plot
-plot(enddate, se.monitorFit.mu, xaxt="n", type="n",
-     main= "Monitor Fit SE Avg (w = 10) -- July-Oct, 2020 -- Simple- vs Multi-linear",
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
+     main= "Monitor Fit SE Avg (w = 10) -- July-Oct, 2020 -- Simple- vs Multi-linear", 
      xlab="Date", ylab = "Values")
 axis( 1, at=date.at, format(date.at,"%b %d"))
 
@@ -809,8 +803,8 @@ dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # Plot
-plot(enddate, monitorFit.mu, xaxt="n", type="n",
-     main= "Monitor Fit Avg (w = 10) -- July-Oct, 2020 -- Simple- vs Multi-linear",
+plot(enddate, monitorFit.mu, xaxt="n", type="n", 
+     main= "Monitor Fit Avg (w = 10) -- July-Oct, 2020 -- Simple- vs Multi-linear", 
      xlab="Date", ylab = "Values")
 axis( 1, at=date.at, format(date.at,"%b %d"))
 
@@ -832,13 +826,13 @@ legend(
   lwd=2,
   col= c(colors()[616], colors()[641], colors()[53]))
 
-# lines overlap "perfectly". Check fit values.
+# lines overlap "perfectly". Check fit values. 
 
-# df monitor fit values
+# df monitor fit values 
 monitorFit.mu.p <- FitValues_p$monitorFit.mu
 monitorFit.mu.p <- as.data.frame(monitorFit.mu.p)
-monitorFit.mu.p$monitorFit.mu.ph <- FitValues_ph$monitorFit.mu
-monitorFit.mu.p$monitorFit.mu.pht <- FitValues_pht$monitorFit.mu
+monitorFit.mu.p$monitorFit.mu.ph <- FitValues_ph$monitorFit.mu 
+monitorFit.mu.p$monitorFit.mu.pht <- FitValues_pht$monitorFit.mu 
 View(monitorFit.mu.p)
 
 # ---- Timeseries with EPA params/fit -----------------------------------
@@ -852,20 +846,20 @@ FitValues_w5 <- fitValueTimeSeries(
   enddate = 20201031,
   modelParameters = c("pm25", "humidity"),
   windowSize = 5 # days
-)
+) 
 View(FitValues_w5)
 
-# Create a df with EPA parameters of length(enddate). Values will be overlayed on
+# Create a df with EPA parameters of length(enddate). Values will be overlayed on 
 # timeseries later
 # EPA equation: PM2.5 corrected= 0.534*[PA_cf1(avgAB)] - 0.0844*RH +5.604
 # PA_cf1[(avgAB)] slope = PurpleAir higher correction factor data averaged
 enddate <- FitValues_w5$enddate
 PA_cf1_avgAB <- rep(0.534, times = length(enddate))
 EPA_param <- as.data.frame(PA_cf1_avgAB)
-# RH slope = relative humidity
-EPA_param$RH <- rep(- 0.0844, times = length(enddate))
-# EPA intercept
-EPA_param$EPA_intercept <- rep(5.604, times = length(enddate))
+# RH slope = relative humidity 
+EPA_param$RH <- rep(- 0.0844, times = length(enddate)) 
+# EPA intercept 
+EPA_param$EPA_intercept <- rep(5.604, times = length(enddate)) 
 View(EPA_param)
 
 # Setup
@@ -886,8 +880,8 @@ x.date <- as_datetime(a$y)
 dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
-# Timeseries July-Oct w/ intercept + EPA params
-plot(enddate, se.monitorFit.mu, xaxt="n", type="n",
+# Timeseries July-Oct w/ intercept + EPA params 
+plot(enddate, se.monitorFit.mu, xaxt="n", type="n", 
      main="Fit Values + EPA param -- July-Oct, 2020 -- 5 Days", ylim = c(-2,6),
      xlab="Date", ylab = "Values" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
@@ -926,13 +920,13 @@ EPA_PM25_corrected <- (0.534*sensorMonitorData_1$pm25 - 0.0844*sensorMonitorData
 sensorMonitorData_1$EPA_PM25_corrected <- round(EPA_PM25_corrected)
 EPA_PM25_corrected <- sensorMonitorData_1$EPA_PM25_corrected
 
-# PA PM25 Fit
+# PA PM25 Fit 
 names(sensorMonitorData_1)
-PA_lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_1)
-summary(PA_lm)
-sensorMonitorData_1$PA_pm25_fit <- predict(PA_lm, newdata= sensorMonitorData_1)
-sensorMonitorData_1$PA_pm25_fit <- round(sensorMonitorData_1$PA_pm25_fit)
-PA_pm25_fit <- sensorMonitorData_1$PA_pm25_fit
+FRM_lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_1)
+summary(FRM_lm)
+sensorMonitorData_1$FRM_pm25_fit <- predict(FRM_lm, newdata= sensorMonitorData_1)
+sensorMonitorData_1$FRM_pm25_fit <- round(sensorMonitorData_1$FRM_pm25_fit)
+FRM_pm25_fit <- sensorMonitorData_1$FRM_pm25_fit
 
 # Timeseries setup
 a <- approx(
@@ -950,18 +944,18 @@ datetime <- sensorMonitorData_1$datetime
 pm25_monitor <- sensorMonitorData_1$pm25_monitor
 
 # Plot w/ intercept
-plot(datetime, pm25_monitor, xaxt="n", type="n",
+plot(datetime, pm25_monitor, xaxt="n", type="n", 
      main="FRM vs EPA PA corrected PM25 -- July 1-5, 2020",
      xlab="Date", ylab = "PM2.5" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
 lines( x=datetime, y=pm25_monitor, col = colors()[461], lwd=2)
 lines( x=datetime, y=EPA_PM25_corrected, col = colors()[616], lwd=2)
 lines( x=datetime, y=sensorMonitorData_1$pm25, col = colors()[631], lwd=2)
-lines( x=datetime, y=PA_pm25_fit, col = colors()[640], lwd=2)
+lines( x=datetime, y=FRM_pm25_fit, col = colors()[640], lwd=2)
 
 ## Legend:
 labels <- c(
-  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "PA PM25 Fit"
+  "FRM measured PM25", "FRM predicted (EPA PA corrected PM25)", "PA measured PM25", "FRM PM25 Fitted"
 )
 legend(
   "topleft",
@@ -988,13 +982,13 @@ EPA_PM25_corrected <- (0.534*sensorMonitorData_2$pm25 - 0.0844*sensorMonitorData
 sensorMonitorData_2$EPA_PM25_corrected <- round(EPA_PM25_corrected)
 EPA_PM25_corrected <- sensorMonitorData_2$EPA_PM25_corrected
 
-# PA PM25 Fit
+# PA PM25 Fit 
 names(sensorMonitorData_2)
-PA_lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_2)
+FRM_lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_2)
 summary(PA_lm)
-sensorMonitorData_2$PA_pm25_fit <- predict(PA_lm, newdata= sensorMonitorData_2)
-sensorMonitorData_2$PA_pm25_fit <- round(sensorMonitorData_2$PA_pm25_fit)
-PA_pm25_fit <- sensorMonitorData_2$PA_pm25_fit
+sensorMonitorData_2$FRM_pm25_fit <- predict(FRM_lm, newdata= sensorMonitorData_2)
+sensorMonitorData_2$FRM_pm25_fit <- round(sensorMonitorData_2$FRM_pm25_fit)
+FRM_pm25_fit <- sensorMonitorData_2$FRM_pm25_fit
 
 # Timeseries setup
 a <- approx(
@@ -1012,18 +1006,18 @@ datetime <- sensorMonitorData_2$datetime
 pm25_monitor <- sensorMonitorData_2$pm25_monitor
 
 # Plot w/ intercept
-plot(datetime, pm25_monitor, xaxt="n", type="n",
+plot(datetime, pm25_monitor, xaxt="n", type="n", 
      main="FRM vs EPA PA corrected PM25 -- July 26-30, 2020",
      xlab="Date", ylab = "PM2.5" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
 lines( x=datetime, y=pm25_monitor, col = colors()[461], lwd=2)
 lines( x=datetime, y=EPA_PM25_corrected, col = colors()[616], lwd=2)
 lines( x=datetime, y=sensorMonitorData_2$pm25, col = colors()[631], lwd=2)
-lines( x=datetime, y=PA_pm25_fit, col = colors()[640], lwd=2)
+lines( x=datetime, y=FRM_pm25_fit, col = colors()[640], lwd=2)
 
 ## Legend:
 labels <- c(
-  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "PA PM25 Fit"
+  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "FRM PM25 Fit"
 )
 legend(
   "topleft",
@@ -1049,13 +1043,13 @@ EPA_PM25_corrected <- (0.534*sensorMonitorData_3$pm25 - 0.0844*sensorMonitorData
 sensorMonitorData_3$EPA_PM25_corrected <- round(EPA_PM25_corrected)
 EPA_PM25_corrected <- sensorMonitorData_3$EPA_PM25_corrected
 
-# PA PM25 Fit
+# FRM PM25 Fit 
 names(sensorMonitorData_3)
-PA_lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_3)
-summary(PA_lm)
-sensorMonitorData_3$PA_pm25_fit <- predict(PA_lm, newdata= sensorMonitorData_3)
-sensorMonitorData_3$PA_pm25_fit <- round(sensorMonitorData_3$PA_pm25_fit)
-PA_pm25_fit <- sensorMonitorData_3$PA_pm25_fit
+FRM_lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_3)
+summary(FRM_lm)
+sensorMonitorData_3$FRM_pm25_fit <- predict(FRM_lm, newdata= sensorMonitorData_3)
+sensorMonitorData_3$FRM_pm25_fit <- round(sensorMonitorData_3$FRM_pm25_fit)
+FRM_pm25_fit <- sensorMonitorData_3$FRM_pm25_fit
 
 # Timeseries setup
 a <- approx(
@@ -1073,7 +1067,7 @@ datetime <- sensorMonitorData_3$datetime
 pm25_monitor <- sensorMonitorData_3$pm25_monitor
 
 # Plot w/ intercept
-plot(datetime, pm25_monitor, xaxt="n", type="n",
+plot(datetime, pm25_monitor, xaxt="n", type="n", 
      main="FRM vs EPA PA corrected PM25 -- Sep 10-14, 2020",
      xlab="Date", ylab = "PM2.5" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
@@ -1084,7 +1078,7 @@ lines( x=datetime, y=PA_pm25_fit, col = colors()[640], lwd=2)
 
 ## Legend:
 labels <- c(
-  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "PA PM25 Fit"
+  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "FRM PM25 Fit"
 )
 legend(
   "bottomleft",
@@ -1111,13 +1105,13 @@ EPA_PM25_corrected <- (0.534*sensorMonitorData_4$pm25 - 0.0844*sensorMonitorData
 sensorMonitorData_4$EPA_PM25_corrected <- round(EPA_PM25_corrected)
 EPA_PM25_corrected <- sensorMonitorData_4$EPA_PM25_corrected
 
-# PA PM25 Fit
+# PA PM25 Fit 
 names(sensorMonitorData_4)
-PA_lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_4)
-summary(PA_lm)
-sensorMonitorData_4$PA_pm25_fit <- predict(PA_lm, newdata= sensorMonitorData_4)
-sensorMonitorData_4$PA_pm25_fit <- round(sensorMonitorData_4$PA_pm25_fit)
-PA_pm25_fit <- sensorMonitorData_4$PA_pm25_fit
+FRM_lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_4)
+summary(FRM_lm)
+sensorMonitorData_4$FRM_pm25_fit <- predict(FRM_lm, newdata = sensorMonitorData_4)
+sensorMonitorData_4$FRM_pm25_fit <- round(sensorMonitorData_4$FRM_pm25_fit)
+FRM_pm25_fit <- sensorMonitorData_4$FRM_pm25_fit
 
 # Timeseries setup
 a <- approx(
@@ -1135,7 +1129,7 @@ datetime <- sensorMonitorData_4$datetime
 pm25_monitor <- sensorMonitorData_4$pm25_monitor
 
 # Plot w/ intercept
-plot(datetime, pm25_monitor, xaxt="n", type="n",
+plot(datetime, pm25_monitor, xaxt="n", type="n", 
      main="FRM vs EPA PA corrected PM25 -- Oct 1-5, 2020",
      xlab="Date", ylab = "Values" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
@@ -1146,7 +1140,7 @@ lines( x=datetime, y=PA_pm25_fit, col = colors()[640], lwd=2)
 
 ## Legend:
 labels <- c(
-  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "PA PM25 Fit"
+  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "FRM PM25 Fit"
 )
 legend(
   "bottomleft",
@@ -1192,11 +1186,11 @@ EPA_PM25_corrected <- sensorMonitorData_3_Oa2$EPA_PM25_corrected
 
 # PA PM25 Fit 
 names(sensorMonitorData_3_Oa2)
-PA_lm <- lm(pm25 ~ pm25_monitor + humidity, data = sensorMonitorData_3_Oa2)
-summary(PA_lm)
-sensorMonitorData_3_Oa2$PA_pm25_fit <- predict(PA_lm, newdata= sensorMonitorData_3_Oa2)
-sensorMonitorData_3_Oa2$PA_pm25_fit <- round(sensorMonitorData_3_Oa2$PA_pm25_fit)
-PA_pm25_fit <- sensorMonitorData_3_Oa2$PA_pm25_fit
+FRM_lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_3_Oa2)
+summary(FRM_lm)
+sensorMonitorData_3_Oa2$FRM_pm25_fit <- predict(FRM_lm, newdata= sensorMonitorData_3_Oa2)
+sensorMonitorData_3_Oa2$FRM_pm25_fit <- round(sensorMonitorData_3_Oa2$FRM_pm25_fit)
+FRM_pm25_fit <- sensorMonitorData_3_Oa2$FRM_pm25_fit
 
 # Timeseries axes
 datetime <- sensorMonitorData_3_Oa2$datetime
@@ -1225,7 +1219,7 @@ lines( x=datetime, y=PA_pm25_fit, col = colors()[640], lwd=2)
 
 ## Legend:
 labels <- c(
-  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "PA PM25 Fit"
+  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "FRM PM25 Fit"
 )
 legend(
   "bottomleft",
@@ -1234,8 +1228,6 @@ legend(
   lwd=2,
   col= c(colors()[461], colors()[616],colors()[631], colors()[640])
 )
-
-
 
 
 # ------------------------ Oakridge3: load pat file ----------------------------
@@ -1266,11 +1258,11 @@ EPA_PM25_corrected <- sensorMonitorData_3_Oa3$EPA_PM25_corrected
 
 # PA PM25 Fit 
 names(sensorMonitorData_3_Oa3)
-PA_lm <- lm(pm25 ~ pm25_monitor + humidity, data = sensorMonitorData_3_Oa3)
-summary(PA_lm)
-sensorMonitorData_3_Oa3$PA_pm25_fit <- predict(PA_lm, newdata= sensorMonitorData_3_Oa3)
-sensorMonitorData_3_Oa3$PA_pm25_fit <- round(sensorMonitorData_3_Oa3$PA_pm25_fit)
-PA_pm25_fit <- sensorMonitorData_3_Oa3$PA_pm25_fit
+FRM_lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_3_Oa3)
+summary(FRM_lm)
+sensorMonitorData_3_Oa3$FRM_pm25_fit <- predict(FRM_lm, newdata= sensorMonitorData_3_Oa3)
+sensorMonitorData_3_Oa3$FRM_pm25_fit <- round(sensorMonitorData_3_Oa3$FRM_pm25_fit)
+FRM_pm25_fit <- sensorMonitorData_3_Oa3$FRM_pm25_fit
 
 # Timeseries axes
 datetime <- sensorMonitorData_3_Oa3$datetime
@@ -1299,11 +1291,11 @@ axis( 1, at=date.at, format(date.at,"%b %d") )
 lines( x=datetime, y=pm25_monitor, col = colors()[461], lwd=2)
 lines( x=datetime, y=EPA_PM25_corrected, col = colors()[616], lwd=2)
 lines( x=datetime, y=sensorMonitorData_3_Oa3$pm25, col = colors()[631], lwd=2)
-lines( x=datetime, y=PA_pm25_fit, col = colors()[640], lwd=2)
+lines( x=datetime, y=FRM_pm25_fit, col = colors()[640], lwd=2)
 
 ## Legend:
 labels <- c(
-  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "PA PM25 Fit"
+  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "FRM PM25 Fit"
 )
 legend(
   "bottomleft",
@@ -1343,11 +1335,11 @@ EPA_PM25_corrected <- Springfield$EPA_PM25_corrected
 
 # PA PM25 Fit 
 names(Springfield)
-PA_lm <- lm(pm25 ~ pm25_monitor + humidity, data = Springfield)
-summary(PA_lm)
-Springfield$PA_pm25_fit <- predict(PA_lm, newdata= Springfield)
-Springfield$PA_pm25_fit <- round(Springfield$PA_pm25_fit)
-PA_pm25_fit <- Springfield$PA_pm25_fit
+FRM_lm <- lm(pm25_monitor ~ pm25 + humidity, data = Springfield)
+summary(FRM_lm)
+Springfield$PA_pm25_fit <- predict(FRM_lm, newdata= Springfield)
+Springfield$PA_pm25_fit <- round(Springfield$FRM_pm25_fit)
+FRM_pm25_fit <- Springfield$FRM_pm25_fit
 
 # Timeseries axes
 datetime <- Springfield$datetime
@@ -1372,11 +1364,11 @@ axis( 1, at=date.at, format(date.at,"%b %d") )
 lines( x=datetime, y=pm25_monitor, col = colors()[461], lwd=2)
 lines( x=datetime, y=EPA_PM25_corrected, col = colors()[616], lwd=2)
 lines( x=datetime, y=Springfield$pm25, col = colors()[631], lwd=2)
-lines( x=datetime, y=PA_pm25_fit, col = colors()[640], lwd=2)
+lines( x=datetime, y=FRM_pm25_fit, col = colors()[640], lwd=2)
 
 ## Legend:
 labels <- c(
-  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "PA PM25 Fit"
+  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "FRM PM25 Fit"
 )
 legend(
   "bottomleft",
