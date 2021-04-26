@@ -17,7 +17,7 @@ archiveDir <- "C:/Users/astri/Mirror/Mazamascience/Projects/Data/LRAPA"
 LRAPA_sensors <- get(load(file.path(archiveDir, "LRAPA_pas.rda")))
 LRAPA_monitors <- get(load(file.path(archiveDir, "LRAPA_monitors.rda")))
 
-# ----- load pat file ----------------------------------------------------------
+# ----- Amazon Park: load pat file ---------------------------------------------
 # * setup -----
 setArchiveBaseDir(archiveDir)
 getArchiveBaseDir()
@@ -187,9 +187,9 @@ lines( x=enddate, y=r.squared, col = colors()[636], lwd=2)
 
 ## Legend:
 labels <- c(
- "Intercept" ,"Sensor PM25 (5 d)","Humidity (5 d)", "Monitor Fit SE Avg (5 d)", 
- "R squared (5 d)"
- )
+  "Intercept" ,"Sensor PM25 (5 d)","Humidity (5 d)", "Monitor Fit SE Avg (5 d)", 
+  "R squared (5 d)"
+)
 legend(
   "bottomleft",
   legend = labels,
@@ -908,10 +908,10 @@ legend(
 # * One week (20200701 - 20200706) timeseries including EPA linear fit -----
 # Create df
 sensorMonitorData_1 <-sensorMonitorData(pat = Amazon_Park,
-  ws_monitor = LRAPA_monitors,
-  monitorID = monitorID,
-  startdate = 20200701,
-  enddate = 20200706)
+                                        ws_monitor = LRAPA_monitors,
+                                        monitorID = monitorID,
+                                        startdate = 20200701,
+                                        enddate = 20200706)
 View(sensorMonitorData_1)
 
 # Apply EPA equation using raw PA pm25
@@ -970,10 +970,10 @@ legend(
 # * One week (20200726 - 20200731) timeseries including EPA linear fit -----
 # Create df
 sensorMonitorData_2 <-sensorMonitorData(pat = Amazon_Park,
-                                            ws_monitor = LRAPA_monitors,
-                                            monitorID = monitorID,
-                                            startdate = 20200726,
-                                            enddate = 20200731)
+                                        ws_monitor = LRAPA_monitors,
+                                        monitorID = monitorID,
+                                        startdate = 20200726,
+                                        enddate = 20200731)
 View(sensorMonitorData_2)
 
 # Apply EPA equation using raw PA pm25
@@ -1157,4 +1157,226 @@ legend(
 
 
 
+
+
+# ------------------------ Oakridge2: load pat file ----------------------------
+Oakridge2 <- pat_load(
+  id = "f2ace631a501333b_38681", 
+  startdate = 20200701, 
+  enddate = 20201101, 
+  timezone = timezone)
+print(Oakridge2$meta$pwfsl_closestDistance) # 13.14887 m 
+monitorID_2 <- Oakridge2$meta$pwfsl_closestMonitorID # 410392013_01
+
+Oa2_lm_ex <- pat_externalFit(Oakridge2, showPlot = TRUE)
+# * One week (20200910 - 20200915) timeseries including EPA linear fit -----
+# Create df
+sensorMonitorData_3_Oa2 <-sensorMonitorData(pat = Oakridge2,
+                                            ws_monitor = LRAPA_monitors,
+                                            monitorID = monitorID_2,
+                                            startdate = 20200910,
+                                            enddate = 20200915)
+View(sensorMonitorData_3_Oa2)
+
+# Apply EPA equation using raw PA pm25
+# EPA equation: PM2.5 corrected= 0.534*[PA_cf1(avgAB)] - 0.0844*RH +5.604
+EPA_PM25_corrected <- (0.534*sensorMonitorData_3_Oa2$pm25 - 0.0844*sensorMonitorData_3_Oa2$humidity +5.604)
+sensorMonitorData_3_Oa2$EPA_PM25_corrected <- round(EPA_PM25_corrected)
+EPA_PM25_corrected <- sensorMonitorData_3_Oa2$EPA_PM25_corrected
+
+# PA PM25 Fit 
+names(sensorMonitorData_3_Oa2)
+PA_lm <- lm(pm25 ~ pm25_monitor + humidity, data = sensorMonitorData_3_Oa2)
+summary(PA_lm)
+sensorMonitorData_3_Oa2$PA_pm25_fit <- predict(PA_lm, newdata= sensorMonitorData_3_Oa2)
+sensorMonitorData_3_Oa2$PA_pm25_fit <- round(sensorMonitorData_3_Oa2$PA_pm25_fit)
+PA_pm25_fit <- sensorMonitorData_3_Oa2$PA_pm25_fit
+
+# Timeseries axes
+datetime <- sensorMonitorData_3_Oa2$datetime
+pm25_monitor <- sensorMonitorData_3_Oa2$pm25_monitor
+
+# Timeseries setup
+a <- approx(
+  c( ymd_hms('2020-09-10T00:00:00'), ymd_hms('2020-09-15T00:00:00') ),
+  n = length(datetime)
+)
+x.date <- as_datetime(a$y)
+length(x.date)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,120,1)]
+
+# Plot w/ intercept
+plot(datetime, pm25_monitor, xaxt="n", type="n", 
+     main="FRM vs EPA PA corrected PM25 (Oakridge 2) -- Sep 10-14, 2020",
+     xlab="Date", ylab = "PM2.5" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=datetime, y=pm25_monitor, col = colors()[461], lwd=2)
+lines( x=datetime, y=EPA_PM25_corrected, col = colors()[616], lwd=2)
+lines( x=datetime, y=sensorMonitorData_3_Oa2$pm25, col = colors()[631], lwd=2)
+lines( x=datetime, y=PA_pm25_fit, col = colors()[640], lwd=2)
+
+## Legend:
+labels <- c(
+  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "PA PM25 Fit"
+)
+legend(
+  "bottomleft",
+  legend = labels,
+  lty=c("solid", "solid"),
+  lwd=2,
+  col= c(colors()[461], colors()[616],colors()[631], colors()[640])
+)
+
+
+
+
+# ------------------------ Oakridge3: load pat file ----------------------------
+Oakridge3 <- pat_load(
+  id = "799da69adac45e75_38631", 
+  startdate = 20200701, 
+  enddate = 20201101, 
+  timezone = timezone)
+
+print(Oakridge3$meta$pwfsl_closestDistance) # 2.571477 m 
+monitorID_2 <- Oakridge3$meta$pwfsl_closestMonitorID # 410392013_01 (same as Oakridge2)
+
+Oa3_lm_ex <- pat_externalFit(Oakridge3, showPlot = TRUE)
+# * One week (20200910 - 20200915) timeseries including EPA linear fit -----
+# Create df
+sensorMonitorData_3_Oa3 <-sensorMonitorData(pat = Oakridge3,
+                                            ws_monitor = LRAPA_monitors,
+                                            monitorID = monitorID_2,
+                                            startdate = 20200910,
+                                            enddate = 20200915)
+View(sensorMonitorData_3_Oa3)
+
+# Apply EPA equation using raw PA pm25
+# EPA equation: PM2.5 corrected= 0.534*[PA_cf1(avgAB)] - 0.0844*RH +5.604
+EPA_PM25_corrected <- (0.534*sensorMonitorData_3_Oa3$pm25 - 0.0844*sensorMonitorData_3_Oa3$humidity +5.604)
+sensorMonitorData_3_Oa3$EPA_PM25_corrected <- round(EPA_PM25_corrected)
+EPA_PM25_corrected <- sensorMonitorData_3_Oa3$EPA_PM25_corrected
+
+# PA PM25 Fit 
+names(sensorMonitorData_3_Oa3)
+PA_lm <- lm(pm25 ~ pm25_monitor + humidity, data = sensorMonitorData_3_Oa3)
+summary(PA_lm)
+sensorMonitorData_3_Oa3$PA_pm25_fit <- predict(PA_lm, newdata= sensorMonitorData_3_Oa3)
+sensorMonitorData_3_Oa3$PA_pm25_fit <- round(sensorMonitorData_3_Oa3$PA_pm25_fit)
+PA_pm25_fit <- sensorMonitorData_3_Oa3$PA_pm25_fit
+
+# Timeseries axes
+datetime <- sensorMonitorData_3_Oa3$datetime
+pm25_monitor <- sensorMonitorData_3_Oa3$pm25_monitor
+
+# Timeseries setup
+a <- approx(
+  c( ymd_hms('2020-09-10T00:00:00'), ymd_hms('2020-09-15T00:00:00') ),
+  n = length(datetime)
+)
+x.date <- as_datetime(a$y)
+length(x.date)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,120,1)]
+
+# timeseries axes
+datetime <- sensorMonitorData_3_Oa3$datetime
+pm25_monitor <- sensorMonitorData_3_Oa3$pm25_monitor
+
+# Plot w/ intercept
+plot(datetime, pm25_monitor, xaxt="n", type="n", 
+     main="FRM vs EPA PA corrected PM25 (Oakridge 3) -- Sep 10-14, 2020",
+     xlab="Date", ylab = "PM2.5" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=datetime, y=pm25_monitor, col = colors()[461], lwd=2)
+lines( x=datetime, y=EPA_PM25_corrected, col = colors()[616], lwd=2)
+lines( x=datetime, y=sensorMonitorData_3_Oa3$pm25, col = colors()[631], lwd=2)
+lines( x=datetime, y=PA_pm25_fit, col = colors()[640], lwd=2)
+
+## Legend:
+labels <- c(
+  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "PA PM25 Fit"
+)
+legend(
+  "bottomleft",
+  legend = labels,
+  lty=c("solid", "solid"),
+  lwd=2,
+  col= c(colors()[461], colors()[616],colors()[631], colors()[640])
+)
+
+
+
+# ------------------------ Springfield City Hall: load pat file ----------------
+Springfield <- pat_load(
+  id = "12426967f1fc742c_10606", 
+  startdate = 20200701, 
+  enddate = 20201101, 
+  timezone = timezone)
+
+print(Springfield$meta$pwfsl_closestDistance) # 7.657129 m 
+monitorID_3 <- Springfield$meta$pwfsl_closestMonitorID # 410392013_01 (same as Oakridge2)
+
+Springfield_lm_ex <- pat_externalFit(Springfield, showPlot = TRUE)
+
+# * One week (20200910 - 20200915) timeseries including EPA linear fit -----
+# Create df
+Springfield <-sensorMonitorData(pat = Springfield,
+                                ws_monitor = LRAPA_monitors,
+                                monitorID = monitorID_3,
+                                startdate = 20200910,
+                                enddate = 20200915)
+View(Springfield)
+# Apply EPA equation using raw PA pm25
+# EPA equation: PM2.5 corrected= 0.534*[PA_cf1(avgAB)] - 0.0844*RH +5.604
+EPA_PM25_corrected <- (0.534*Springfield$pm25 - 0.0844*Springfield$humidity +5.604)
+Springfield$EPA_PM25_corrected <- round(EPA_PM25_corrected)
+EPA_PM25_corrected <- Springfield$EPA_PM25_corrected
+
+# PA PM25 Fit 
+names(Springfield)
+PA_lm <- lm(pm25 ~ pm25_monitor + humidity, data = Springfield)
+summary(PA_lm)
+Springfield$PA_pm25_fit <- predict(PA_lm, newdata= Springfield)
+Springfield$PA_pm25_fit <- round(Springfield$PA_pm25_fit)
+PA_pm25_fit <- Springfield$PA_pm25_fit
+
+# Timeseries axes
+datetime <- Springfield$datetime
+pm25_monitor <- Springfield$pm25_monitor
+
+# Timeseries setup
+a <- approx(
+  c( ymd_hms('2020-09-10T00:00:00'), ymd_hms('2020-09-15T00:00:00') ),
+  n = length(datetime)
+)
+x.date <- as_datetime(a$y)
+length(x.date)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,120,1)]
+
+# Plot w/ intercept
+plot(datetime, pm25_monitor, xaxt="n", type="n", ylim = c(50, 600),
+     main="FRM vs EPA PA corrected PM25 (Springfield City Hall) -- Sep 10-14, 2020",
+     xlab="Date", ylab = "PM2.5" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=datetime, y=pm25_monitor, col = colors()[461], lwd=2)
+lines( x=datetime, y=EPA_PM25_corrected, col = colors()[616], lwd=2)
+lines( x=datetime, y=Springfield$pm25, col = colors()[631], lwd=2)
+lines( x=datetime, y=PA_pm25_fit, col = colors()[640], lwd=2)
+
+## Legend:
+labels <- c(
+  "FRM measured PM25", "EPA PA corrected PM25", "PA measured PM25", "PA PM25 Fit"
+)
+legend(
+  "bottomleft",
+  legend = labels,
+  lty=c("solid", "solid"),
+  lwd=2,
+  col= c(colors()[461], colors()[616],colors()[631], colors()[640])
+)
 
