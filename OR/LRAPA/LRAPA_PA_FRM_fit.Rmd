@@ -14,7 +14,29 @@ knitr::opts_chunk$set(fig.width = 7, fig.height = 5)
 ```
 
 # Background 
- - discussion of PA vs FRM monitors and how lm() can be used to "correct" PA pm25 so that it more closely matches FRM pm25.
+TO DO: discussion of PA vs FRM monitors and how lm() can be used to "correct" PA pm25 so that it more closely matches FRM pm25.
+ 
+> PurpleAir particulate matter (PM) sensors are increasingly used in the United 
+States and other countries by a variety of individuals and organizations for 
+continuous monitoring of ambient air pollutant conditions, with additional 
+sensors often deployed for monitoring during wildfire smoke episodes. 
+The performance of these sensors must be evaluated during smoke impacted times, 
+and nominally corrected for bias if necessary, to ensure accurate data are 
+reported to inform appropriate health protective actions. (EPA, [PurpleAir 
+PM2.5 U.S. Correction and Performance During Smoke Events 4/2020](https://cfpub.epa.gov/si/si_public_record_report.cfm?Lab=CEMM&dirEntryId=349513)) 
+
+On the other hand, Federal Reference Method (FRM) monitors are highly reliable 
+but their high cost can be limiting. 
+
+A way to evaluate the functioning and reliability of PurpleAir (PA) sensors is 
+to compare their perfomance by colocating them with FRM monitors. Moreover, 
+data collected by FRM monitors could be potentially used to correct the data 
+collected by PA sensors, wich tend to overestimate PM2.5 concentrations. 
+
+By fittind a linear model having FRM data as the response, and PA data and humidity 
+as the predictors (FRM_PM25 ~ PA_PM25 + humidity) we can derive always-updated 
+coefficients (using datasets from the previous 3-5 days) that can then be used 
+to correct PA data (FRM_PM25 fitted values = PA_PM25 corrected values).  
 
 # LRAPA 
  - discussion what LRAPA is, how they have co-located sensor-monitor pairs.
