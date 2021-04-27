@@ -1,7 +1,31 @@
- Background -- discussion of PA vs FRM monitors and how lm() can be used to "correct" PA pm25 so that it more closely matches FRM pm25.
- LRAPA -- discussion what LRAPA is, how they have co-located sensor-monitor pairs.
+---
+title: "LRAPA PA FRM Fit"
+author: "Mazama Science"
+date: "2021-04-27"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{MVCAA Tutorial 2: Exploring PAT Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.height = 5)
+```
+
+# Background 
+ - discussion of PA vs FRM monitors and how lm() can be used to "correct" PA pm25 so that it more closely matches FRM pm25.
+
+# LRAPA 
+ - discussion what LRAPA is, how they have co-located sensor-monitor pairs.
  Amazon Park -- a few plots showing that this sensor is basically good and matches the FRM data quite well
- Linear fit -- Using lm(pm25_monitor ~ pm25 + humidity) and a 5-day window to created our model. Then use predict() to create corrected (aka "fitted") values. Code snippet to show what we are doing. For a one-week window in July, show FRM pm25, PA pm25 and corrected (PA values with the lm() calculated linear correction applied.)
- EPA correction -- show a 4-month plot with PA pm25, FRM pm25 and EPA "corrected" pm25 (PA values with EPA linear correction applied.); This plot should show that the EPA "over corrects" during the smoky period.
+ 
+# Linear fit 
+- Using lm(pm25_monitor ~ pm25 + humidity) and a 5-day window to created our model. Then use predict() to create corrected (aka "fitted") values. Code snippet to show what we are doing. For a one-week window in July, show FRM pm25, PA pm25 and corrected (PA values with the lm() calculated linear correction applied.)
+
+# EPA correction 
+- show a 4-month plot with PA pm25, FRM pm25 and EPA "corrected" pm25 (PA values with EPA linear correction applied.); This plot should show that the EPA "over corrects" during the smoky period.
  Real-time linear fit -- Show the fit parameters for EPA (straight lines) and for real-time lm(). Pick ylim() that highlights the pm25 and humidity values. Don't worry about the smoky period when the intercept goes crazy.
- Real-time vs EPA -- Discussion and plots showing PA pm25, FRM pm25, EPA corrected pm25 and real-time corrected pm25 for one week in July and one smoky week in October
+
+# Real-time vs EPA 
+_ Discussion and plots showing PA pm25, FRM pm25, EPA corrected pm25 and real-time corrected pm25 for one week in July and one smoky week in October
