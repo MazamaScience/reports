@@ -46,21 +46,43 @@ https://www.lrapa.org/294/What-is-LRAPA
 > The Lane Regional Air Protection Agency (LRAPA) is a local government agency that monitors and regulates air quality in Lane County, Oregon. LRAPA is able to achieve this through its eight air monitoring stations throughout the county.
 [...] LRAPA has seven air monitoring stations throughout Lane County, three of which are in Eugene. The air monitoring stations collect air samples and report the data from their respective locations. Information from these stations is used to assess levels of air pollution, identify air quality trends, and support the implementation of air pollution prevention strategies. 
 
-For this study, we used the best performing sensor colocated with an FRM monitor (distance ~ 21 m). As you can see from the plots below, this PA sensor performed well throughout the entire 4 months period explored. 
+For this study, we used the best performing sensor colocated with an FRM monitor (distance ~ 21 m). As you can see from the plots below, this PA sensor performed well throughout the entire 4 months period (July - October 2020) explored, and September 10-20 was the smokiest one. 
 
-```{r}
+```{r Amazon-Park-evaluation, , eval = TRUE, warning = FALSE, message = FALSE}
+# libraries 
+library(MazamaCoreUtils)
+library(AirSensor)
+library(PWFSLSmoke)
+library(lubridate)
+
+# get Amazon Park sensor ID
+setArchiveBaseDir(NULL)
 setArchiveBaseUrl("http://data.mazamascience.com/PurpleAir/v1")
 getArchiveBaseUrl() # check the url is correctly set
-setArchiveBaseDir(NULL)
-Amazon_Park <- pas_load() %>%
+Amazon_Park_pas <- pas_load() %>%
   pas_filter(stringr::str_detect(label, "LRAPA-Amazon Park"))
-Amazon_Park_ID <- pas_getDeviceDeploymentIDs(Amazon_Park)
+Amazon_Park_ID <- pas_getDeviceDeploymentIDs(Amazon_Park_pas)
 
-# LRAPA_monitors <- monitor_loadLatest() %>%
-#   monitor_subset(stateCodes = "OR")
-# LRAPA_monitors <- monitor_subsetBy(
-#   LRAPA_monitors, 
-#   countyName == "Lane")
+# create Amazon Park pat 
+Amazon_Park <- pat_createNew(
+  id = Amazon_Park_ID,
+  label = NULL,        # not needed if you have the id
+  pas = Amazon_Park_pas,  
+  startdate = 20200701,
+  enddate = 20201101,
+  timezone = "America/Los_Angeles",
+  baseUrl = "https://api.thingspeak.com/channels/",
+  verbose = FALSE
+  )
+
+# evaluate Amazon Park sensor 
+pat_multiplot(Amazon_Park)
+pat_scatterPlotMatrix(Amazon_Park)
+# pm25_A:pm25_B ~ 1 -- Great!!
+# temperature:humidity ~ -0.82 (strong negative correlation) -- Great!
+pat_externalFit(Amazon_Park, showPlot = TRUE)
+# Adjusted R-squared:  0.9666 -- Great!!
+# Smokiest period Sep 10 - 20. 
 ```
 
  
