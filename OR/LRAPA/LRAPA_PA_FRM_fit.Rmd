@@ -15,6 +15,7 @@ knitr::opts_chunk$set(fig.width = 7, fig.height = 5)
 
 # Background 
 TO DO: discussion of PA vs FRM monitors and how lm() can be used to "correct" PA pm25 so that it more closely matches FRM pm25.
+
  
 > PurpleAir particulate matter (PM) sensors are increasingly used in the United 
 States and other countries by a variety of individuals and organizations for 
@@ -42,7 +43,7 @@ to correct PA data (FRM_PM25 fitted values = PA_PM25 corrected values).
 TO DO: discussion what LRAPA is, how they have co-located sensor-monitor pairs.
  Amazon Park -- a few plots showing that this sensor is basically good and matches the FRM data quite well.
  
-https://www.lrapa.org/294/What-is-LRAPA
+
 > The Lane Regional Air Protection Agency (LRAPA) is a local government agency that monitors and regulates air quality in Lane County, Oregon. LRAPA is able to achieve this through its eight air monitoring stations throughout the county.
 [...] LRAPA has seven air monitoring stations throughout Lane County, three of which are in Eugene. The air monitoring stations collect air samples and report the data from their respective locations. Information from these stations is used to assess levels of air pollution, identify air quality trends, and support the implementation of air pollution prevention strategies. 
 
@@ -61,7 +62,8 @@ source("OR/LRAPA/sensorMonitorData.R")
 source("OR/LRAPA/sensorMonitorFit.R")
 source("OR/LRAPA/fitValueTimeSeries.R")
 ```
-```{r Amazon-Park-evaluation, eval = TRUE, warning = FALSE, message = FALSE }
+
+```{r Amazon-Park-assessment, eval = TRUE, warning = FALSE, message = FALSE }
 # get Amazon Park sensor ID
 setArchiveBaseDir(NULL)
 setArchiveBaseUrl("http://data.mazamascience.com/PurpleAir/v1")
@@ -96,14 +98,65 @@ pat_externalFit(Amazon_Park, showPlot = TRUE)
 # Linear fit 
 TO DO: Using lm(pm25_monitor ~ pm25 + humidity) and a 5-day window to created our model. Then use predict() to create corrected (aka "fitted") values. Code snippet to show what we are doing. For a one-week window in July, show FRM pm25, PA pm25 and corrected (PA values with the lm() calculated linear correction applied.)
 
-```{r}
-# Amazon Park PA one-week data -- July, 2020
+```{r Linear-fit-timeseries-July, eval = TRUE, warning = FALSE, message = FALSE }
+# Get monitors data 
+LRAPA_monitors <- monitor_loadLatest() %>%
+  monitor_subset(stateCodes = "OR") %>%
+  monitor_subsetBy(countyName == "Lane")
+monitorID <- Amazon_Park$meta$pwfsl_closestMonitorID
+
+# Create dataframe (df): Amazon Park PA one-week data -- July, 2020
+# NOTE: source functions in the "Setup" R block first!
 sensorMonitorData_07 <-sensorMonitorData(pat = Amazon_Park,
                                         ws_monitor = LRAPA_monitors,
                                         monitorID = monitorID,
                                         startdate = 20200701,
                                         enddate = 20200706)
 View(sensorMonitorData_07)
+
+# Add pm25_monitor_fitted (aka PA pm25 corrected) to the PA df
+lm <- lm(pm25_monitor ~ pm25 + humidity)
+sensorMonitorData_07$pm25_monitor_fitted <- predict(lm, newdata = sensorMonitorData_07)
+
+# Create a timeseries including PA pm25, humidity, and monitor pm25 fitted values:
+
+# * timeseries axes
+datetime <- sensorMonitorData_2$datetime
+pm25_monitor <- sensorMonitorData_2$pm25_monitor # chose the one with the 
+# highest values for the purpuse of plotting
+
+# * timeseries setup
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-07-06T00:00:00') ),
+  n = length(datetime)
+)
+x.date <- as_datetime(a$y)
+length(x.date)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,120,1)]
+
+
+# * plot 
+plot(datetime, pm25_monitor, xaxt="n", type="n", 
+     main="Amazon Park Linear Fit: Coefficients & Fitted Values -- July 01-05, 2020",
+     xlab="Date", ylab = "PM2.5" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=datetime, y=sensorMonitorData_07$pm25, col = colors()[461], lwd=2)
+lines( x=datetime, y=sensorMonitorData_07$pm25_monitor , col = colors()[631], lwd=2)
+lines( x=datetime, y=sensorMonitorData_07$pm25_monitor_fitted, col = colors()[640], lwd=2)
+
+## Legend:
+labels <- c(
+  "PA measured PM25", "FRM measured PM25", "FRM PM25 Fitted (PA PM25 Corrected)"
+)
+legend(
+  "topleft",
+  legend = labels,
+  lty=c("solid", "solid", "solid"),
+  lwd=2,
+  col= c(colors()[461], colors()[616],colors()[631], colors()[640])
+)
 ```
 
 
