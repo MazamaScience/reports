@@ -32,10 +32,10 @@ but their high cost can be limiting.
 A way to evaluate the functioning and reliability of PurpleAir (PA) sensors is 
 to compare their perfomance by colocating them with FRM monitors. Moreover, 
 data collected by FRM monitors could be potentially used to correct the data 
-collected by PA sensors, wich tend to overestimate PM2.5 concentrations. 
+collected by PA sensors, which tend to overestimate PM2.5 concentrations. 
 
 By fittind a linear model having FRM data as the response, and PA data and humidity 
-as the predictors (FRM_PM25 ~ PA_PM25 + humidity) we can derive always-updated 
+as the predictors (FRM_PM25 ~ PA_PM25 + humidity) we can derive real-time
 coefficients (using datasets from the previous 3-5 days) that can then be used 
 to correct PA data (FRM_PM25 fitted values = PA_PM25 corrected values).  
 
@@ -47,7 +47,10 @@ TO DO: discussion what LRAPA is, how they have co-located sensor-monitor pairs.
 > The Lane Regional Air Protection Agency (LRAPA) is a local government agency that monitors and regulates air quality in Lane County, Oregon. LRAPA is able to achieve this through its eight air monitoring stations throughout the county.
 [...] LRAPA has seven air monitoring stations throughout Lane County, three of which are in Eugene. The air monitoring stations collect air samples and report the data from their respective locations. Information from these stations is used to assess levels of air pollution, identify air quality trends, and support the implementation of air pollution prevention strategies. 
 
-For this study, we used the best performing sensor colocated with an FRM monitor (distance ~ 21 m). As you can see from the plots below, this PA sensor performed well throughout the entire 4 months period (July - October 2020) explored, and September 10-20 was the smokiest one. 
+For this study, we used the best performing sensor colocated with an FRM monitor 
+(distance ~ 21 m). As you can see from the plots below, this PA sensor performed 
+well throughout the entire 4-month period (July - October 2020) explored, and 
+September 10-20 was the smokiest one. 
 
 ```{r Setup, eval = TRUE, warning = FALSE, message = FALSE}
 # libraries 
@@ -58,9 +61,9 @@ library(lubridate)
 
 # load customized functions (if you created a R project including the functions 
 # scripts below, you can directly source them)
-source("OR/LRAPA/sensorMonitorData.R")
-source("OR/LRAPA/sensorMonitorFit.R")
-source("OR/LRAPA/fitValueTimeSeries.R")
+source("C:/Users/astri/Mirror/Mazamascience/Projects/Reports/OR/LRAPA/sensorMonitorData.R")
+source("C:/Users/astri/Mirror/Mazamascience/Projects/Reports/OR/LRAPA/sensorMonitorFit.R")
+source("C:/Users/astri/Mirror/Mazamascience/Projects/Reports/OR/LRAPA/fitValueTimeSeries.R")
 ```
 
 ```{r Amazon-Park-assessment, eval = TRUE, warning = FALSE, message = FALSE }
@@ -100,9 +103,13 @@ TO DO: Using lm(pm25_monitor ~ pm25 + humidity) and a 5-day window to created ou
 
 ```{r Linear-fit-timeseries-July, eval = TRUE, warning = FALSE, message = FALSE }
 # Get monitors data 
-LRAPA_monitors <- monitor_loadLatest() %>%
-  monitor_subset(stateCodes = "OR") %>%
-  monitor_subsetBy(countyName == "Lane")
+# LRAPA_monitors <- monitor_loadLatest() %>%
+#   monitor_subset(stateCodes = "OR") %>%
+#   monitor_subsetBy(countyName == "Lane")
+
+archiveDir <- "C:/Users/astri/Mirror/Mazamascience/Projects/Data/LRAPA"
+LRAPA_monitors <- get(load(file.path(archiveDir, "LRAPA_monitors.rda")))
+
 monitorID <- Amazon_Park$meta$pwfsl_closestMonitorID
 
 # Create dataframe (df): Amazon Park PA one-week data -- July, 2020
@@ -115,14 +122,14 @@ sensorMonitorData_07 <-sensorMonitorData(pat = Amazon_Park,
 View(sensorMonitorData_07)
 
 # Add pm25_monitor_fitted (aka PA pm25 corrected) to the PA df
-lm <- lm(pm25_monitor ~ pm25 + humidity)
+lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_07)
 sensorMonitorData_07$pm25_monitor_fitted <- predict(lm, newdata = sensorMonitorData_07)
 
 # Create a timeseries including PA pm25, humidity, and monitor pm25 fitted values:
 
 # * timeseries axes
-datetime <- sensorMonitorData_2$datetime
-pm25_monitor <- sensorMonitorData_2$pm25_monitor # chose the one with the 
+datetime <- sensorMonitorData_07$datetime
+pm25_monitor <- sensorMonitorData_07$pm25_monitor # chose the one with the 
 # highest values for the purpuse of plotting
 
 # * timeseries setup
@@ -139,16 +146,15 @@ date.at <- seq(dr[1], dr[2], by="day")[seq(1,120,1)]
 
 # * plot 
 plot(datetime, pm25_monitor, xaxt="n", type="n", 
-     main="Amazon Park Linear Fit: Coefficients & Fitted Values -- July 01-05, 2020",
-     xlab="Date", ylab = "PM2.5" )
+     main="Amazon Park Linear Fit: Coefficients & Fitted Values -- July 01-05, 2020", xlab="Date", ylab = "PM2.5" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
 lines( x=datetime, y=sensorMonitorData_07$pm25, col = colors()[461], lwd=2)
 lines( x=datetime, y=sensorMonitorData_07$pm25_monitor , col = colors()[631], lwd=2)
 lines( x=datetime, y=sensorMonitorData_07$pm25_monitor_fitted, col = colors()[640], lwd=2)
 
-## Legend:
+# Legend:
 labels <- c(
-  "PA PM25 measured", "FRM PM25 measured", "FRM PM25 Fitted (PA PM25 Corrected)"
+  "PA PM25 measured", "FRM PM25 measured", "FRM PM25 fitted (PA PM25 corrected)"
 )
 legend(
   "topleft",
@@ -162,7 +168,7 @@ legend(
 
 # EPA correction 
 TO DO: show a 4-month plot with PA pm25, FRM pm25 and EPA "corrected" pm25 (PA values with EPA linear correction applied.); This plot should show that the EPA "over corrects" during the smoky period.
-```{r}
+```{r PA-and-FRM-pm25-measured-vs-EPA-PA-pm25-corrected, eval = TRUE, warning = FALSE, message = FALSE}
 # 4-month df including PA pm25 and FRM pm25 measured values 
 sensorMonitorData_full <-sensorMonitorData(pat = Amazon_Park,
                                         ws_monitor = LRAPA_monitors,
@@ -186,7 +192,7 @@ PA_pm25 <- sensorMonitorData_full$pm25 # chose the one with the
 # * timeseries setup
 a <- approx(
   c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
-  n = length(enddate)
+  n = length(datetime)
 )
 x.date <- as_datetime(a$y)
 
@@ -194,17 +200,17 @@ dr <- range(x.date)
 date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
 
 # * plot 
-plot(enddate, PA_pm25, xaxt="n", type="n", 
-     main="Fit Values -- July-Oct, 2020 -- 5 Days", ylim = c(-2,2),
+plot(datetime, PA_pm25, xaxt="n", type="n", 
+     main="PA and FRM PM25 measured vs EPA PA PM25 corrected -- July-Oct, 2020",
      xlab="Date", ylab = "Values" )
 axis( 1, at=date.at, format(date.at,"%b %d") )
-lines( x=enddate, y= sensorMonitorData_full$pm25, col = colors()[616], lwd=2 )
-lines( x=enddate, y = sensorMonitorData_full$pm25_monitor, col = colors()[131], lwd=2)
-lines( x=enddate, y = sensorMonitorData_full$EPA_PA_PM25_corrected, col = colors()[636], lwd=2)
+lines( x=datetime, y= sensorMonitorData_full$pm25, col = colors()[616], lwd=2 )
+lines( x=datetime, y = sensorMonitorData_full$pm25_monitor, col = colors()[131], lwd=2)
+lines( x=datetime, y = sensorMonitorData_full$EPA_PA_PM25_corrected, col = colors()[636], lwd=2)
 
 ## Legend:
 labels <- c(
-"PA PM25 measured", "FRM PM25 measured", "EPA PA PM25 Corrected"
+"PA PM25 measured", "FRM PM25 measured", "EPA PA PM25 corrected"
 )
 legend(
   "bottomleft",
@@ -217,9 +223,210 @@ legend(
 ```
 
 
-
 # Real-time linear fit
 TO DO: Show the fit parameters for EPA (straight lines) and for real-time lm(). Pick ylim() that highlights the pm25 and humidity values. Don't worry about the smoky period when the intercept goes crazy.
 
+```{r Linear-fit-coefficients-real-time-vs-EPA, eval = TRUE, warning = FALSE, message = FALSE}
+# 4-month real time linear fit coeffincents + EPA coeffiecients
+# Fit Values Timeseries with EPA params -----
+FitValues <- fitValueTimeSeries(
+  pat = Amazon_Park,
+  ws_monitor = LRAPA_monitors,
+  monitorID = monitorID,
+  startdate = 20200701,
+  enddate = 20201031,
+  modelParameters = c("pm25", "humidity"),
+  windowSize = 5 # days
+) 
+View(FitValues)
+
+# Create a df with EPA coefficinets:
+# EPA equation: PM2.5 corrected = 0.534*[PA_cf1(avgAB)] - 0.0844*RH + 5.604
+# -> PA_cf1[(avgAB)] slope = PurpleAir higher correction factor data averaged
+
+# EPA vectors length 
+enddate <- FitValues$enddate # enddate of each window period (5 days)
+# EPA PA_cf1_avgAB slope
+PA_cf1_avgAB <- rep(0.534, times = length(enddate))
+EPA_coefficients <- as.data.frame(PA_cf1_avgAB)
+# EPA RH slope = relative humidity 
+EPA_coefficients$RH <- rep(- 0.0844, times = length(enddate)) 
+# EPA intercept 
+EPA_coefficients$EPA_intercept <- rep(5.604, times = length(enddate)) 
+View(EPA_coefficients)
+
+# Create 4-month timeseries including real-time PA pm25, FRM pm25, and humidity 
+# coefficients values and EPA coefficients:
+# * timeseries axes
+enddate <- FitValues$enddate
+pm25<- FitValues$pm25 
+
+# * Setup
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+# * plot
+plot(enddate, pm25, xaxt="n", type="n", 
+     main="Real-time Coefficients vs EPA Coefficients -- July-Oct, 2020",
+     xlab="Date", ylab = "Values", ylim = c(-2, 6) )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=enddate, y=FitValues$intercept, col = colors()[461], lwd=2)
+lines( x=enddate, y=FitValues$pm25, col = colors()[616], lwd=2 )
+lines( x=enddate, y=FitValues$humidity, col = colors()[122], lwd=2 )
+lines( x=enddate, y=EPA_coefficients$PA_cf1_avgAB, col = colors()[640], lwd=2)
+lines( x=enddate, y=EPA_coefficients$RH, col = colors()[641], lwd=2)
+lines( x=enddate, y=EPA_coefficients$EPA_intercept, col = colors()[642], lwd=2)
+
+# Legend:
+labels <- c(
+  "Intercept" ,"PA PM25 Slope","Humidity Slope", "EPA PA_cf1(avgAB) Slope", "EPA RH Slope", "EPA Intercept"
+)
+legend(
+  "bottomleft",
+  legend = labels,
+  lty=c("solid", "solid", "solid", "solid", "solid", "solid"),
+  lwd=2,
+  col= c(colors()[461], colors()[616], colors()[122],
+         colors()[640], colors()[641], colors()[642])
+)
+
+```
+
+
 # Real-time vs EPA 
 TO DO: Discussion and plots showing PA pm25, FRM pm25, EPA corrected pm25 and real-time corrected pm25 for one week in July and one smoky week in October
+```{r realtime-PA-pm25-corrected-vs-EPA-PA-pm25-corrected, eval = TRUE, warning = FALSE, message = FALSE}
+
+# Non-smoky week in July
+# Reuse the df created in the "Linear-fit-timeseries-July" R block 
+# Create EPA vectors for that week
+EPA_PA_PM25_corrected <- (0.534*sensorMonitorData_07$pm25 - 0.0844*sensorMonitorData_07$humidity +5.604)
+sensorMonitorData_07$EPA_PA_PM25_corrected <- round(EPA_PA_PM25_corrected)
+
+# Real time linear fit 
+lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_07)
+sensorMonitorData_07$pm25_monitor_fitted <- predict(lm, newdata= sensorMonitorData_07)
+sensorMonitorData_07$pm25_monitor_fitted <- round(sensorMonitorData_07$pm25_monitor_fitted)
+
+# Create one-week timeseries (July) including real-time FRM pm25 fitted and EPA PA pm25 corrected:
+# * timeseries axes
+datetime <- sensorMonitorData_07$datetime
+pm25 <- sensorMonitorData_07$pm25
+
+# * timeseries setup
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-07-06T00:00:00') ),
+  n = length(datetime)
+)
+x.date <- as_datetime(a$y)
+length(x.date)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,120,1)]
+
+# * plot
+plot(datetime, pm25_monitor, xaxt="n", type="n", 
+     main="FRM fitted vs EPA PA PM25 corrected -- July 1-5, 2020",
+     xlab="Date", ylab = "PM2.5" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=datetime, y = sensorMonitorData_07$pm25_monitor, col = colors()[461], lwd=2)
+lines( x=datetime, y = sensorMonitorData_07$pm25, col = colors()[631], lwd=2)
+lines( x=datetime, y = sensorMonitorData_07$pm25_monitor_fitted, col = colors()[640], lwd=2)
+lines( x=datetime, y = sensorMonitorData_07$EPA_PA_PM25_corrected, col = colors()[616], lwd=2)
+
+# legend:
+labels <- c(
+  "FRM PM25 measured", "PA PM25 measured", "FRM PM25 fitted (aka PA PM25 corrected)", "EPA PA PM25 corrected"
+)
+legend(
+  "topleft",
+  legend = labels,
+  lty=c("solid", "solid"),
+  lwd=2,
+  col= c(colors()[461],colors()[631], colors()[640], colors()[616])
+)
+
+
+# Smoky week in September
+# Create df: Amazon Park PA one-week data -- September, 2020
+sensorMonitorData_09 <-sensorMonitorData(pat = Amazon_Park,
+                                        ws_monitor = LRAPA_monitors,
+                                        monitorID = monitorID,
+                                        startdate = 20200910,
+                                        enddate = 20200915)
+View(sensorMonitorData_09)
+
+# Create EPA vectors for that week
+EPA_PA_PM25_corrected <- (0.534*sensorMonitorData_09$pm25 - 0.0844*sensorMonitorData_09$humidity +5.604)
+sensorMonitorData_09$EPA_PA_PM25_corrected <- round(EPA_PA_PM25_corrected)
+
+# Real time linear fit 
+lm <- lm(pm25_monitor ~ pm25 + humidity, data = sensorMonitorData_09)
+sensorMonitorData_09$pm25_monitor_fitted <- predict(lm, newdata= sensorMonitorData_09)
+sensorMonitorData_09$pm25_monitor_fitted <- round(sensorMonitorData_07$pm25_monitor_fitted)
+
+# Create one-week timeseries (September) including real-time FRM pm25 fitted and EPA 
+# PA pm25 corrected:
+# * timeseries axes
+datetime <- sensorMonitorData_09$datetime
+pm25 <- sensorMonitorData_09$pm25
+# * timeseries setup
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-07-06T00:00:00') ),
+  n = length(datetime)
+)
+x.date <- as_datetime(a$y)
+length(x.date)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,120,1)]
+
+# * plot 
+plot(datetime, pm25, xaxt="n", type="n", 
+     main="FRM fitted vs EPA PA PM25 corrected -- Sep 10-14, 2020",
+     xlab="Date", ylab = "PM2.5" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=datetime, y = sensorMonitorData_09$pm25_monitor, col = colors()[461], lwd=2)
+lines( x=datetime, y = sensorMonitorData_09$pm25, col = colors()[631], lwd=2)
+lines( x=datetime, y = sensorMonitorData_09$pm25_monitor_fitted, col = colors()[640], lwd=2)
+lines( x=datetime, y = sensorMonitorData_09$EPA_PA_PM25_corrected, col = colors()[616], lwd=2)
+
+# legend:
+labels <- c(
+  "FRM PM25 measured", "PA PM25 measured", "FRM PM25 fitted (aka PA PM25 corrected)", "EPA PA PM25 corrected"
+)
+legend(
+  "topleft",
+  legend = labels,
+  lty=c("solid", "solid"),
+  lwd=2,
+  col= c(colors()[461],colors()[631], colors()[640], colors()[616])
+)
+```
+
+During a non smoky period (July) we observe that the FRM measured and fitted 
+values, and the EPA PA PM2.5 corrected predictions are close to each other, 
+showing agreement. During a smoky period (September) we observe that the 
+EPA PA PM2.5 corrected data strongly underestimate the PA PM2.5 measured 
+concentrations with respect to the FRM PM2.5 measured concentrations. 
+On the other hand, the real-time FRM PM25 fitted values (aka PA PM25 corrected values) 
+are very close to the FRM PM2.5 measured concentrations. 
+Based on our observations, we believe that one single equation can't fit all 
+situations, and we recommend the EPA to adjust their equation's coefficients 
+such that their model can be used to more accurately correct PA PM2.5 measured 
+values during wildfire or other extreme events. A possible idea to explore would 
+be fitting daily models during the wildfire season using the past 3-5 days of data 
+as we showed, and then use the daily coefficients to correct the PA PM2.5 
+concentrations daily. 
+[The EPA created that equation to address the problem of overestimation of PM2.5 
+concentrations by PA sensors](https://cfpub.epa.gov/si/si_public_record_report.cfm?Lab=CEMM&dirEntryId=349513), however producing underestimated data doesn’t seem 
+to be a solution. And from a health perspective, it could result in a bigger problem 
+especially in a country where health care is a privilege. 	
+
+
