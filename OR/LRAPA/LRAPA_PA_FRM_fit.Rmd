@@ -148,21 +148,78 @@ lines( x=datetime, y=sensorMonitorData_07$pm25_monitor_fitted, col = colors()[64
 
 ## Legend:
 labels <- c(
-  "PA measured PM25", "FRM measured PM25", "FRM PM25 Fitted (PA PM25 Corrected)"
+  "PA PM25 measured", "FRM PM25 measured", "FRM PM25 Fitted (PA PM25 Corrected)"
 )
 legend(
   "topleft",
   legend = labels,
   lty=c("solid", "solid", "solid"),
   lwd=2,
-  col= c(colors()[461], colors()[616],colors()[631], colors()[640])
+  col= c(colors()[461], colors()[631], colors()[640])
 )
 ```
 
 
 # EPA correction 
-- show a 4-month plot with PA pm25, FRM pm25 and EPA "corrected" pm25 (PA values with EPA linear correction applied.); This plot should show that the EPA "over corrects" during the smoky period.
- Real-time linear fit -- Show the fit parameters for EPA (straight lines) and for real-time lm(). Pick ylim() that highlights the pm25 and humidity values. Don't worry about the smoky period when the intercept goes crazy.
+TO DO: show a 4-month plot with PA pm25, FRM pm25 and EPA "corrected" pm25 (PA values with EPA linear correction applied.); This plot should show that the EPA "over corrects" during the smoky period.
+```{r}
+# 4-month df including PA pm25 and FRM pm25 measured values 
+sensorMonitorData_full <-sensorMonitorData(pat = Amazon_Park,
+                                        ws_monitor = LRAPA_monitors,
+                                        monitorID = monitorID,
+                                        startdate = 20200701,
+                                        enddate = 20201101)
+View(sensorMonitorData_full)
+
+# Add EPA PA pm25 corrected to sensorMonitorData_full df 
+# EPA equation: PA PM2.5 corrected = 0.534*[PA_cf1(avgAB)] - 0.0844*RH +5.604
+EPA_PA_PM25_corrected <- (0.534*sensorMonitorData_full$pm25 - 0.0844*sensorMonitorData_full$humidity +5.604)
+sensorMonitorData_full$EPA_PA_PM25_corrected <- round(EPA_PA_PM25_corrected)
+
+# Create 4-month timeseries including PA pm25 and FRM pm25 measured values and 
+# EPA PA pm25 correceted:
+# * timeseries axes
+datetime <- sensorMonitorData_full$datetime
+PA_pm25 <- sensorMonitorData_full$pm25 # chose the one with the 
+# highest values for the purpuse of plotting
+
+# * timeseries setup
+a <- approx(
+  c( ymd_hms('2020-07-01T00:00:00'), ymd_hms('2020-10-31T00:00:00') ),
+  n = length(enddate)
+)
+x.date <- as_datetime(a$y)
+
+dr <- range(x.date)
+date.at <- seq(dr[1], dr[2], by="day")[seq(1,200,7)]
+
+# * plot 
+plot(enddate, PA_pm25, xaxt="n", type="n", 
+     main="Fit Values -- July-Oct, 2020 -- 5 Days", ylim = c(-2,2),
+     xlab="Date", ylab = "Values" )
+axis( 1, at=date.at, format(date.at,"%b %d") )
+lines( x=enddate, y= sensorMonitorData_full$pm25, col = colors()[616], lwd=2 )
+lines( x=enddate, y = sensorMonitorData_full$pm25_monitor, col = colors()[131], lwd=2)
+lines( x=enddate, y = sensorMonitorData_full$EPA_PA_PM25_corrected, col = colors()[636], lwd=2)
+
+## Legend:
+labels <- c(
+"PA PM25 measured", "FRM PM25 measured", "EPA PA PM25 Corrected"
+)
+legend(
+  "bottomleft",
+  legend = labels,
+  lty=c("solid", "solid","solid"),
+  lwd=2,
+  col= c(colors()[616], colors()[131], colors()[636])
+)
+
+```
+
+
+
+# Real-time linear fit
+TO DO: Show the fit parameters for EPA (straight lines) and for real-time lm(). Pick ylim() that highlights the pm25 and humidity values. Don't worry about the smoky period when the intercept goes crazy.
 
 # Real-time vs EPA 
-_ Discussion and plots showing PA pm25, FRM pm25, EPA corrected pm25 and real-time corrected pm25 for one week in July and one smoky week in October
+TO DO: Discussion and plots showing PA pm25, FRM pm25, EPA corrected pm25 and real-time corrected pm25 for one week in July and one smoky week in October
